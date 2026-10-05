@@ -1,0 +1,253 @@
+{
+  "version": "0.1.0",
+  "updated": "2026-10-05",
+  "disclaimer": "미국 원전 운영 주 및 전략적 핵심 주를 공개자료(EIA, NRC, NCSL, 각 주 PUC·전원계획)로 2026년 기준 정규화. 전력시장 구조·정책은 변동 가능하므로 confidence·sources 확인. 신규 대형원전 재무회수는 규제시장(rate-base)에서 유리하다는 점이 전략 핵심.",
+  "market_structure_legend": {
+    "regulated": "수직통합·원가보상(rate-base) 규제시장. CWIP/사전원가회수로 대형 신규건설 재무회수 유리 → 신규 대형원전 발주 현실성 높음(예: Vogtle)",
+    "restructured": "소매경쟁·도매시장 중심(탈규제). 신규 대형 재무회수 어려움 → 재가동·데이터센터 PPA·SMR 중심",
+    "hybrid": "혼합(도매경쟁+부분 규제)"
+  },
+  "epc_attractiveness_note": "삼성물산 EPC수주 관점 주별 매력도. regulated + 데이터센터/산업 수요 + 원전 우호정책이 겹치는 주가 신규 대형·SMR EPC 기회 최상.",
+  "states": [
+    {
+      "id": "GA", "name": "Georgia", "market_structure": "regulated",
+      "operating_reactors": 4, "nuclear_mwe": 4600,
+      "plants": ["Vogtle(4기, 3·4호기 AP1000 신규)", "Hatch(2기)"],
+      "policy": "규제시장, Georgia PSC 통한 rate-base 회수. Vogtle 3·4로 미국 유일 AP1000 신규 완공 — 규제·공급망·숙련인력 기반 보유.",
+      "strategy_signals": {"new_build": "AP1000 후속 레퍼런스 유력지. 미-한 프레임워크 후보주", "data_center": "애틀랜타권 데이터센터 급증", "smr": "검토"},
+      "epc_attractiveness": "high",
+      "epc_rationale": "★ AP1000 완공 실적+규제시장+숙련 공급망. 후속 대형건설 시 삼성물산 EPC·기자재 진입 1순위 환경.",
+      "confidence": "high", "sources": ["EIA", "NRC", "Georgia PSC", "Southern Company"]
+    },
+    {
+      "id": "SC", "name": "South Carolina", "market_structure": "regulated",
+      "operating_reactors": 7, "nuclear_mwe": 6600,
+      "plants": ["Oconee(3기)", "Catawba(2기)", "Robinson(1기)", "Summer(1기)"],
+      "policy": "규제시장. V.C. Summer 2·3호기(AP1000) 2017년 건설중단 트라우마 존재하나, 데이터센터 수요로 신규 원전 재논의. 중단부지(Summer) 재활용·AP1000 완공 재추진 거론.",
+      "strategy_signals": {"new_build": "★ V.C. Summer 미완공 AP1000(2·3호기) 완공 재추진 가능성 — 기성 구조물·부지 보유", "data_center": "증가", "smr": "검토"},
+      "epc_attractiveness": "high",
+      "epc_rationale": "★ 미완공 AP1000 부지(Summer) 보유 — 완공형 EPC 기회의 상징적 타깃. 규제시장.",
+      "confidence": "medium", "sources": ["EIA", "NRC", "South Carolina PSC", "Santee Cooper", "Dominion"]
+    },
+    {
+      "id": "NC", "name": "North Carolina", "market_structure": "regulated",
+      "operating_reactors": 5, "nuclear_mwe": 5000,
+      "plants": ["McGuire(2기)", "Harris(1기)", "Brunswick(2기)"],
+      "policy": "규제시장, 탄소중립 목표(HB951). Duke Energy Carolinas 전원계획에 신규 원전·SMR 옵션. 데이터센터·첨단제조 수요 급증.",
+      "strategy_signals": {"new_build": "Duke IRP 대형·SMR 옵션", "data_center": "★ 급증", "smr": "부지 검토"},
+      "epc_attractiveness": "high",
+      "epc_rationale": "★ 규제시장+수요폭증+Duke 신규계획. 대형·SMR EPC 유망.",
+      "confidence": "high", "sources": ["EIA", "NRC", "North Carolina Utilities Commission", "Duke Energy"]
+    },
+    {
+      "id": "TN", "name": "Tennessee", "market_structure": "regulated",
+      "operating_reactors": 4, "nuclear_mwe": 4700,
+      "plants": ["Watts Bar(2기)", "Sequoyah(2기)", "Clinch River(SMR 건설허가)"],
+      "policy": "TVA(연방) 관할 규제구조. 주정부 SMR 우호(SMR 허브 조성 자금). Oak Ridge 원자력 생태계.",
+      "strategy_signals": {"smr": "★★ Clinch River BWRX-300 건설허가(2026.9)·최대 4기. TVA-NuScale 6GW MOU", "new_build": "대형 검토", "data_center": "AI·연방시설 수요"},
+      "epc_attractiveness": "high",
+      "epc_rationale": "★★ 미국 SMR FOAK 중심지. BWRX-300 함대+SMR 생태계 — SMR EPC·모듈 수주 최우선 타깃.",
+      "confidence": "high", "sources": ["EIA", "NRC", "TVA", "State of Tennessee", "US DOE"]
+    },
+    {
+      "id": "VA", "name": "Virginia", "market_structure": "hybrid",
+      "operating_reactors": 4, "nuclear_mwe": 3500,
+      "plants": ["Surry(2기)", "North Anna(2기)"],
+      "policy": "Dominion 규제(부분경쟁). Virginia Clean Economy Act. 주정부 SMR 적극 추진(SMR 허브 선언).",
+      "strategy_signals": {"smr": "★ North Anna SMR 개발·주정부 SMR 육성", "data_center": "★★ 세계 최대 데이터센터 집적('Data Center Alley') — 무탄소 기저전원 수요 최상위", "new_build": "옵션"},
+      "epc_attractiveness": "high",
+      "epc_rationale": "★ 데이터센터 수요 미국 1위+SMR 정책 적극. North Anna SMR EPC 유망.",
+      "confidence": "high", "sources": ["EIA", "NRC", "Virginia SCC", "Dominion Energy"]
+    },
+    {
+      "id": "TX", "name": "Texas", "market_structure": "restructured",
+      "operating_reactors": 4, "nuclear_mwe": 5100,
+      "plants": ["Comanche Peak(2기)", "South Texas Project(2기)"],
+      "policy": "ERCOT 독립계통·소매경쟁. 주정부 원전 추진(Texas Advanced Nuclear 기금·Texas Nuclear Alliance). Abilene/Permian 산업·데이터센터 수요 폭증. Dow Seadrift SMR.",
+      "strategy_signals": {"smr": "★ Dow Seadrift X-energy Xe-100(4모듈). 주 기금으로 SMR 유치 경쟁", "data_center": "★★ 폭증", "new_build": "검토"},
+      "epc_attractiveness": "high",
+      "epc_rationale": "★ 수요·정책자금 최상이나 탈규제라 재무구조는 산업 offtake/주기금 의존. SMR·산업용 EPC 유망.",
+      "confidence": "high", "sources": ["EIA", "NRC", "PUCT", "State of Texas", "X-energy", "Dow"]
+    },
+    {
+      "id": "AL", "name": "Alabama", "market_structure": "regulated",
+      "operating_reactors": 5, "nuclear_mwe": 5000,
+      "plants": ["Browns Ferry(3기, TVA)", "Farley(2기)"],
+      "policy": "규제시장(Southern/TVA). TVA Bellefonte 미완공 부지 이력. 원전 우호.",
+      "strategy_signals": {"new_build": "Bellefonte 등 유휴부지 재활용 거론", "smr": "검토"},
+      "epc_attractiveness": "medium",
+      "epc_rationale": "규제시장+유휴 원전부지. 중기 신규 잠재.",
+      "confidence": "medium", "sources": ["EIA", "NRC", "TVA", "Southern Company"]
+    },
+    {
+      "id": "LA", "name": "Louisiana", "market_structure": "regulated",
+      "operating_reactors": 2, "nuclear_mwe": 2100,
+      "plants": ["River Bend(1기)", "Waterford(1기)"],
+      "policy": "규제시장(Entergy). 걸프 석유화학·대형 데이터센터(메타 등) 유치로 전력수요 급증.",
+      "strategy_signals": {"data_center": "★ 초대형 데이터센터 유치", "new_build": "검토", "smr": "평가"},
+      "epc_attractiveness": "medium",
+      "epc_rationale": "규제시장+산업/데이터센터 수요. 중기 신규·SMR 잠재.",
+      "confidence": "medium", "sources": ["EIA", "NRC", "Louisiana PSC", "Entergy"]
+    },
+    {
+      "id": "AZ", "name": "Arizona", "market_structure": "regulated",
+      "operating_reactors": 3, "nuclear_mwe": 3900,
+      "plants": ["Palo Verde(3기, 미국 최대)"],
+      "policy": "규제시장. 반도체(TSMC 등)·데이터센터 수요 증가. 서남부 성장.",
+      "strategy_signals": {"new_build": "검토", "smr": "평가", "data_center": "★ 반도체·데이터센터 수요"},
+      "epc_attractiveness": "medium",
+      "epc_rationale": "규제시장+대형 운영경험+산업수요. 중기 신규·SMR 잠재.",
+      "confidence": "medium", "sources": ["EIA", "NRC", "Arizona Corporation Commission", "APS"]
+    },
+    {
+      "id": "IL", "name": "Illinois", "market_structure": "restructured",
+      "operating_reactors": 11, "nuclear_mwe": 11600,
+      "plants": ["Braidwood·Byron·LaSalle·Dresden·Quad Cities·Clinton(Constellation)"],
+      "policy": "탈규제. 미국 최대 원전 보유주. 과거 SMR 신규건설 모라토리엄을 일부 완화(소형 신설 허용). CEJA 무탄소 정책.",
+      "strategy_signals": {"smr": "소형 신설 규제 완화", "uprate": "출력증강", "new_build": "대형 신설은 재무구조상 제약"},
+      "epc_attractiveness": "medium",
+      "epc_rationale": "원전 최다 보유나 탈규제·merchant. 신규 대형보다 SMR·증강 중심.",
+      "confidence": "medium", "sources": ["EIA", "NRC", "Illinois Commerce Commission", "Constellation"]
+    },
+    {
+      "id": "PA", "name": "Pennsylvania", "market_structure": "restructured",
+      "operating_reactors": 8, "nuclear_mwe": 9000,
+      "plants": ["Peach Bottom·Limerick(Constellation)", "Susquehanna(Talen)", "Beaver Valley(Vistra)", "Crane/구TMI-1(재가동)"],
+      "policy": "탈규제(PJM). 재가동(Crane)·데이터센터 코로케이션(Susquehanna-AWS) 선도.",
+      "strategy_signals": {"restart": "★ Crane(구 TMI-1) 재가동 2027", "data_center": "★ Susquehanna-AWS 코로케이션", "smr": "검토"},
+      "epc_attractiveness": "medium",
+      "epc_rationale": "탈규제라 재가동·데이터센터 PPA 모델. 신규 대형 EPC보다 개조·기자재 틈새.",
+      "confidence": "high", "sources": ["EIA", "NRC", "Pennsylvania PUC", "Constellation", "Talen"]
+    },
+    {
+      "id": "MI", "name": "Michigan", "market_structure": "hybrid",
+      "operating_reactors": 2, "nuclear_mwe": 2200,
+      "plants": ["Fermi(1기, DTE)", "Palisades(재가동, Holtec)", "Cook(2기, 참고)"],
+      "policy": "부분경쟁. 주정부 Palisades 재가동 지원·SMR 우호. 무탄소 목표.",
+      "strategy_signals": {"restart": "★ Palisades 재가동(미국 최초)", "smr": "★ Palisades 부지 Holtec SMR-300 쌍둥이 추진", "new_build": "검토"},
+      "epc_attractiveness": "medium",
+      "epc_rationale": "재가동+SMR-300 신규부지. SMR 건설 본격화 시 EPC·모듈 기회.",
+      "confidence": "medium", "sources": ["EIA", "NRC", "Michigan PSC", "Holtec", "DTE"]
+    },
+    {
+      "id": "OH", "name": "Ohio", "market_structure": "restructured",
+      "operating_reactors": 2, "nuclear_mwe": 2100,
+      "plants": ["Davis-Besse(1기)", "Perry(1기)(Vistra)"],
+      "policy": "탈규제(PJM). 인텔 반도체·데이터센터 수요. 원전 보조 논란 이력(HB6).",
+      "strategy_signals": {"data_center": "★ 반도체·데이터센터 수요", "smr": "검토", "uprate": "검토"},
+      "epc_attractiveness": "medium",
+      "epc_rationale": "수요 증가하나 탈규제. SMR·증강 중심 잠재.",
+      "confidence": "low", "sources": ["EIA", "NRC", "PUCO", "Vistra"]
+    },
+    {
+      "id": "FL", "name": "Florida", "market_structure": "regulated",
+      "operating_reactors": 4, "nuclear_mwe": 3500,
+      "plants": ["Turkey Point(2기)", "St. Lucie(2기)(NextEra)"],
+      "policy": "규제시장(NextEra/FPL). 인구·수요 성장. 과거 Turkey Point 6·7호기(AP1000) COL 보유 이력.",
+      "strategy_signals": {"new_build": "Turkey Point 추가호기 COL 이력", "license_renewal": "가동연장", "smr": "평가"},
+      "epc_attractiveness": "medium",
+      "epc_rationale": "규제시장+성장수요+기보유 COL. 중기 신규 잠재.",
+      "confidence": "medium", "sources": ["EIA", "NRC", "Florida PSC", "NextEra"]
+    },
+    {
+      "id": "MO", "name": "Missouri", "market_structure": "regulated",
+      "operating_reactors": 1, "nuclear_mwe": 1200,
+      "plants": ["Callaway(1기, Ameren)"],
+      "policy": "규제시장. Ameren SMR 관심. CWIP 관련 규제 변화 논의.",
+      "strategy_signals": {"smr": "Callaway 부지 SMR 검토", "new_build": "장기 옵션"},
+      "epc_attractiveness": "medium",
+      "epc_rationale": "규제시장+SMR 관심. 중기 잠재.",
+      "confidence": "low", "sources": ["EIA", "NRC", "Missouri PSC", "Ameren"]
+    },
+    {
+      "id": "WA", "name": "Washington", "market_structure": "regulated",
+      "operating_reactors": 1, "nuclear_mwe": 1200,
+      "plants": ["Columbia(1기, Energy Northwest)"],
+      "policy": "규제/공영. Energy Northwest X-energy SMR 함대 추진. 무탄소 정책.",
+      "strategy_signals": {"smr": "★ Xe-100 최대 12모듈 개발", "new_build": "차세대 원전"},
+      "epc_attractiveness": "medium",
+      "epc_rationale": "Xe-100 SMR 신규. 공영 조달 특성, SMR EPC·모듈 기회.",
+      "confidence": "medium", "sources": ["EIA", "NRC", "Energy Northwest", "X-energy"]
+    },
+    {
+      "id": "NJ", "name": "New Jersey", "market_structure": "restructured",
+      "operating_reactors": 3, "nuclear_mwe": 3500,
+      "plants": ["Salem(2기)", "Hope Creek(1기)(PSEG)"],
+      "policy": "탈규제(PJM). 데이터센터 수요. PSEG 기존부지 SMR 관심.",
+      "strategy_signals": {"smr": "Salem/Hope Creek 부지 SMR 관심", "data_center": "증가"},
+      "epc_attractiveness": "medium",
+      "epc_rationale": "탈규제. 기존부지 SMR 중기 잠재.",
+      "confidence": "low", "sources": ["EIA", "NRC", "New Jersey BPU", "PSEG"]
+    },
+    {
+      "id": "MS", "name": "Mississippi", "market_structure": "regulated",
+      "operating_reactors": 1, "nuclear_mwe": 1400,
+      "plants": ["Grand Gulf(1기, Entergy)"],
+      "policy": "규제시장(Entergy). Grand Gulf 부지 확장 여지.",
+      "strategy_signals": {"new_build": "부지 확장 여지", "smr": "평가"},
+      "epc_attractiveness": "medium",
+      "epc_rationale": "규제시장+대형 단일부지. 중기 잠재.",
+      "confidence": "low", "sources": ["EIA", "NRC", "Mississippi PSC", "Entergy"]
+    },
+    {
+      "id": "AR", "name": "Arkansas", "market_structure": "regulated",
+      "operating_reactors": 2, "nuclear_mwe": 1800,
+      "plants": ["Arkansas Nuclear One(2기, Entergy)"],
+      "policy": "규제시장(Entergy).",
+      "strategy_signals": {"smr": "평가", "new_build": "장기"},
+      "epc_attractiveness": "low",
+      "epc_rationale": "규제시장이나 수요·계획 가시성 낮음.",
+      "confidence": "low", "sources": ["EIA", "NRC", "Arkansas PSC", "Entergy"]
+    },
+    {
+      "id": "NY", "name": "New York", "market_structure": "restructured",
+      "operating_reactors": 4, "nuclear_mwe": 3300,
+      "plants": ["Nine Mile Point(2기)", "Ginna(1기)", "FitzPatrick(1기)(Constellation)"],
+      "policy": "탈규제(NYISO). 주정부 신규 대형원전 개발 지시(최대 1GW+) 발표로 재점화. Indian Point 폐쇄 이력.",
+      "strategy_signals": {"new_build": "★ 주지사 신규 원전(1GW+) 개발 추진 지시", "smr": "검토"},
+      "epc_attractiveness": "medium",
+      "epc_rationale": "탈규제이나 주 주도 신규 대형 추진 — 공적 재무지원 설계 시 기회. 모니터링.",
+      "confidence": "medium", "sources": ["EIA", "NRC", "NYSERDA", "New York State"]
+    },
+    {
+      "id": "IA", "name": "Iowa", "market_structure": "regulated",
+      "operating_reactors": 0, "nuclear_mwe": 0,
+      "plants": ["Duane Arnold(재가동 추진)"],
+      "policy": "규제시장. NextEra Duane Arnold 재가동. 데이터센터 수요.",
+      "strategy_signals": {"restart": "★ Duane Arnold 재가동(2029 목표)", "data_center": "증가"},
+      "epc_attractiveness": "low",
+      "epc_rationale": "재가동 개조 중심. 기자재·개조 틈새.",
+      "confidence": "medium", "sources": ["EIA", "NRC", "Iowa Utilities Board", "NextEra"]
+    },
+    {
+      "id": "MN", "name": "Minnesota", "market_structure": "regulated",
+      "operating_reactors": 3, "nuclear_mwe": 1700,
+      "plants": ["Prairie Island(2기)", "Monticello(1기)(Xcel)"],
+      "policy": "규제시장. 과거 신규 원전 모라토리엄 완화 논의. 무탄소 목표.",
+      "strategy_signals": {"smr": "장기 옵션", "license_renewal": "가동연장"},
+      "epc_attractiveness": "low",
+      "epc_rationale": "규제시장이나 신규 가시성 낮음.",
+      "confidence": "low", "sources": ["EIA", "NRC", "Minnesota PUC", "Xcel"]
+    },
+    {
+      "id": "WI", "name": "Wisconsin", "market_structure": "regulated",
+      "operating_reactors": 2, "nuclear_mwe": 1200,
+      "plants": ["Point Beach(2기, NextEra)"],
+      "policy": "규제시장. 신규 원전 모라토리엄 폐지(2016). SMR 관심.",
+      "strategy_signals": {"smr": "검토", "new_build": "장기"},
+      "epc_attractiveness": "low",
+      "epc_rationale": "규제시장+모라토리엄 폐지. 장기 잠재.",
+      "confidence": "low", "sources": ["EIA", "NRC", "Wisconsin PSC"]
+    },
+    {
+      "id": "KS", "name": "Kansas", "market_structure": "regulated",
+      "operating_reactors": 1, "nuclear_mwe": 1200,
+      "plants": ["Wolf Creek(1기, Evergy)"],
+      "policy": "규제시장. Evergy SMR 타당성.",
+      "strategy_signals": {"smr": "타당성 검토"},
+      "epc_attractiveness": "low",
+      "epc_rationale": "규제시장+SMR 관심. 장기 잠재.",
+      "confidence": "low", "sources": ["EIA", "NRC", "Kansas Corporation Commission", "Evergy"]
+    }
+  ]
+}

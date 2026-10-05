@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>미국 원전 사업전략 백데이터 | 삼성물산 원전영업팀</title>
+<style>
+  :root{
+    --bg:#0d1117; --panel:#161b22; --panel2:#1c2330; --line:#2d333b;
+    --txt:#e6edf3; --dim:#9da7b3; --accent:#4aa8ff; --accent2:#2ea043;
+    --hi:#f0b429; --lo:#8b949e; --bad:#f85149; --chip:#21262d;
+    --epc:#4aa8ff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);
+    font-family:"Segoe UI","Malgun Gothic",system-ui,sans-serif;line-height:1.5}
+  header{padding:22px 26px 14px;border-bottom:1px solid var(--line);
+    background:linear-gradient(180deg,#131a24,#0d1117)}
+  h1{margin:0 0 4px;font-size:20px;letter-spacing:-.3px}
+  .sub{color:var(--dim);font-size:13px}
+  .meta{color:var(--dim);font-size:12px;margin-top:8px}
+  .meta b{color:var(--accent)}
+  .wrap{max-width:1180px;margin:0 auto;padding:18px 20px 60px}
+  nav{display:flex;gap:6px;flex-wrap:wrap;margin:16px 0 10px}
+  nav button{background:var(--chip);color:var(--dim);border:1px solid var(--line);
+    padding:8px 14px;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600}
+  nav button.on{background:var(--accent);color:#06121f;border-color:var(--accent)}
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;align-items:center}
+  .filters select,.filters input{background:var(--panel);color:var(--txt);
+    border:1px solid var(--line);border-radius:7px;padding:6px 10px;font-size:13px}
+  .filters label{font-size:12px;color:var(--dim)}
+  .disc{background:#1a1407;border:1px solid #3d2f0a;color:#d7b663;font-size:12px;
+    padding:9px 12px;border-radius:8px;margin:10px 0}
+  .flags{background:#1d0f0f;border:1px solid #4a1d1d;color:#f0a0a0;font-size:12.5px;
+    padding:10px 12px;border-radius:8px;margin:10px 0}
+  .flags b{color:#ff8b8b}
+
+  /* opportunity cards */
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;
+    padding:16px 18px;margin-bottom:12px}
+  .card .top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
+  .rank{font-size:12px;color:var(--dim);font-weight:700}
+  .title{font-size:16px;font-weight:700;margin:2px 0 6px}
+  .badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+  .chip{font-size:11px;padding:2px 8px;border-radius:20px;background:var(--chip);
+    color:var(--dim);border:1px solid var(--line)}
+  .chip.type{background:#10263d;color:#79c0ff;border-color:#1f4a73}
+  .chip.pri-high{background:#0f2e1a;color:#56d364;border-color:#1f6f3a}
+  .chip.pri-medium{background:#2e2410;color:#e3b341;border-color:#6f561f}
+  .chip.pri-low{background:#262a2e;color:#8b949e}
+  .score{text-align:right;min-width:92px}
+  .score .big{font-size:30px;font-weight:800;line-height:1}
+  .score .lab{font-size:10.5px;color:var(--dim);text-transform:uppercase;letter-spacing:.5px}
+  .dims{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin:12px 0}
+  .dim{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:7px 9px}
+  .dim .dn{font-size:11px;color:var(--dim);display:flex;justify-content:space-between}
+  .bar{height:6px;background:#0c1017;border-radius:4px;margin-top:5px;overflow:hidden}
+  .bar>i{display:block;height:100%;border-radius:4px;background:var(--accent)}
+  .dim.epc .bar>i{background:var(--hi)}
+  .conf{font-size:9.5px;padding:0 4px;border-radius:3px}
+  .conf.high{color:#56d364}.conf.medium{color:#e3b341}.conf.low{color:#8b949e}
+  .note{background:#0c1a10;border:1px solid #1f5130;border-radius:8px;padding:10px 12px;
+    font-size:13px;margin-top:8px}
+  .note .lab{color:var(--accent2);font-weight:700;font-size:11px;margin-right:6px}
+  .angle{font-size:12.5px;color:var(--dim);margin-top:6px}
+  .angle b{color:var(--txt)}
+  .status{font-size:12px;color:var(--dim);margin-top:4px}
+  details.live{margin-top:8px}
+  details.live summary{cursor:pointer;color:var(--accent);font-size:12px}
+  .news{font-size:12px;color:var(--dim);margin:4px 0 0 6px}
+  .news a{color:#79c0ff;text-decoration:none}
+
+  /* tables */
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--dim);font-size:11.5px;text-transform:uppercase;letter-spacing:.4px;cursor:pointer}
+  tr:hover td{background:#12171f}
+  .mk-regulated{color:#56d364}.mk-restructured{color:#f0a0a0}.mk-hybrid{color:#e3b341}
+  .att-high{color:#56d364;font-weight:700}.att-medium{color:#e3b341}.att-low{color:#8b949e}
+  .small{font-size:11.5px;color:var(--dim)}
+  .hide{display:none}
+  .method{font-size:13.5px;max-width:820px}
+  .method h3{color:var(--accent);margin:18px 0 6px}
+  .method code{background:var(--chip);padding:1px 5px;border-radius:4px;font-size:12px}
+  .wlist{font-size:12px;color:var(--dim)}
+</style>
+</head>
+<body>
+<header>
+  <h1>🇺🇸 미국 원전 사업전략 백데이터</h1>
+  <div class="sub">삼성물산 원전영업팀 · 대형원전 &amp; SMR · EPC 수주(1순위) / 지분투자(2순위) 관점</div>
+  <div class="meta" id="meta"></div>
+</header>
+<div class="wrap">
+  <nav>
+    <button data-v="opps" class="on">① 사업기회 랭킹</button>
+    <button data-v="utils">② 유틸리티(사업자)</button>
+    <button data-v="states">③ 주(State)</button>
+    <button data-v="method">방법론</button>
+  </nav>
+
+  <div id="flags" class="flags hide"></div>
+  <div class="disc" id="disc"></div>
+
+  <!-- ① OPPORTUNITIES -->
+  <section id="view-opps">
+    <div class="filters">
+      <label>유형<select id="f-type"><option value="">전체</option></select></label>
+      <label>진입 우선순위<select id="f-pri"><option value="">전체</option>
+        <option value="high">높음</option><option value="medium">중간</option><option value="low">낮음</option></select></label>
+      <label>정렬<select id="f-sort">
+        <option value="overall_score">종합점수</option>
+        <option value="epc">EPC 접근성</option>
+        <option value="korea">한국 레버리지</option>
+        <option value="deal">발주 확실성</option></select></label>
+      <input id="f-q" placeholder="검색(제목·기술·주)" style="flex:1;min-width:140px">
+    </div>
+    <div id="opps"></div>
+  </section>
+
+  <!-- ② UTILITIES -->
+  <section id="view-utils" class="hide">
+    <div class="filters">
+      <label>진입 우선순위<select id="uf-pri"><option value="">전체</option>
+        <option value="high">높음</option><option value="medium">중간</option><option value="low">낮음</option></select></label>
+      <label>시장<select id="uf-mkt"><option value="">전체</option>
+        <option value="regulated">규제</option><option value="merchant">경쟁</option><option value="mixed">혼합</option></select></label>
+      <input id="uf-q" placeholder="검색" style="flex:1;min-width:140px">
+    </div>
+    <table id="utils-tbl"><thead><tr>
+      <th data-k="name">유틸리티</th><th data-k="type">유형</th><th data-k="market_exposure">시장</th>
+      <th data-k="reactor_count">원자로</th><th data-k="net_mwe">용량(MWe)</th>
+      <th data-k="samsung_epc_priority">EPC 우선</th><th>핵심 신호</th>
+    </tr></thead><tbody></tbody></table>
+  </section>
+
+  <!-- ③ STATES -->
+  <section id="view-states" class="hide">
+    <div class="filters">
+      <label>시장구조<select id="sf-mkt"><option value="">전체</option>
+        <option value="regulated">규제</option><option value="restructured">탈규제</option><option value="hybrid">혼합</option></select></label>
+      <label>EPC 매력도<select id="sf-att"><option value="">전체</option>
+        <option value="high">높음</option><option value="medium">중간</option><option value="low">낮음</option></select></label>
+      <input id="sf-q" placeholder="검색" style="flex:1;min-width:140px">
+    </div>
+    <table id="states-tbl"><thead><tr>
+      <th data-k="name">주</th><th data-k="market_structure">시장구조</th>
+      <th data-k="operating_reactors">원자로</th><th data-k="nuclear_mwe">용량(MWe)</th>
+      <th data-k="epc_attractiveness">EPC 매력도</th><th>근거</th>
+    </tr></thead><tbody></tbody></table>
+  </section>
+
+  <!-- METHOD -->
+  <section id="view-method" class="hide method"></section>
+</div>
+
+<script src="data.js" onerror="window.__noDataJs=true"></script>
+<script>
+// ===== 내장 베이스라인(데이터) — data.js(window.USNS_DATA)가 있으면 그것을 우선 사용 =====
+window.USNS_BASELINE = {
+  rubric: {weights:{epc_accessibility:0.28,deal_certainty:0.22,korea_leverage:0.20,scale:0.12,financing_policy:0.10,execution_risk:0.08},
+    labels:{epc_accessibility:"EPC 접근성",deal_certainty:"발주 확실성",korea_leverage:"한국 레버리지",scale:"규모",financing_policy:"재무·정책",execution_risk:"수행리스크(역)"}},
+  note:"내장 베이스라인입니다. Actions가 build_dashboard.py로 data.js를 생성하면 라이브 신호가 병합된 최신본으로 대체됩니다."
+};
+</script>
+<script>
+const L2S={1:10,2:32.5,3:55,4:77.5,5:100}, CF={high:1,medium:.85,low:.7};
+const DATA = (window.USNS_DATA) || null;
+const BASE = window.USNS_BASELINE;
+let RUBRIC_W = (DATA&&DATA.rubric&&DATA.rubric.dimensions)
+  ? Object.fromEntries(Object.entries(DATA.rubric.dimensions).map(([k,v])=>[k,v.weight]))
+  : BASE.rubric.weights;
+let RUBRIC_L = (DATA&&DATA.rubric&&DATA.rubric.dimensions)
+  ? Object.fromEntries(Object.entries(DATA.rubric.dimensions).map(([k,v])=>[k,v.label]))
+  : BASE.rubric.labels;
+const KEYS = Object.keys(RUBRIC_W);
+
+function scoreOf(o){
+  if(o.evaluation) return o.evaluation; // data.js는 이미 점수 포함
+  let ws=0,cs=0,tw=0,tally={high:0,medium:0,low:0};
+  for(const k of KEYS){const e=o.dimensions[k]; if(!e)continue;
+    const b=L2S[e.level],w=RUBRIC_W[k]; ws+=b*w; cs+=b*w*CF[e.confidence||'low']; tw+=w; tally[e.confidence||'low']++;}
+  const n=Object.values(tally).reduce((a,b)=>a+b,0)||1;
+  let dc = tally.low/n>=.4?'low':(tally.high/n>=.5?'high':'medium');
+  return {overall_score:+(ws/tw).toFixed(1),overall_score_confidence_adjusted:+(cs/tw).toFixed(1),data_confidence:dc};
+}
+
+// 데이터 소스 결정: data.js 우선, 없으면 fetch 시도(http), 그래도 없으면 안내
+let OPPS=[],UTILS=[],STATES=[],META={};
+function boot(){
+  if(DATA){ OPPS=DATA.opportunities||[]; UTILS=DATA.utilities||[]; STATES=DATA.states||[]; META=DATA.meta||{};
+    render(DATA.collected_at, DATA.review_flags); return; }
+  // data.js 없음 → data/*.json fetch (GitHub Pages/http에서 동작, file://은 CORS로 실패할 수 있음)
+  Promise.all(['../data/opportunities.json','../data/utilities.json','../data/states.json']
+    .map(u=>fetch(u).then(r=>r.json()).catch(()=>null)))
+   .then(([o,u,s])=>{
+     if(o){OPPS=o.opportunities;META={data_version:o.version,updated:o.updated,disclaimer:o.disclaimer};}
+     if(u)UTILS=u.utilities; if(s)STATES=s.states;
+     render();
+   });
+}
+function render(collectedAt, flags){
+  document.getElementById('meta').innerHTML =
+    `데이터 v${META.data_version||'0.1'} · 갱신 ${META.updated||'-'} · 사업기회 <b>${OPPS.length}</b> · 유틸리티 <b>${UTILS.length}</b> · 주 <b>${STATES.length}</b>`
+    + (collectedAt?` · 라이브 수집 ${collectedAt.slice(0,16).replace('T',' ')}`:'')
+    + (DATA?'':' · <span style="color:#e3b341">내장 베이스라인</span>');
+  document.getElementById('disc').textContent = META.disclaimer || (BASE.note);
+  if(flags&&flags.length){const f=document.getElementById('flags');f.classList.remove('hide');
+    f.innerHTML='<b>검토 필요(상태변화 감지)</b><br>'+flags.map(x=>'· '+x).join('<br>');}
+  buildTypeFilter(); renderOpps(); renderUtils(); renderStates(); renderMethod();
+}
+
+// ---- ① opportunities ----
+function buildTypeFilter(){
+  const t=[...new Set(OPPS.map(o=>o.type))];
+  const sel=document.getElementById('f-type');
+  t.forEach(x=>{const op=document.createElement('option');op.value=x;op.textContent=x;sel.appendChild(op);});
+}
+function priOf(o){ // 사업기회 우선순위: EPC접근성+한국레버리지 평균으로 추정
+  const e=o.dimensions; if(!e)return 'low';
+  const v=((e.epc_accessibility?.level||0)+(e.korea_leverage?.level||0))/2;
+  return v>=4?'high':v>=3?'medium':'low';
+}
+function renderOpps(){
+  const type=document.getElementById('f-type').value, pri=document.getElementById('f-pri').value,
+        sort=document.getElementById('f-sort').value, q=document.getElementById('f-q').value.toLowerCase();
+  let list=OPPS.map(o=>({o,ev:scoreOf(o)}));
+  list=list.filter(({o})=>(!type||o.type===type)&&(!pri||priOf(o)===pri)&&
+    (!q||(o.title+o.technology+o.state).toLowerCase().includes(q)));
+  const sk={overall_score:({ev})=>ev.overall_score,epc:({o})=>o.dimensions.epc_accessibility?.level||0,
+    korea:({o})=>o.dimensions.korea_leverage?.level||0,deal:({o})=>o.dimensions.deal_certainty?.level||0}[sort];
+  list.sort((a,b)=>sk(b)-sk(a));
+  document.getElementById('opps').innerHTML=list.map(({o,ev},i)=>{
+    const dims=KEYS.map(k=>{const e=o.dimensions[k];if(!e)return'';
+      return `<div class="dim ${k==='epc_accessibility'?'epc':''}">
+        <div class="dn"><span>${RUBRIC_L[k]}</span><span>${e.level}/5 <span class="conf ${e.confidence}">${({high:'高',medium:'中',low:'低'})[e.confidence]||''}</span></span></div>
+        <div class="bar"><i style="width:${L2S[e.level]}%"></i></div></div>`;}).join('');
+    const sa=o.samsung_angle||{};
+    const live=o.live&&o.live.news&&o.live.news.length?`<details class="live"><summary>라이브 신호 ${o.live.status_hint?'· '+o.live.status_hint.label:''}</summary>`+
+      o.live.news.map(n=>`<div class="news">${n.date||''} · <a href="${n.url}" target="_blank">${n.title}</a></div>`).join('')+`</details>`:'';
+    return `<div class="card">
+      <div class="top"><div>
+        <div class="rank">#${i+1}</div><div class="title">${o.title}</div>
+        <div class="badges"><span class="chip type">${o.type}</span>
+          <span class="chip">${o.state||'-'}</span>
+          <span class="chip">${o.technology||'-'}</span>
+          <span class="chip">${o.capacity_mwe?o.capacity_mwe.toLocaleString()+'MWe':''}</span>
+          <span class="chip pri-${priOf(o)}">진입 ${({high:'높음',medium:'중간',low:'낮음'})[priOf(o)]}</span></div>
+        <div class="status">📍 ${o.status||''}</div>
+      </div><div class="score"><div class="big">${ev.overall_score}</div><div class="lab">전략점수</div>
+        <div class="lab" style="margin-top:3px">신뢰 ${({high:'高',medium:'中',low:'低'})[ev.data_confidence]}</div></div></div>
+      <div class="dims">${dims}</div>
+      ${o.sales_note?`<div class="note"><span class="lab">영업 시사점</span>${o.sales_note}</div>`:''}
+      ${sa.epc?`<div class="angle"><b>EPC:</b> ${sa.epc}</div>`:''}
+      ${sa.investment?`<div class="angle"><b>투자:</b> ${sa.investment}</div>`:''}
+      ${live}
+    </div>`;}).join('') || '<p class="small">결과 없음</p>';
+}
+['f-type','f-pri','f-sort','f-q'].forEach(id=>document.getElementById(id).addEventListener('input',renderOpps));
+
+// ---- ② utilities ----
+function renderUtils(){
+  const pri=document.getElementById('uf-pri').value,mkt=document.getElementById('uf-mkt').value,
+        q=document.getElementById('uf-q').value.toLowerCase();
+  let list=UTILS.filter(u=>(!pri||u.samsung_epc_priority===pri)&&(!mkt||u.market_exposure===mkt)&&
+    (!q||(u.name+(u.hq_state||'')).toLowerCase().includes(q)));
+  const order={high:0,medium:1,low:2};
+  list.sort((a,b)=>(order[a.samsung_epc_priority]-order[b.samsung_epc_priority])||((b.fleet?.net_mwe_total||0)-(a.fleet?.net_mwe_total||0)));
+  const sig=u=>{const s=u.strategy_signals||{};const keys=['new_build','smr','restart','data_center'];
+    for(const k of keys){if(s[k])return s[k];}return Object.values(s)[0]||'';};
+  document.querySelector('#utils-tbl tbody').innerHTML=list.map(u=>`<tr>
+    <td><b>${u.name}</b> <span class="small">${u.ticker||''}</span></td>
+    <td class="small">${u.type}</td>
+    <td class="mk-${u.market_exposure==='merchant'?'restructured':u.market_exposure==='regulated'?'regulated':'hybrid'}">${u.market_exposure}</td>
+    <td>${u.fleet?.reactor_count??'-'}</td>
+    <td>${u.fleet?.net_mwe_total?u.fleet.net_mwe_total.toLocaleString():'-'}</td>
+    <td class="att-${u.samsung_epc_priority}">${({high:'높음',medium:'중간',low:'낮음'})[u.samsung_epc_priority]||'-'}</td>
+    <td class="small">${sig(u)}</td></tr>`).join('')||'<tr><td colspan=7 class="small">결과 없음</td></tr>';
+}
+['uf-pri','uf-mkt','uf-q'].forEach(id=>document.getElementById(id).addEventListener('input',renderUtils));
+
+// ---- ③ states ----
+function renderStates(){
+  const mkt=document.getElementById('sf-mkt').value,att=document.getElementById('sf-att').value,
+        q=document.getElementById('sf-q').value.toLowerCase();
+  let list=STATES.filter(s=>(!mkt||s.market_structure===mkt)&&(!att||s.epc_attractiveness===att)&&
+    (!q||(s.name+s.id).toLowerCase().includes(q)));
+  const order={high:0,medium:1,low:2};
+  list.sort((a,b)=>(order[a.epc_attractiveness]-order[b.epc_attractiveness])||(b.nuclear_mwe-a.nuclear_mwe));
+  document.querySelector('#states-tbl tbody').innerHTML=list.map(s=>`<tr>
+    <td><b>${s.name}</b> <span class="small">${s.id}</span></td>
+    <td class="mk-${s.market_structure}">${({regulated:'규제',restructured:'탈규제',hybrid:'혼합'})[s.market_structure]}</td>
+    <td>${s.operating_reactors}</td>
+    <td>${s.nuclear_mwe?s.nuclear_mwe.toLocaleString():'-'}</td>
+    <td class="att-${s.epc_attractiveness}">${({high:'높음',medium:'중간',low:'낮음'})[s.epc_attractiveness]||'-'}</td>
+    <td class="small">${s.epc_rationale||''}</td></tr>`).join('')||'<tr><td colspan=6 class="small">결과 없음</td></tr>';
+}
+['sf-mkt','sf-att','sf-q'].forEach(id=>document.getElementById(id).addEventListener('input',renderStates));
+
+// ---- method ----
+function renderMethod(){
+  const w=RUBRIC_W,l=RUBRIC_L;
+  const rows=KEYS.map(k=>`<tr><td>${l[k]}</td><td>${Math.round(w[k]*100)}%</td></tr>`).join('');
+  document.getElementById('view-method').innerHTML=`
+   <h3>목적</h3>
+   <p>삼성물산 원전영업팀의 미국 대형원전·SMR 사업전략을 뒷받침하는 백데이터. <b>유틸리티 · 주 · 사업기회</b> 3축으로 구성하며,
+   진입 관점은 <b>EPC 수주 1순위, 지분투자 2순위</b>(지분투자는 EPC·시공 사업권 확보 수단)로 가중한다.</p>
+   <h3>전략 점수(EPC 우선 가중)</h3>
+   <table style="max-width:420px"><thead><tr><th>차원</th><th>가중</th></tr></thead><tbody>${rows}</tbody></table>
+   <p class="small" style="margin-top:8px">각 차원 성숙도/매력도 1~5 × 가중합을 0~100으로 환산. <code>execution_risk</code>는 리스크가 낮을수록 높은 점수(역방향). confidence(高/中/低)로 신뢰도 보정.</p>
+   <h3>데이터 원칙</h3>
+   <ul class="wlist">
+     <li>모든 값에 <b>sources·confidence</b> 태그. 공개 자료 기반 베이스라인이며 수치는 근사·변동 가능.</li>
+     <li>에이전트는 공개 신호를 <b>수집·정규화·제시</b>하고, 수주/승급 판단은 사람이 한다.</li>
+     <li>라이브 수집(Google News·EIA)은 상태 변화를 <b>제안</b>하고, 큐레이션 값과 불일치 시 '검토 필요'로 플래그(덮어쓰지 않음).</li>
+   </ul>
+   <h3>참조 공개 소스</h3>
+   <p class="wlist">EIA(주별 용량·발전량) · NRC(인허가 상태) · IAEA PRIS · US DOE(금융) · World Nuclear News/NucNet · 미-한 원전 프레임워크(MOTIE/US DOC) · Google News · Wikipedia</p>
+   <h3>연계</h3>
+   <p class="small">노형 기술평가는 자매 프로젝트 <code>smr-evaluation-agent</code>, 일일 동향은 <code>nuclear-news-agent</code>와 연계. 사업기회의 <code>reactor_nohyeong_id</code>로 노형 DB를 참조한다.</p>`;
+}
+
+// nav
+document.querySelectorAll('nav button').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('nav button').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  ['opps','utils','states','method'].forEach(v=>document.getElementById('view-'+v).classList.toggle('hide',v!==b.dataset.v));
+}));
+boot();
+</script>
+</body>
+</html>

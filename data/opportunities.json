@@ -1,0 +1,387 @@
+{
+  "version": "0.1.0",
+  "updated": "2026-10-05",
+  "disclaimer": "미국 원전 사업기회를 공개자료(각사 보도자료, NRC, US DOE, World Nuclear News/NucNet, 주 전원계획)로 2026년 기준 정규화. dimensions는 strategy_rubric.json(v0.1) 기준 성숙도/매력도 1~5 + confidence. 종합점수는 src/scoring.py가 계산. 수치·시점은 변동 가능, sales_note는 삼성물산 EPC수주(1순위)·지분투자(2순위) 관점 해석이며 1차 자료 검증 필요.",
+  "dimension_keys": ["epc_accessibility", "deal_certainty", "korea_leverage", "scale", "financing_policy", "execution_risk"],
+  "type_legend": {
+    "new_build_large": "신규 대형원전 건설", "restart": "폐쇄/정지로 재가동", "uprate": "출력증강",
+    "smr_new": "신규 SMR 건설", "smr_fleet": "SMR 함대 프로그램", "newbuild_completion": "중단 건설 완공"
+  },
+  "opportunities": [
+    {
+      "id": "framework-ap1000-6",
+      "title": "미-한 프레임워크 AP1000 6기 (국가 프로그램)",
+      "type": "new_build_large",
+      "utility_id": null, "state": "TBD(4개주 거론)", "site": "미정(규제주 유력)",
+      "technology": "AP1000", "vendor": "Westinghouse", "reactor_nohyeong_id": null,
+      "capacity_mwe": 6600,
+      "status": "프레임워크 확정(2026.9.30)·부지/사업자 선정 전",
+      "timeline": "Phase1: AP1000 2기 EPC 계약 → Phase2: AP1000 2기+APR1400 2기 → Phase3: AP1000 2기. 트럼프 '2030년까지 대형 10기 착공' 목표 연계",
+      "cod_target": "2030년대",
+      "dimensions": {
+        "epc_accessibility": {"level": 5, "confidence": "high", "rationale": "Phase1이 '2기 AP1000 EPC 계약'으로 명시, 한국기업 EPC 우선참여 원칙 합의."},
+        "deal_certainty": {"level": 4, "confidence": "medium", "rationale": "프레임워크 확정·DOE 금융 약정 있으나 부지/발주처/FID 미정."},
+        "korea_leverage": {"level": 5, "confidence": "high", "rationale": "$350B 투자패키지 기반, AP1000 건설 한국 우선참여·공급망 추천권."},
+        "scale": {"level": 5, "confidence": "high", "rationale": "AP1000 6기 — 최대 볼륨."},
+        "financing_policy": {"level": 5, "confidence": "high", "rationale": "DOE $17.5B 장기자재 대출 약정+규제주 rate-base 유력."},
+        "execution_risk": {"level": 4, "confidence": "medium", "rationale": "AP1000 Vogtle 검증 노형이나 공급망 재건·FOAK화 변수."}
+      },
+      "samsung_angle": {
+        "epc": "★★ 최우선. Phase1 2기 EPC 계약이 진입 관문. 팀코리아(KHNP·현대건설 등) 컨소시엄 내 토목/기전 패키지·모듈제작 포지션 조기 확보가 관건.",
+        "investment": "DOE 대출·투자패키지 구조에 지분참여로 EPC 사업권 연동 설계 가능. 대미투자 명분과 직결."
+      },
+      "sales_note": "삼성물산 미국 원전전략의 중심축. 부지·발주처 선정(규제주 4곳) 추적하며 Westinghouse·팀코리아 양방향으로 EPC 컨소시엄 포지셔닝. 지분투자는 EPC 사업권 확보 레버리지로 설계.",
+      "sources": ["World Nuclear News", "NucNet", "US DOC", "MOTIE", "Seoul Economic Daily"]
+    },
+    {
+      "id": "framework-apr1400-2",
+      "title": "미-한 프레임워크 APR1400 2기 (한국 노형 미국 진출)",
+      "type": "new_build_large",
+      "utility_id": null, "state": "TBD", "site": "미정",
+      "technology": "APR1400", "vendor": "KHNP (팀코리아)", "reactor_nohyeong_id": null,
+      "capacity_mwe": 2800,
+      "status": "프레임워크 Phase2 포함, 부지/사업자 선정 전",
+      "timeline": "Phase2(AP1000 2기와 동시)",
+      "cod_target": "2030년대 중후반",
+      "dimensions": {
+        "epc_accessibility": {"level": 5, "confidence": "high", "rationale": "APR1400은 한국 설계 — 팀코리아 EPC 주도, 삼성물산 참여 명분 최강."},
+        "deal_certainty": {"level": 3, "confidence": "medium", "rationale": "Phase2라 시점 후순위, APR1400 미국 최초 진입 인허가 과제."},
+        "korea_leverage": {"level": 5, "confidence": "high", "rationale": "한국 자체 노형 — 레버리지 최대."},
+        "scale": {"level": 4, "confidence": "high", "rationale": "APR1400 2기."},
+        "financing_policy": {"level": 4, "confidence": "medium", "rationale": "투자패키지 연계, 미국 내 APR1400 금융구조 설계 필요."},
+        "execution_risk": {"level": 5, "confidence": "high", "rationale": "APR1400 바라카 완공·한국 공급망 성숙 — 수행리스크 낮음(단 미국 설계인증 신규)."}
+      },
+      "samsung_angle": {
+        "epc": "★★ 한국기업 최우선 참여 대상. 삼성물산 EPC 역량+팀코리아 노형 — 참여 정당성 최상.",
+        "investment": "한국 노형 사업이라 지분·EPC 패키지 동반 진입 용이."
+      },
+      "sales_note": "APR1400 미국 진출은 팀코리아 주력. 삼성물산은 EPC 핵심역할 선점 명분이 가장 강함. 미국 설계인증(DC) 일정과 부지 선정을 조기 추적.",
+      "sources": ["Nuclear Engineering International", "NucNet", "MOTIE", "KHNP"]
+    },
+    {
+      "id": "vc-summer-completion",
+      "title": "V.C. Summer 2·3호기 AP1000 완공 재추진 (SC)",
+      "type": "newbuild_completion",
+      "utility_id": "duke", "state": "SC", "site": "V.C. Summer",
+      "technology": "AP1000", "vendor": "Westinghouse", "reactor_nohyeong_id": null,
+      "capacity_mwe": 2200,
+      "status": "2017 건설중단 부지, 데이터센터 수요로 완공 재논의",
+      "timeline": "재추진 논의 단계",
+      "cod_target": "미정",
+      "dimensions": {
+        "epc_accessibility": {"level": 4, "confidence": "medium", "rationale": "EPC 미지정, 완공형 EPC 특수역량 수요."},
+        "deal_certainty": {"level": 2, "confidence": "medium", "rationale": "재추진 거론이나 사업자·재원 미확정."},
+        "korea_leverage": {"level": 4, "confidence": "medium", "rationale": "AP1000·프레임워크 연계로 한국 참여 명분."},
+        "scale": {"level": 4, "confidence": "high", "rationale": "AP1000 2기."},
+        "financing_policy": {"level": 3, "confidence": "low", "rationale": "규제시장이나 과거 비용초과 트라우마·재원구조 재설계 필요."},
+        "execution_risk": {"level": 3, "confidence": "medium", "rationale": "기성 구조물 상태·설계 재검증 리스크."}
+      },
+      "samsung_angle": {
+        "epc": "중단부지 완공형 EPC — 삼성물산 공기/비용관리 역량 차별화 어필처.",
+        "investment": "완공 지분참여로 EPC 확보 연계 가능."
+      },
+      "sales_note": "상징성·규모 크나 불확실성 높음. 데이터센터 offtake 확보 시 급부상 가능 — 분기 단위 모니터링.",
+      "sources": ["World Nuclear News", "Santee Cooper", "Dominion", "South Carolina PSC"]
+    },
+    {
+      "id": "duke-carolinas-newbuild",
+      "title": "Duke Carolinas 신규 대형원전 (NC/SC)",
+      "type": "new_build_large",
+      "utility_id": "duke", "state": "NC", "site": "미정(기존 원전/석탄 부지)",
+      "technology": "AP1000 또는 SMR 혼합", "vendor": "미정", "reactor_nohyeong_id": null,
+      "capacity_mwe": 2000,
+      "status": "Duke IRP 신규 원전 옵션",
+      "timeline": "IRP·인허가 단계",
+      "cod_target": "2030년대",
+      "dimensions": {
+        "epc_accessibility": {"level": 4, "confidence": "medium", "rationale": "EPC 미지정, 규제 발주처."},
+        "deal_certainty": {"level": 2, "confidence": "medium", "rationale": "IRP 옵션 — 발주 확정 전."},
+        "korea_leverage": {"level": 4, "confidence": "medium", "rationale": "AP1000 채택 시 프레임워크 연계."},
+        "scale": {"level": 4, "confidence": "medium", "rationale": "대형 1~2기 잠재."},
+        "financing_policy": {"level": 4, "confidence": "high", "rationale": "규제시장 rate-base 회수 유리."},
+        "execution_risk": {"level": 4, "confidence": "medium", "rationale": "노형 미확정."}
+      },
+      "samsung_angle": {
+        "epc": "규제시장+수요폭증. AP1000 채택 시 프레임워크 공급망과 연동한 EPC 진입.",
+        "investment": "규제 유틸리티라 지분보다 EPC·공급망 패키지 중심."
+      },
+      "sales_note": "남동부 수요 급증의 대표 잠재 발주처. Carolinas IRP·부지 선정 추적, 노형 결정 이전 단계 접촉이 유리.",
+      "sources": ["Duke Energy IRP", "North Carolina Utilities Commission", "World Nuclear News"]
+    },
+    {
+      "id": "ny-newbuild-1gw",
+      "title": "뉴욕주 주도 신규 대형원전 (1GW+)",
+      "type": "new_build_large",
+      "utility_id": null, "state": "NY", "site": "미정",
+      "technology": "미정(대형/첨단)", "vendor": "미정", "reactor_nohyeong_id": null,
+      "capacity_mwe": 1000,
+      "status": "주지사 신규 원전 개발 추진 지시",
+      "timeline": "개발사·노형 선정 전",
+      "cod_target": "2030년대 후반",
+      "dimensions": {
+        "epc_accessibility": {"level": 4, "confidence": "low", "rationale": "공적 주도, EPC 구조 미정."},
+        "deal_certainty": {"level": 2, "confidence": "medium", "rationale": "정책 지시 단계."},
+        "korea_leverage": {"level": 3, "confidence": "low", "rationale": "노형·공급망 미정, 프레임워크 연계 여지."},
+        "scale": {"level": 4, "confidence": "medium", "rationale": "1GW+."},
+        "financing_policy": {"level": 3, "confidence": "medium", "rationale": "탈규제이나 주 공적지원 설계 가능."},
+        "execution_risk": {"level": 3, "confidence": "low", "rationale": "노형·부지 미정."}
+      },
+      "samsung_angle": {
+        "epc": "공적 주도 신규 — 초기 노형/EPC 구조 설계 참여 기회.",
+        "investment": "공공-민간 구조 설계 시 지분 여지."
+      },
+      "sales_note": "탈규제주의 주 주도 신규 — 공적 재무지원이 관건. 노형 선정 전 조기 접촉으로 포지셔닝.",
+      "sources": ["NYSERDA", "New York State", "World Nuclear News"]
+    },
+    {
+      "id": "tva-clinch-river-bwrx300",
+      "title": "TVA Clinch River BWRX-300 SMR (TN)",
+      "type": "smr_new",
+      "utility_id": "tva", "state": "TN", "site": "Clinch River",
+      "technology": "BWRX-300", "vendor": "GE Vernova Hitachi", "reactor_nohyeong_id": "bwrx-300",
+      "capacity_mwe": 1200,
+      "status": "NRC 건설허가 취득(2026.9, 미국 유틸리티 최초)·최대 4기 계획",
+      "timeline": "건설 착수 단계, FOAK",
+      "cod_target": "2030년대 초",
+      "dimensions": {
+        "epc_accessibility": {"level": 4, "confidence": "medium", "rationale": "FOAK 건설 본격화, 토목/건설 대형 패키지 하도급 여지."},
+        "deal_certainty": {"level": 5, "confidence": "high", "rationale": "건설허가 취득 — 최고 확실성."},
+        "korea_leverage": {"level": 3, "confidence": "medium", "rationale": "GEH 노형이나 한국 기자재·모듈·건설 참여 여지."},
+        "scale": {"level": 4, "confidence": "high", "rationale": "최대 4기."},
+        "financing_policy": {"level": 5, "confidence": "high", "rationale": "DOE $400M+TVA 자체재원."},
+        "execution_risk": {"level": 3, "confidence": "medium", "rationale": "BWRX-300 FOAK SMR."}
+      },
+      "samsung_angle": {
+        "epc": "★★ SMR EPC 최우선 실체 타깃. FOAK 건설의 토목·건설 패키지, 모듈제작 참여 조기 접촉.",
+        "investment": "연방기관이라 지분 불가 — EPC·건설 하도급·기자재가 유일 경로."
+      },
+      "sales_note": "건설허가 취득한 가장 확실한 SMR 신규. FOAK 레퍼런스 확보 가치 큼. GEH·TVA 건설 컨소시엄 공급망 조기 진입.",
+      "sources": ["NRC", "TVA", "GE Vernova Hitachi", "US DOE", "World Nuclear News"]
+    },
+    {
+      "id": "tva-entra1-nuscale-6gw",
+      "title": "TVA–ENTRA1/NuScale 최대 6GW SMR (TN 등)",
+      "type": "smr_fleet",
+      "utility_id": "tva", "state": "TN", "site": "미정",
+      "technology": "NuScale VOYGR", "vendor": "NuScale / ENTRA1", "reactor_nohyeong_id": "nuscale-voygr",
+      "capacity_mwe": 6000,
+      "status": "비구속 MOU(2025.9), 미국 최대 SMR 전력 약정",
+      "timeline": "개발 초기",
+      "cod_target": "2030년대",
+      "dimensions": {
+        "epc_accessibility": {"level": 4, "confidence": "low", "rationale": "함대 규모 건설 — 참여공간 크나 구조 미정."},
+        "deal_certainty": {"level": 2, "confidence": "medium", "rationale": "비구속 MOU 단계."},
+        "korea_leverage": {"level": 2, "confidence": "medium", "rationale": "NuScale 기존 공급망(두산 등) 존재, 삼성물산 진입은 신규."},
+        "scale": {"level": 5, "confidence": "high", "rationale": "6GW — 최대 볼륨."},
+        "financing_policy": {"level": 3, "confidence": "low", "rationale": "재무구조 미확정, NuScale FOAK 비용 이력."},
+        "execution_risk": {"level": 2, "confidence": "medium", "rationale": "NuScale 과거 CFPP 취소·비용초과 전례."}
+      },
+      "samsung_angle": {
+        "epc": "볼륨 최대이나 초기·비구속. 다수호기 건설 EPC 기회 장기 추적.",
+        "investment": "ENTRA1 개발구조에 투자 연계 가능성 탐색."
+      },
+      "sales_note": "잠재 볼륨 최대이나 불확실성 높음. 구속계약 전환·노형 확정 시점을 추적하는 장기 후보.",
+      "sources": ["TVA", "NuScale", "ENTRA1", "World Nuclear News"]
+    },
+    {
+      "id": "dow-seadrift-xe100",
+      "title": "Dow Seadrift X-energy Xe-100 산업용 SMR (TX)",
+      "type": "smr_new",
+      "utility_id": null, "state": "TX", "site": "Seadrift(Dow 화학단지)",
+      "technology": "Xe-100 (HTGR)", "vendor": "X-energy", "reactor_nohyeong_id": "xe-100",
+      "capacity_mwe": 320,
+      "status": "NRC 건설허가 심사(환경평가 통과), 4모듈",
+      "timeline": "허가 후 착공",
+      "cod_target": "2020년대 후반~2030년대 초",
+      "dimensions": {
+        "epc_accessibility": {"level": 3, "confidence": "medium", "rationale": "X-energy·Dow 주도 산업부지, 건설 하도급 여지."},
+        "deal_certainty": {"level": 3, "confidence": "medium", "rationale": "건설허가 심사 중."},
+        "korea_leverage": {"level": 2, "confidence": "low", "rationale": "X-energy 기존 투자자(한국 일부)·공급망 존재, 삼성물산 진입 신규."},
+        "scale": {"level": 4, "confidence": "medium", "rationale": "4모듈, 산업 공정열."},
+        "financing_policy": {"level": 4, "confidence": "medium", "rationale": "DOE ARDP+Dow 자체."},
+        "execution_risk": {"level": 2, "confidence": "medium", "rationale": "HALEU TRISO 연료 공급 제약·FOAK HTGR."}
+      },
+      "samsung_angle": {
+        "epc": "산업용 SMR 건설·모듈제작 틈새. 공정열 모델의 레퍼런스 가치.",
+        "investment": "X-energy 공급망·프로젝트 참여 협상 여지."
+      },
+      "sales_note": "산업(화학) 공정열 SMR의 선도 사례. 건설 하도급·모듈 참여 틈새, 공정열 시장 레퍼런스로 추적.",
+      "sources": ["NRC", "X-energy", "Dow", "US DOE", "World Nuclear News"]
+    },
+    {
+      "id": "energy-northwest-xe100",
+      "title": "Energy Northwest Xe-100 SMR 함대 (WA)",
+      "type": "smr_fleet",
+      "utility_id": "energy-northwest", "state": "WA", "site": "Columbia 인근",
+      "technology": "Xe-100 (HTGR)", "vendor": "X-energy", "reactor_nohyeong_id": "xe-100",
+      "capacity_mwe": 960,
+      "status": "개발·부지 검토, 최대 12모듈, Amazon 투자 연계",
+      "timeline": "개발 단계",
+      "cod_target": "2030년대",
+      "dimensions": {
+        "epc_accessibility": {"level": 3, "confidence": "low", "rationale": "공영 조달+X-energy 주도."},
+        "deal_certainty": {"level": 2, "confidence": "medium", "rationale": "개발 초기."},
+        "korea_leverage": {"level": 2, "confidence": "low", "rationale": "기존 공급망 중심."},
+        "scale": {"level": 4, "confidence": "medium", "rationale": "최대 12모듈."},
+        "financing_policy": {"level": 3, "confidence": "medium", "rationale": "Amazon 투자·DOE 연계."},
+        "execution_risk": {"level": 2, "confidence": "medium", "rationale": "HALEU·FOAK HTGR."}
+      },
+      "samsung_angle": {
+        "epc": "함대형 건설 — 모듈·건설 하도급 장기 기회.",
+        "investment": "하이퍼스케일러 연계 구조에 참여 탐색."
+      },
+      "sales_note": "Amazon 연계 함대. 초기 단계라 장기 추적, Xe-100 공급망 진입 시 WA·TX 동시 공략.",
+      "sources": ["Energy Northwest", "X-energy", "US DOE", "World Nuclear News"]
+    },
+    {
+      "id": "natrium-kemmerer",
+      "title": "TerraPower Natrium Kemmerer (WY) + Meta 함대",
+      "type": "smr_new",
+      "utility_id": null, "state": "WY", "site": "Kemmerer(폐석탄 부지)",
+      "technology": "Natrium (SFR+축열)", "vendor": "TerraPower / GEH", "reactor_nohyeong_id": "natrium",
+      "capacity_mwe": 345,
+      "status": "비LWR 최초 NRC 건설허가(2026.3)·본공사 착수, Meta 최대 8기 약정",
+      "timeline": "건설 중",
+      "cod_target": "2030~31",
+      "dimensions": {
+        "epc_accessibility": {"level": 3, "confidence": "medium", "rationale": "Bechtel 주도 EPC — 하도급·기자재 중심 참여."},
+        "deal_certainty": {"level": 4, "confidence": "high", "rationale": "건설허가 취득·착공."},
+        "korea_leverage": {"level": 2, "confidence": "low", "rationale": "기존 한국 투자/기자재 협력 존재(HD현대·SAMSUNG 아님), 삼성물산 신규."},
+        "scale": {"level": 4, "confidence": "medium", "rationale": "Meta 8기까지 확장."},
+        "financing_policy": {"level": 4, "confidence": "medium", "rationale": "DOE ARDP+Meta offtake."},
+        "execution_risk": {"level": 2, "confidence": "medium", "rationale": "HALEU 공급 차질·FOAK SFR."}
+      },
+      "samsung_angle": {
+        "epc": "Bechtel 기지정 EPC — 대형 하도급 패키지·기자재 중심 접근.",
+        "investment": "Meta 함대 확장 구조에 투자·공급 연계 탐색."
+      },
+      "sales_note": "착공한 Gen-IV FOAK. EPC는 Bechtel 중심이라 하도·기자재 포지션. 폐석탄 부지 전환 모델의 레퍼런스.",
+      "sources": ["NRC", "TerraPower", "US DOE", "World Nuclear News"]
+    },
+    {
+      "id": "holtec-smr300-palisades",
+      "title": "Holtec SMR-300 Palisades 쌍둥이 (MI)",
+      "type": "smr_new",
+      "utility_id": "holtec", "state": "MI", "site": "Palisades",
+      "technology": "SMR-300 (PWR)", "vendor": "Holtec", "reactor_nohyeong_id": "holtec-smr-300",
+      "capacity_mwe": 600,
+      "status": "건설허가(CPA)·PSAR 제출, DOE First Mover $400M",
+      "timeline": "인허가 단계",
+      "cod_target": "2030년대 초",
+      "dimensions": {
+        "epc_accessibility": {"level": 3, "confidence": "medium", "rationale": "Holtec 주도이나 EPC 파트너십 설계 여지."},
+        "deal_certainty": {"level": 3, "confidence": "medium", "rationale": "건설허가 심사 단계."},
+        "korea_leverage": {"level": 3, "confidence": "medium", "rationale": "Holtec-한국 EPC 협력 이력(현대건설 MOU 존재)."},
+        "scale": {"level": 3, "confidence": "medium", "rationale": "쌍둥이 2기."},
+        "financing_policy": {"level": 4, "confidence": "medium", "rationale": "DOE $400M+재가동 연계."},
+        "execution_risk": {"level": 3, "confidence": "medium", "rationale": "SMR-300 FOAK이나 표준 PWR 기반."}
+      },
+      "samsung_angle": {
+        "epc": "Holtec-한국 EPC 협력 틀 존재(현대건설). 삼성물산 참여 공간·역할 분담 탐색 필요.",
+        "investment": "민간 프로젝트 — 지분·공급망 협상 여지."
+      },
+      "sales_note": "재가동 부지 연계 SMR. 한국 EPC 협력 선례(현대건설 MOU)가 있어 경쟁구도 파악 후 차별적 포지션 설계.",
+      "sources": ["NRC", "Holtec", "US DOE", "World Nuclear News"]
+    },
+    {
+      "id": "north-anna-smr",
+      "title": "Dominion North Anna SMR (VA)",
+      "type": "smr_new",
+      "utility_id": "dominion", "state": "VA", "site": "North Anna",
+      "technology": "미정", "vendor": "미정", "reactor_nohyeong_id": null,
+      "capacity_mwe": 300,
+      "status": "부지 개발·타당성, 주정부 SMR 육성",
+      "timeline": "노형 선정 전",
+      "cod_target": "2030년대",
+      "dimensions": {
+        "epc_accessibility": {"level": 4, "confidence": "low", "rationale": "노형·EPC 미정, 참여공간 열림."},
+        "deal_certainty": {"level": 2, "confidence": "medium", "rationale": "타당성·부지 단계."},
+        "korea_leverage": {"level": 3, "confidence": "low", "rationale": "노형 미정 — 한국 노형/공급망 제안 여지."},
+        "scale": {"level": 3, "confidence": "low", "rationale": "초기 1기급."},
+        "financing_policy": {"level": 4, "confidence": "medium", "rationale": "규제+데이터센터 수요 뒷받침."},
+        "execution_risk": {"level": 3, "confidence": "low", "rationale": "노형 미정."}
+      },
+      "samsung_angle": {
+        "epc": "데이터센터 수요 1위 지역 SMR. 노형 선정 전 조기 접촉으로 EPC·노형 동반 제안.",
+        "investment": "규제 유틸리티 — 공급망·EPC 중심."
+      },
+      "sales_note": "수요 최상위 지역(VA)의 SMR. 노형 미확정 단계가 오히려 기회 — 조기 접촉으로 포지셔닝.",
+      "sources": ["Dominion Energy", "Virginia SCC", "World Nuclear News"]
+    },
+    {
+      "id": "palisades-restart",
+      "title": "Palisades 재가동 (MI, Holtec)",
+      "type": "restart",
+      "utility_id": "holtec", "state": "MI", "site": "Palisades",
+      "technology": "PWR(기존)", "vendor": "Holtec", "reactor_nohyeong_id": null,
+      "capacity_mwe": 805,
+      "status": "재가동 작업 진행(미국 최초 폐쇄로 재가동), DOE 대출보증·주 지원",
+      "timeline": "2025~26 재가동",
+      "cod_target": "2025~26",
+      "dimensions": {
+        "epc_accessibility": {"level": 3, "confidence": "medium", "rationale": "개조·복구 중심, Holtec 주도."},
+        "deal_certainty": {"level": 5, "confidence": "high", "rationale": "재가동 작업 진행 — 확실."},
+        "korea_leverage": {"level": 2, "confidence": "low", "rationale": "직접 EPC 여지 작음, 기자재 틈새."},
+        "scale": {"level": 3, "confidence": "high", "rationale": "단일 805MW."},
+        "financing_policy": {"level": 5, "confidence": "high", "rationale": "DOE 대출보증+미시간주 지원."},
+        "execution_risk": {"level": 4, "confidence": "medium", "rationale": "기존 검증로 복구."}
+      },
+      "samsung_angle": {
+        "epc": "신규 EPC 아님. 기자재·개조·향후 SMR-300 연계가 실익.",
+        "investment": "Holtec SMR-300과 묶은 패키지 접근."
+      },
+      "sales_note": "재가동 자체는 삼성물산 EPC 여지 작음. 동일부지 SMR-300(상단 opportunity)과 연계해 접근하는 것이 핵심.",
+      "sources": ["NRC", "Holtec", "US DOE", "State of Michigan", "World Nuclear News"]
+    },
+    {
+      "id": "crane-restart",
+      "title": "Crane Clean Energy Center 재가동 (PA, Constellation)",
+      "type": "restart",
+      "utility_id": "constellation", "state": "PA", "site": "구 Three Mile Island-1",
+      "technology": "PWR(기존)", "vendor": "Constellation", "reactor_nohyeong_id": null,
+      "capacity_mwe": 835,
+      "status": "재가동 추진, Microsoft 20년 PPA($16B), DOE $1B 대출, FERC 승인",
+      "timeline": "2027 첫 송전 목표",
+      "cod_target": "2027",
+      "dimensions": {
+        "epc_accessibility": {"level": 2, "confidence": "medium", "rationale": "Constellation 자체수행+개조 중심."},
+        "deal_certainty": {"level": 5, "confidence": "high", "rationale": "PPA·금융·FERC 확보 — 확실."},
+        "korea_leverage": {"level": 1, "confidence": "high", "rationale": "한국기업 진입 경로 불명확."},
+        "scale": {"level": 3, "confidence": "high", "rationale": "단일 835MW."},
+        "financing_policy": {"level": 5, "confidence": "high", "rationale": "Microsoft PPA+DOE 대출."},
+        "execution_risk": {"level": 5, "confidence": "high", "rationale": "검증로 재가동."}
+      },
+      "samsung_angle": {
+        "epc": "삼성물산 EPC 여지 거의 없음.",
+        "investment": "해당 없음."
+      },
+      "sales_note": "데이터센터-원전 PPA 모델의 대표 레퍼런스(시장 시그널). 직접 수주기회는 낮으나 수요 트렌드 지표로 활용.",
+      "sources": ["Constellation", "Microsoft", "US DOE", "FERC", "ANS"]
+    },
+    {
+      "id": "duane-arnold-restart",
+      "title": "Duane Arnold 재가동 (IA, NextEra)",
+      "type": "restart",
+      "utility_id": "nextera", "state": "IA", "site": "Duane Arnold",
+      "technology": "BWR(기존)", "vendor": "NextEra", "reactor_nohyeong_id": null,
+      "capacity_mwe": 615,
+      "status": "재가동 추진, DOE 최대 $1.9B 대출 성사(2026.9), NEPA 심사",
+      "timeline": "2029년 1분기 목표",
+      "cod_target": "2029 Q1",
+      "dimensions": {
+        "epc_accessibility": {"level": 2, "confidence": "medium", "rationale": "개조 중심, NextEra 주도."},
+        "deal_certainty": {"level": 4, "confidence": "high", "rationale": "DOE 대출 성사·일정 확정."},
+        "korea_leverage": {"level": 1, "confidence": "high", "rationale": "진입 경로 불명확."},
+        "scale": {"level": 2, "confidence": "high", "rationale": "단일 615MW."},
+        "financing_policy": {"level": 5, "confidence": "high", "rationale": "DOE $1.9B 대출."},
+        "execution_risk": {"level": 4, "confidence": "medium", "rationale": "검증로 복구."}
+      },
+      "samsung_angle": {
+        "epc": "개조 중심, 기자재 틈새만.",
+        "investment": "해당 없음."
+      },
+      "sales_note": "재가동 트렌드 지표. 직접 수주기회 낮음 — 참고.",
+      "sources": ["NRC", "NextEra", "US DOE", "ANS"]
+    }
+  ]
+}
