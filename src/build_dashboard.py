@@ -21,7 +21,9 @@ def build() -> dict:
     data = evaluate_all()  # {meta, rubric, opportunities(점수포함)}
     data["sources"] = SOURCES
     data["utilities"] = json.loads((DATA / "utilities.json").read_text(encoding="utf-8")).get("utilities", [])
-    data["states"] = json.loads((DATA / "states.json").read_text(encoding="utf-8")).get("states", [])
+    states_doc = json.loads((DATA / "states.json").read_text(encoding="utf-8"))
+    data["states"] = states_doc.get("states", [])
+    data["federal_framework"] = states_doc.get("federal_framework")
 
     # 라이브 수집 신호(collect.py 산출물)를 병합
     collected_path = DATA / "collected.json"

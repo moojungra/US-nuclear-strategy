@@ -73,7 +73,7 @@
         "deal_certainty": {"level": 2, "confidence": "medium", "rationale": "재추진 거론이나 사업자·재원 미확정."},
         "korea_leverage": {"level": 4, "confidence": "medium", "rationale": "AP1000·프레임워크 연계로 한국 참여 명분."},
         "scale": {"level": 4, "confidence": "high", "rationale": "AP1000 2기."},
-        "financing_policy": {"level": 3, "confidence": "low", "rationale": "규제시장이나 과거 비용초과 트라우마·재원구조 재설계 필요."},
+        "financing_policy": {"level": 2, "confidence": "medium", "rationale": "SC CWIP(Base Load Review Act) 2018 폐지로 완공 전 원가회수 장치 부재 — 재원구조 재설계가 선결. 과거 비용초과 트라우마."},
         "execution_risk": {"level": 3, "confidence": "medium", "rationale": "기성 구조물 상태·설계 재검증 리스크."}
       },
       "samsung_angle": {
@@ -98,7 +98,7 @@
         "deal_certainty": {"level": 2, "confidence": "medium", "rationale": "IRP 옵션 — 발주 확정 전."},
         "korea_leverage": {"level": 4, "confidence": "medium", "rationale": "AP1000 채택 시 프레임워크 연계."},
         "scale": {"level": 4, "confidence": "medium", "rationale": "대형 1~2기 잠재."},
-        "financing_policy": {"level": 4, "confidence": "high", "rationale": "규제시장 rate-base 회수 유리."},
+        "financing_policy": {"level": 4, "confidence": "high", "rationale": "규제시장 rate-base + NC CWIP 확대 입법(2025)으로 완공 전 금융비용 회수 가능 — 재무회수 유리."},
         "execution_risk": {"level": 4, "confidence": "medium", "rationale": "노형 미확정."}
       },
       "samsung_angle": {

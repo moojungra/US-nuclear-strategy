@@ -136,6 +136,7 @@
 
   <!-- ③ STATES -->
   <section id="view-states" class="hide">
+    <div id="fedfw"></div>
     <div class="filters">
       <label>시장구조<select id="sf-mkt"><option value="">전체</option>
         <option value="regulated">규제</option><option value="restructured">탈규제</option><option value="hybrid">혼합</option></select></label>
@@ -143,10 +144,11 @@
         <option value="high">높음</option><option value="medium">중간</option><option value="low">낮음</option></select></label>
       <input id="sf-q" placeholder="검색" style="flex:1;min-width:140px">
     </div>
+    <p class="small" style="margin:0 0 6px">행 클릭 시 전력시장·원가회수·법적지위·인허가 상세가 펼쳐집니다.</p>
     <table id="states-tbl"><thead><tr>
-      <th data-k="name">주</th><th data-k="market_structure">시장구조</th>
+      <th data-k="name">주</th><th data-k="market_structure">시장구조</th><th>ISO/RTO</th>
       <th data-k="operating_reactors">원자로</th><th data-k="nuclear_mwe">용량(MWe)</th>
-      <th data-k="epc_attractiveness">EPC 매력도</th><th>근거</th>
+      <th>원전 법적지위</th><th data-k="epc_attractiveness">EPC 매력도</th>
     </tr></thead><tbody></tbody></table>
   </section>
 
@@ -186,16 +188,17 @@ function scoreOf(o){
 }
 
 // 데이터 소스 결정: data.js 우선, 없으면 fetch 시도(http), 그래도 없으면 안내
-let OPPS=[],UTILS=[],STATES=[],META={};
+let OPPS=[],UTILS=[],STATES=[],META={},FEDFW=null;
 function boot(){
   if(DATA){ OPPS=DATA.opportunities||[]; UTILS=DATA.utilities||[]; STATES=DATA.states||[]; META=DATA.meta||{};
+    FEDFW=DATA.federal_framework||null;
     render(DATA.collected_at, DATA.review_flags); return; }
   // data.js 없음 → data/*.json fetch (GitHub Pages/http에서 동작, file://은 CORS로 실패할 수 있음)
   Promise.all(['../data/opportunities.json','../data/utilities.json','../data/states.json']
     .map(u=>fetch(u).then(r=>r.json()).catch(()=>null)))
    .then(([o,u,s])=>{
      if(o){OPPS=o.opportunities;META={data_version:o.version,updated:o.updated,disclaimer:o.disclaimer};}
-     if(u)UTILS=u.utilities; if(s)STATES=s.states;
+     if(u)UTILS=u.utilities; if(s){STATES=s.states; FEDFW=s.federal_framework||null;}
      render();
    });
 }
@@ -281,19 +284,47 @@ function renderUtils(){
 
 // ---- ③ states ----
 function renderStates(){
+  // 연방-주 권한 분담 안내
+  const fb=document.getElementById('fedfw');
+  if(FEDFW&&fb){fb.innerHTML=`<details class="live" open style="background:#10263d;border:1px solid #1f4a73;border-radius:10px;padding:10px 14px;margin-bottom:12px">
+    <summary style="color:#79c0ff;font-weight:700">⚖️ ${FEDFW.title}</summary>
+    <div style="font-size:12.5px;color:#c9d6e4;margin-top:6px;line-height:1.6">
+      <b style="color:#ff9b9b">연방(NRC) 독점:</b> ${FEDFW.nrc_exclusive}<br>
+      <b style="color:#56d364">州 보유권한:</b> ${FEDFW.state_retained}<br>
+      <b style="color:#f0b429">시사점:</b> ${FEDFW.implication}</div></details>`;}
   const mkt=document.getElementById('sf-mkt').value,att=document.getElementById('sf-att').value,
         q=document.getElementById('sf-q').value.toLowerCase();
   let list=STATES.filter(s=>(!mkt||s.market_structure===mkt)&&(!att||s.epc_attractiveness===att)&&
     (!q||(s.name+s.id).toLowerCase().includes(q)));
   const order={high:0,medium:1,low:2};
   list.sort((a,b)=>(order[a.epc_attractiveness]-order[b.epc_attractiveness])||(b.nuclear_mwe-a.nuclear_mwe));
-  document.querySelector('#states-tbl tbody').innerHTML=list.map(s=>`<tr>
-    <td><b>${s.name}</b> <span class="small">${s.id}</span></td>
-    <td class="mk-${s.market_structure}">${({regulated:'규제',restructured:'탈규제',hybrid:'혼합'})[s.market_structure]}</td>
-    <td>${s.operating_reactors}</td>
-    <td>${s.nuclear_mwe?s.nuclear_mwe.toLocaleString():'-'}</td>
-    <td class="att-${s.epc_attractiveness}">${({high:'높음',medium:'중간',low:'낮음'})[s.epc_attractiveness]||'-'}</td>
-    <td class="small">${s.epc_rationale||''}</td></tr>`).join('')||'<tr><td colspan=6 class="small">결과 없음</td></tr>';
+  const lawColor=t=>/모라토리엄 존속|사실상 불가|사실상 금지/.test(t||'')?'#f85149':/해제|허용/.test(t||'')?'#56d364':'#e3b341';
+  document.querySelector('#states-tbl tbody').innerHTML=list.map((s,i)=>{
+    const r=s.regulatory||{};
+    const law=r.nuclear_law_status||'-';
+    const detail=`<tr class="det hide" data-for="${i}"><td colspan="7" style="background:#12171f">
+      <div class="dims" style="grid-template-columns:repeat(auto-fit,minmax(230px,1fr))">
+        <div class="dim"><div class="dn"><span>전력시장</span></div><div class="small" style="margin-top:3px">ISO/RTO: <b>${r.iso_rto||'-'}</b><br>소매경쟁: ${r.retail_competition||'-'}</div></div>
+        <div class="dim"><div class="dn"><span>원가회수(CWIP)</span></div><div class="small" style="margin-top:3px">${r.cost_recovery||'-'}</div></div>
+        <div class="dim"><div class="dn"><span>원전 법적지위</span></div><div class="small" style="margin-top:3px;color:${lawColor(law)}">${law}</div></div>
+        <div class="dim"><div class="dn"><span>州 인허가 요건</span></div><div class="small" style="margin-top:3px">${r.state_licensing||'-'}</div></div>
+        <div class="dim"><div class="dn"><span>인센티브</span></div><div class="small" style="margin-top:3px">${r.incentives||'-'}</div></div>
+        <div class="dim epc"><div class="dn"><span>EPC 시사점</span></div><div class="small" style="margin-top:3px">${s.epc_rationale||'-'}</div></div>
+      </div>
+      <div class="small" style="margin-top:4px;color:#6e7681">출처: ${(r.sources||s.sources||[]).join(', ')} · 신뢰도 ${r.confidence||s.confidence||'-'}</div>
+    </td></tr>`;
+    return `<tr class="srow" data-row="${i}" style="cursor:pointer">
+      <td><b>${s.name}</b> <span class="small">${s.id}</span></td>
+      <td class="mk-${s.market_structure}">${({regulated:'규제',restructured:'탈규제',hybrid:'혼합'})[s.market_structure]}</td>
+      <td class="small">${r.iso_rto||'-'}</td>
+      <td>${s.operating_reactors}</td>
+      <td>${s.nuclear_mwe?s.nuclear_mwe.toLocaleString():'-'}</td>
+      <td class="small" style="color:${lawColor(law)}">${law}</td>
+      <td class="att-${s.epc_attractiveness}">${({high:'높음',medium:'중간',low:'낮음'})[s.epc_attractiveness]||'-'} ▾</td>
+    </tr>${detail}`;}).join('')||'<tr><td colspan=7 class="small">결과 없음</td></tr>';
+  document.querySelectorAll('#states-tbl .srow').forEach(row=>row.addEventListener('click',()=>{
+    const d=document.querySelector(`#states-tbl .det[data-for="${row.dataset.row}"]`);
+    if(d)d.classList.toggle('hide');}));
 }
 ['sf-mkt','sf-att','sf-q'].forEach(id=>document.getElementById(id).addEventListener('input',renderStates));
 

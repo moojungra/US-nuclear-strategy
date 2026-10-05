@@ -1,32 +1,56 @@
 {
-  "version": "0.1.0",
+  "version": "0.2.0",
   "updated": "2026-10-05",
-  "disclaimer": "미국 원전 운영 주 및 전략적 핵심 주를 공개자료(EIA, NRC, NCSL, 각 주 PUC·전원계획)로 2026년 기준 정규화. 전력시장 구조·정책은 변동 가능하므로 confidence·sources 확인. 신규 대형원전 재무회수는 규제시장(rate-base)에서 유리하다는 점이 전략 핵심.",
+  "disclaimer": "미국 원전 운영 주 및 전략적 핵심 주를 공개자료(EIA, NRC, NCSL, NEI, INL GAIN, CRS, 각 주 PUC·전원계획)로 2026년 기준 정규화. 전력시장 구조·법률·인허가는 변동 가능하므로 confidence·sources 확인. 신규 대형원전 재무회수는 규제시장(rate-base) + CWIP 허용 주에서 유리하다는 점이 전략 핵심.",
+  "federal_framework": {
+    "title": "연방-주 권한 분담 (Atomic Energy Act / NRC 선점)",
+    "nrc_exclusive": "방사선 안전, 설계인증(DC), 건설허가(CP)·통합허가(COL), 운영허가, 해체 — 연방 NRC 독점(州 선점). 州는 방사선 안전을 근거로 규제 불가.",
+    "state_retained": "필요성(need)·신뢰도·경제성·요금회수(rate/CWIP)·입지(비방사선 토지이용)·비방사선 환경. 다수 규제주는 신규 발전설비에 PUC의 CPCN(Certificate of Public Convenience and Necessity, 필요성 인증)을 요구 — 州는 '경제성 이유'로 CPCN을 거부해 신규 원전을 중단시킬 수 있음(합헌, PG&E v. State Energy Resources 1983). 모라토리엄도 폐기물·경제 근거라야 유효.",
+    "implication": "삼성물산 관점: 州 게이트는 ①CPCN/필요성 심사 ②원가회수(CWIP) 승인 ③입지 허가. 연방 NRC 인허가는 노형·사업자 공통. 규제주+CWIP+필요성 충족 주가 신규 대형 발주 현실성 최고.",
+    "sources": ["CRS R41984", "PG&E v. State Energy Resources Conservation 1983", "NRC", "NCSL"]
+  },
   "market_structure_legend": {
-    "regulated": "수직통합·원가보상(rate-base) 규제시장. CWIP/사전원가회수로 대형 신규건설 재무회수 유리 → 신규 대형원전 발주 현실성 높음(예: Vogtle)",
+    "regulated": "수직통합·원가보상(rate-base) 규제시장. CWIP/사전원가회수 허용 시 대형 신규건설 재무회수 유리(예: Vogtle)",
     "restructured": "소매경쟁·도매시장 중심(탈규제). 신규 대형 재무회수 어려움 → 재가동·데이터센터 PPA·SMR 중심",
     "hybrid": "혼합(도매경쟁+부분 규제)"
   },
-  "epc_attractiveness_note": "삼성물산 EPC수주 관점 주별 매력도. regulated + 데이터센터/산업 수요 + 원전 우호정책이 겹치는 주가 신규 대형·SMR EPC 기회 최상.",
+  "regulatory_field_note": "regulatory.iso_rto=도매계통운영자 · retail_competition=소매경쟁 · cost_recovery=건설중원가회수(CWIP)·사전회수 근거 · nuclear_law_status=신규원전 법적지위(모라토리엄/허용/조건부) · state_licensing=州 인허가 요건(CPCN 등, 연방 NRC와 별개) · incentives=州 인센티브",
+  "epc_attractiveness_note": "삼성물산 EPC수주 관점 주별 매력도. regulated + CWIP 허용 + 데이터센터/산업 수요 + 원전 우호정책이 겹치는 주가 신규 대형·SMR EPC 기회 최상.",
   "states": [
     {
       "id": "GA", "name": "Georgia", "market_structure": "regulated",
       "operating_reactors": 4, "nuclear_mwe": 4600,
       "plants": ["Vogtle(4기, 3·4호기 AP1000 신규)", "Hatch(2기)"],
       "policy": "규제시장, Georgia PSC 통한 rate-base 회수. Vogtle 3·4로 미국 유일 AP1000 신규 완공 — 규제·공급망·숙련인력 기반 보유.",
+      "regulatory": {
+        "iso_rto": "SERC (비ISO, 수직통합)", "retail_competition": "no",
+        "cost_recovery": "CWIP 허용 — Nuclear Energy Financing Act(2009)로 Vogtle 건설중 원가회수. 단 Vogtle 완공 후 만료 설계라 후속사업엔 재입법 필요.",
+        "nuclear_law_status": "허용(모라토리엄 없음)",
+        "state_licensing": "Georgia PSC의 발전설비 인증(필요성·통합자원계획 반영) + 연방 NRC 건설·운영허가. Vogtle 선례로 절차 경험 축적.",
+        "incentives": "원전 우호, Vogtle 공급망·인력 생태계",
+        "confidence": "high", "sources": ["Georgia PSC", "NEI", "World Nuclear News"]
+      },
       "strategy_signals": {"new_build": "AP1000 후속 레퍼런스 유력지. 미-한 프레임워크 후보주", "data_center": "애틀랜타권 데이터센터 급증", "smr": "검토"},
       "epc_attractiveness": "high",
-      "epc_rationale": "★ AP1000 완공 실적+규제시장+숙련 공급망. 후속 대형건설 시 삼성물산 EPC·기자재 진입 1순위 환경.",
+      "epc_rationale": "★ AP1000 완공 실적+규제시장+숙련 공급망. 후속 대형건설 시 삼성물산 EPC·기자재 진입 1순위 환경. (CWIP는 재입법 필요)",
       "confidence": "high", "sources": ["EIA", "NRC", "Georgia PSC", "Southern Company"]
     },
     {
       "id": "SC", "name": "South Carolina", "market_structure": "regulated",
       "operating_reactors": 7, "nuclear_mwe": 6600,
       "plants": ["Oconee(3기)", "Catawba(2기)", "Robinson(1기)", "Summer(1기)"],
-      "policy": "규제시장. V.C. Summer 2·3호기(AP1000) 2017년 건설중단 트라우마 존재하나, 데이터센터 수요로 신규 원전 재논의. 중단부지(Summer) 재활용·AP1000 완공 재추진 거론.",
+      "policy": "규제시장. V.C. Summer 2·3호기(AP1000) 2017 건설중단 트라우마. 데이터센터 수요로 신규 원전 재논의, 중단부지(Summer) 재활용 거론.",
+      "regulatory": {
+        "iso_rto": "SERC (비ISO, 수직통합)", "retail_competition": "no",
+        "cost_recovery": "★주의: Base Load Review Act(CWIP) 2018년 폐지 — V.C. Summer 실패 여파. 현재 건설중 사전회수 장치 없음 → 신규 대형 재무구조 재설계 필요(리스크).",
+        "nuclear_law_status": "허용(모라토리엄 없음)",
+        "state_licensing": "South Carolina PSC의 CPCN/필요성 심사 + 연방 NRC 허가. Summer 실패로 PSC·여론 심사 강화.",
+        "incentives": "신규 원전 재논의 중이나 재무법제 재정비 선행 과제",
+        "confidence": "high", "sources": ["South Carolina PSC", "NEI", "Utility Dive"]
+      },
       "strategy_signals": {"new_build": "★ V.C. Summer 미완공 AP1000(2·3호기) 완공 재추진 가능성 — 기성 구조물·부지 보유", "data_center": "증가", "smr": "검토"},
       "epc_attractiveness": "high",
-      "epc_rationale": "★ 미완공 AP1000 부지(Summer) 보유 — 완공형 EPC 기회의 상징적 타깃. 규제시장.",
+      "epc_rationale": "★ 미완공 AP1000 부지(Summer) 보유 — 완공형 EPC 기회의 상징적 타깃. 단 CWIP 폐지로 재무구조·요금회수 재설계가 발주 선결 조건.",
       "confidence": "medium", "sources": ["EIA", "NRC", "South Carolina PSC", "Santee Cooper", "Dominion"]
     },
     {
@@ -34,19 +58,35 @@
       "operating_reactors": 5, "nuclear_mwe": 5000,
       "plants": ["McGuire(2기)", "Harris(1기)", "Brunswick(2기)"],
       "policy": "규제시장, 탄소중립 목표(HB951). Duke Energy Carolinas 전원계획에 신규 원전·SMR 옵션. 데이터센터·첨단제조 수요 급증.",
+      "regulatory": {
+        "iso_rto": "SERC (비ISO, Duke 수직통합)", "retail_competition": "no",
+        "cost_recovery": "★ CWIP 확대 입법(2025) — 완공 전 금융비용 회수 허용으로 신규 원전 재무 유리. 조기 원가회수로 총사업비 절감 기대.",
+        "nuclear_law_status": "허용(모라토리엄 없음)",
+        "state_licensing": "North Carolina Utilities Commission의 CPCN·통합자원계획(IRP) 반영 + 연방 NRC 허가.",
+        "incentives": "HB951 무탄소 목표, CWIP 확대로 신규 원전 지원",
+        "confidence": "high", "sources": ["North Carolina Utilities Commission", "NC Clean Tech", "NEI"]
+      },
       "strategy_signals": {"new_build": "Duke IRP 대형·SMR 옵션", "data_center": "★ 급증", "smr": "부지 검토"},
       "epc_attractiveness": "high",
-      "epc_rationale": "★ 규제시장+수요폭증+Duke 신규계획. 대형·SMR EPC 유망.",
+      "epc_rationale": "★ 규제시장+수요폭증+Duke 신규계획+CWIP 확대(2025). 재무회수 환경이 개선된 대형·SMR EPC 유망지.",
       "confidence": "high", "sources": ["EIA", "NRC", "North Carolina Utilities Commission", "Duke Energy"]
     },
     {
       "id": "TN", "name": "Tennessee", "market_structure": "regulated",
       "operating_reactors": 4, "nuclear_mwe": 4700,
       "plants": ["Watts Bar(2기)", "Sequoyah(2기)", "Clinch River(SMR 건설허가)"],
-      "policy": "TVA(연방) 관할 규제구조. 주정부 SMR 우호(SMR 허브 조성 자금). Oak Ridge 원자력 생태계.",
+      "policy": "TVA(연방) 관할. 주정부 SMR 우호(SMR 허브 조성 자금). Oak Ridge 원자력 생태계.",
+      "regulatory": {
+        "iso_rto": "비ISO (TVA 자체 균형당국)", "retail_competition": "no",
+        "cost_recovery": "TVA는 연방기관 — 州 PUC 요금규제 대상 아님(자체 이사회 결정). CWIP 개념 비적용, 연방 예산·DOE 지원·자체재원.",
+        "nuclear_law_status": "허용. 주정부 SMR 적극 육성(기금).",
+        "state_licensing": "TVA 사업은 州 CPCN 비대상(연방). 연방 NRC 건설·운영허가가 핵심 게이트(Clinch River CP 취득).",
+        "incentives": "★ 테네시 SMR 허브 기금·Oak Ridge 생태계·DOE 연계",
+        "confidence": "high", "sources": ["TVA", "State of Tennessee", "US DOE"]
+      },
       "strategy_signals": {"smr": "★★ Clinch River BWRX-300 건설허가(2026.9)·최대 4기. TVA-NuScale 6GW MOU", "new_build": "대형 검토", "data_center": "AI·연방시설 수요"},
       "epc_attractiveness": "high",
-      "epc_rationale": "★★ 미국 SMR FOAK 중심지. BWRX-300 함대+SMR 생태계 — SMR EPC·모듈 수주 최우선 타깃.",
+      "epc_rationale": "★★ 미국 SMR FOAK 중심지. 연방기관이라 州 규제게이트 없음·NRC 중심. SMR EPC·모듈 수주 최우선 타깃(단 연방 조달절차).",
       "confidence": "high", "sources": ["EIA", "NRC", "TVA", "State of Tennessee", "US DOE"]
     },
     {
@@ -54,19 +94,35 @@
       "operating_reactors": 4, "nuclear_mwe": 3500,
       "plants": ["Surry(2기)", "North Anna(2기)"],
       "policy": "Dominion 규제(부분경쟁). Virginia Clean Economy Act. 주정부 SMR 적극 추진(SMR 허브 선언).",
+      "regulatory": {
+        "iso_rto": "PJM (도매)", "retail_competition": "제한적(대규모 수요가 일부)",
+        "cost_recovery": "★ SMR 개발비 사전회수 입법 — 주택용 월 $1.40 상한·SMR 1기 한도. SCC가 Appalachian Power SMR 부지평가 $122M 회수 승인.",
+        "nuclear_law_status": "허용. 주지사·주정부 SMR 육성 선언.",
+        "state_licensing": "Virginia SCC의 필요성·요금 심사(CPCN) + 연방 NRC 허가. SMR 친화 법제 정비.",
+        "incentives": "★ SMR 허브 선언, 개발비 회수 법제, 데이터센터 세수 기반",
+        "confidence": "high", "sources": ["Virginia SCC", "NEI", "Morgan Lewis"]
+      },
       "strategy_signals": {"smr": "★ North Anna SMR 개발·주정부 SMR 육성", "data_center": "★★ 세계 최대 데이터센터 집적('Data Center Alley') — 무탄소 기저전원 수요 최상위", "new_build": "옵션"},
       "epc_attractiveness": "high",
-      "epc_rationale": "★ 데이터센터 수요 미국 1위+SMR 정책 적극. North Anna SMR EPC 유망.",
+      "epc_rationale": "★ 데이터센터 수요 미국 1위+SMR 정책·개발비 회수 법제. North Anna SMR EPC 유망.",
       "confidence": "high", "sources": ["EIA", "NRC", "Virginia SCC", "Dominion Energy"]
     },
     {
       "id": "TX", "name": "Texas", "market_structure": "restructured",
       "operating_reactors": 4, "nuclear_mwe": 5100,
       "plants": ["Comanche Peak(2기)", "South Texas Project(2기)"],
-      "policy": "ERCOT 독립계통·소매경쟁. 주정부 원전 추진(Texas Advanced Nuclear 기금·Texas Nuclear Alliance). Abilene/Permian 산업·데이터센터 수요 폭증. Dow Seadrift SMR.",
+      "policy": "ERCOT 독립계통·소매경쟁. 주정부 원전 추진(Texas Advanced Nuclear 기금·Texas Nuclear Alliance). Permian 산업·데이터센터 수요 폭증.",
+      "regulatory": {
+        "iso_rto": "ERCOT (연방 FERC 관할 밖·주내 독립계통)", "retail_competition": "yes(경쟁)",
+        "cost_recovery": "탈규제라 CWIP·rate-base 회수 없음 → 재무는 산업 offtake·주 기금(그랜트)·PPA 의존.",
+        "nuclear_law_status": "허용. 주정부 적극 추진.",
+        "state_licensing": "ERCOT 발전은 州 CPCN 필요성 심사 비대상(시장 진입) — 입지·환경 허가 + 연방 NRC 허가가 핵심.",
+        "incentives": "★ Texas Advanced Nuclear Reactor 기금(그랜트), Texas Nuclear Alliance, 산업수요 기반",
+        "confidence": "high", "sources": ["PUCT", "State of Texas", "ERCOT"]
+      },
       "strategy_signals": {"smr": "★ Dow Seadrift X-energy Xe-100(4모듈). 주 기금으로 SMR 유치 경쟁", "data_center": "★★ 폭증", "new_build": "검토"},
       "epc_attractiveness": "high",
-      "epc_rationale": "★ 수요·정책자금 최상이나 탈규제라 재무구조는 산업 offtake/주기금 의존. SMR·산업용 EPC 유망.",
+      "epc_rationale": "★ 수요·정책자금 최상이나 탈규제라 재무는 산업 offtake/주기금 의존. SMR·산업용 EPC 유망.",
       "confidence": "high", "sources": ["EIA", "NRC", "PUCT", "State of Texas", "X-energy", "Dow"]
     },
     {
@@ -74,6 +130,14 @@
       "operating_reactors": 5, "nuclear_mwe": 5000,
       "plants": ["Browns Ferry(3기, TVA)", "Farley(2기)"],
       "policy": "규제시장(Southern/TVA). TVA Bellefonte 미완공 부지 이력. 원전 우호.",
+      "regulatory": {
+        "iso_rto": "SERC (비ISO)", "retail_competition": "no",
+        "cost_recovery": "Alabama PSC rate-base(Farley). TVA 부분은 연방. CWIP 특례는 제한적.",
+        "nuclear_law_status": "허용(모라토리엄 없음)",
+        "state_licensing": "Alabama PSC(Southern) 또는 TVA(연방) + 연방 NRC. Bellefonte 등 유휴 CP 부지 이력.",
+        "incentives": "유휴 원전부지(Bellefonte) 활용 여지",
+        "confidence": "medium", "sources": ["Alabama PSC", "TVA", "NEI"]
+      },
       "strategy_signals": {"new_build": "Bellefonte 등 유휴부지 재활용 거론", "smr": "검토"},
       "epc_attractiveness": "medium",
       "epc_rationale": "규제시장+유휴 원전부지. 중기 신규 잠재.",
@@ -84,6 +148,14 @@
       "operating_reactors": 2, "nuclear_mwe": 2100,
       "plants": ["River Bend(1기)", "Waterford(1기)"],
       "policy": "규제시장(Entergy). 걸프 석유화학·대형 데이터센터(메타 등) 유치로 전력수요 급증.",
+      "regulatory": {
+        "iso_rto": "MISO (도매)", "retail_competition": "no",
+        "cost_recovery": "Louisiana PSC rate-base. CWIP 특례는 사안별.",
+        "nuclear_law_status": "허용(모라토리엄 없음)",
+        "state_licensing": "Louisiana PSC 필요성·요금 심사 + 연방 NRC. 대형 산업부하 유치로 신규 전원 수요.",
+        "incentives": "산업·데이터센터 유치 정책, 걸프 인프라",
+        "confidence": "medium", "sources": ["Louisiana PSC", "Entergy", "NEI"]
+      },
       "strategy_signals": {"data_center": "★ 초대형 데이터센터 유치", "new_build": "검토", "smr": "평가"},
       "epc_attractiveness": "medium",
       "epc_rationale": "규제시장+산업/데이터센터 수요. 중기 신규·SMR 잠재.",
@@ -94,6 +166,14 @@
       "operating_reactors": 3, "nuclear_mwe": 3900,
       "plants": ["Palo Verde(3기, 미국 최대)"],
       "policy": "규제시장. 반도체(TSMC 등)·데이터센터 수요 증가. 서남부 성장.",
+      "regulatory": {
+        "iso_rto": "WECC (비ISO, 수직통합)", "retail_competition": "no",
+        "cost_recovery": "Arizona Corporation Commission rate-base. CWIP 특례 제한적.",
+        "nuclear_law_status": "허용(모라토리엄 없음)",
+        "state_licensing": "Arizona Corporation Commission(선출직 위원) CPCN + 연방 NRC. Palo Verde 다수 공동소유 선례.",
+        "incentives": "반도체·데이터센터 수요, 서남부 성장",
+        "confidence": "medium", "sources": ["Arizona Corporation Commission", "APS", "NEI"]
+      },
       "strategy_signals": {"new_build": "검토", "smr": "평가", "data_center": "★ 반도체·데이터센터 수요"},
       "epc_attractiveness": "medium",
       "epc_rationale": "규제시장+대형 운영경험+산업수요. 중기 신규·SMR 잠재.",
@@ -103,10 +183,18 @@
       "id": "IL", "name": "Illinois", "market_structure": "restructured",
       "operating_reactors": 11, "nuclear_mwe": 11600,
       "plants": ["Braidwood·Byron·LaSalle·Dresden·Quad Cities·Clinton(Constellation)"],
-      "policy": "탈규제. 미국 최대 원전 보유주. 과거 SMR 신규건설 모라토리엄을 일부 완화(소형 신설 허용). CEJA 무탄소 정책.",
-      "strategy_signals": {"smr": "소형 신설 규제 완화", "uprate": "출력증강", "new_build": "대형 신설은 재무구조상 제약"},
+      "policy": "탈규제. 미국 최대 원전 보유주. CEJA 무탄소 정책.",
+      "regulatory": {
+        "iso_rto": "PJM(북부 ComEd) + MISO(남부)", "retail_competition": "yes",
+        "cost_recovery": "탈규제(merchant)라 CWIP·rate-base 신규회수 제한 → 시장·PPA 의존.",
+        "nuclear_law_status": "★ 신규건설 모라토리엄 해제(2026) — 과거 SMR(≤300MW) 한정 완화에서 전면 신규 허용으로. 착공은 2033년경 전망.",
+        "state_licensing": "Illinois Commerce Commission + 연방 NRC. 모라토리엄 해제로 법적 장애 제거.",
+        "incentives": "CEJA 무탄소, 모라토리엄 해제",
+        "confidence": "high", "sources": ["Illinois Commerce Commission", "Canary Media", "Morgan Lewis"]
+      },
+      "strategy_signals": {"new_build": "모라토리엄 해제(2026)로 신규 가능", "uprate": "출력증강", "smr": "신설 허용"},
       "epc_attractiveness": "medium",
-      "epc_rationale": "원전 최다 보유나 탈규제·merchant. 신규 대형보다 SMR·증강 중심.",
+      "epc_rationale": "원전 최다 보유+모라토리엄 해제(2026). 단 탈규제·merchant라 재무회수는 시장/PPA 의존 — SMR·증강 우선.",
       "confidence": "medium", "sources": ["EIA", "NRC", "Illinois Commerce Commission", "Constellation"]
     },
     {
@@ -114,6 +202,14 @@
       "operating_reactors": 8, "nuclear_mwe": 9000,
       "plants": ["Peach Bottom·Limerick(Constellation)", "Susquehanna(Talen)", "Beaver Valley(Vistra)", "Crane/구TMI-1(재가동)"],
       "policy": "탈규제(PJM). 재가동(Crane)·데이터센터 코로케이션(Susquehanna-AWS) 선도.",
+      "regulatory": {
+        "iso_rto": "PJM", "retail_competition": "yes",
+        "cost_recovery": "탈규제라 CWIP 없음 → 재가동·데이터센터 PPA·연방 대출 의존.",
+        "nuclear_law_status": "허용(모라토리엄 없음)",
+        "state_licensing": "Pennsylvania PUC(요금) + 입지 + 연방 NRC. 재가동은 NRC 재인가가 핵심.",
+        "incentives": "데이터센터 코로케이션 생태계, PJM 용량시장",
+        "confidence": "high", "sources": ["Pennsylvania PUC", "FERC", "NEI"]
+      },
       "strategy_signals": {"restart": "★ Crane(구 TMI-1) 재가동 2027", "data_center": "★ Susquehanna-AWS 코로케이션", "smr": "검토"},
       "epc_attractiveness": "medium",
       "epc_rationale": "탈규제라 재가동·데이터센터 PPA 모델. 신규 대형 EPC보다 개조·기자재 틈새.",
@@ -123,7 +219,15 @@
       "id": "MI", "name": "Michigan", "market_structure": "hybrid",
       "operating_reactors": 2, "nuclear_mwe": 2200,
       "plants": ["Fermi(1기, DTE)", "Palisades(재가동, Holtec)", "Cook(2기, 참고)"],
-      "policy": "부분경쟁. 주정부 Palisades 재가동 지원·SMR 우호. 무탄소 목표.",
+      "policy": "부분경쟁(소매선택 10% 상한). 주정부 Palisades 재가동 지원·SMR 우호. 무탄소 목표.",
+      "regulatory": {
+        "iso_rto": "MISO (+일부 PJM)", "retail_competition": "제한적(10% 상한)",
+        "cost_recovery": "Michigan PSC rate-base(규제 부분). 재가동엔 주·연방 지원 결합.",
+        "nuclear_law_status": "허용. 주정부 재가동·SMR 우호.",
+        "state_licensing": "Michigan PSC(규제 부분) + 연방 NRC. Palisades 재가동은 NRC 재인가 중심+주 지원.",
+        "incentives": "★ 주 Palisades 재가동 지원, 무탄소 목표",
+        "confidence": "medium", "sources": ["Michigan PSC", "State of Michigan", "Holtec"]
+      },
       "strategy_signals": {"restart": "★ Palisades 재가동(미국 최초)", "smr": "★ Palisades 부지 Holtec SMR-300 쌍둥이 추진", "new_build": "검토"},
       "epc_attractiveness": "medium",
       "epc_rationale": "재가동+SMR-300 신규부지. SMR 건설 본격화 시 EPC·모듈 기회.",
@@ -134,6 +238,14 @@
       "operating_reactors": 2, "nuclear_mwe": 2100,
       "plants": ["Davis-Besse(1기)", "Perry(1기)(Vistra)"],
       "policy": "탈규제(PJM). 인텔 반도체·데이터센터 수요. 원전 보조 논란 이력(HB6).",
+      "regulatory": {
+        "iso_rto": "PJM", "retail_competition": "yes",
+        "cost_recovery": "탈규제라 CWIP 없음. HB6 원전보조 스캔들 이력으로 정책 민감.",
+        "nuclear_law_status": "허용(모라토리엄 없음)",
+        "state_licensing": "PUCO(요금) + Ohio Power Siting Board(입지) + 연방 NRC.",
+        "incentives": "인텔 등 반도체·데이터센터 수요(정책지원은 신중)",
+        "confidence": "medium", "sources": ["PUCO", "Ohio Power Siting Board", "NEI"]
+      },
       "strategy_signals": {"data_center": "★ 반도체·데이터센터 수요", "smr": "검토", "uprate": "검토"},
       "epc_attractiveness": "medium",
       "epc_rationale": "수요 증가하나 탈규제. SMR·증강 중심 잠재.",
@@ -143,20 +255,36 @@
       "id": "FL", "name": "Florida", "market_structure": "regulated",
       "operating_reactors": 4, "nuclear_mwe": 3500,
       "plants": ["Turkey Point(2기)", "St. Lucie(2기)(NextEra)"],
-      "policy": "규제시장(NextEra/FPL). 인구·수요 성장. 과거 Turkey Point 6·7호기(AP1000) COL 보유 이력.",
+      "policy": "규제시장(NextEra/FPL). 인구·수요 성장. Turkey Point 6·7(AP1000) COL 보유 이력.",
+      "regulatory": {
+        "iso_rto": "SERC (비ISO, 수직통합)", "retail_competition": "no",
+        "cost_recovery": "★ 원전 사전원가회수 법(2006 Nuclear Cost Recovery) 이력 — 완공 전 회수 가능했으나 이후 제도 수정·논란. 재무회수 틀은 존재.",
+        "nuclear_law_status": "허용(모라토리엄 없음)",
+        "state_licensing": "Florida PSC의 필요성 결정(Determination of Need) + 연방 NRC. Turkey Point COL 선례.",
+        "incentives": "성장수요, 기보유 COL",
+        "confidence": "medium", "sources": ["Florida PSC", "NextEra", "NEI"]
+      },
       "strategy_signals": {"new_build": "Turkey Point 추가호기 COL 이력", "license_renewal": "가동연장", "smr": "평가"},
       "epc_attractiveness": "medium",
-      "epc_rationale": "규제시장+성장수요+기보유 COL. 중기 신규 잠재.",
+      "epc_rationale": "규제시장+성장수요+기보유 COL+원가회수 이력. 중기 신규 잠재.",
       "confidence": "medium", "sources": ["EIA", "NRC", "Florida PSC", "NextEra"]
     },
     {
       "id": "MO", "name": "Missouri", "market_structure": "regulated",
       "operating_reactors": 1, "nuclear_mwe": 1200,
       "plants": ["Callaway(1기, Ameren)"],
-      "policy": "규제시장. Ameren SMR 관심. CWIP 관련 규제 변화 논의.",
+      "policy": "규제시장. Ameren SMR 관심.",
+      "regulatory": {
+        "iso_rto": "MISO / SPP", "retail_competition": "no",
+        "cost_recovery": "역사적으로 CWIP 금지(주민투표 유산)였으나 SMR 등 사전비용 회수 완화 논의 지속.",
+        "nuclear_law_status": "허용(모라토리엄 없음)",
+        "state_licensing": "Missouri PSC CPCN + 연방 NRC. Callaway 부지 확장 여지.",
+        "incentives": "SMR 관심, 재무법제 논의 중",
+        "confidence": "medium", "sources": ["Missouri PSC", "Ameren", "NEI"]
+      },
       "strategy_signals": {"smr": "Callaway 부지 SMR 검토", "new_build": "장기 옵션"},
       "epc_attractiveness": "medium",
-      "epc_rationale": "규제시장+SMR 관심. 중기 잠재.",
+      "epc_rationale": "규제시장+SMR 관심. CWIP 제약 완화 여부가 관건. 중기 잠재.",
       "confidence": "low", "sources": ["EIA", "NRC", "Missouri PSC", "Ameren"]
     },
     {
@@ -164,9 +292,17 @@
       "operating_reactors": 1, "nuclear_mwe": 1200,
       "plants": ["Columbia(1기, Energy Northwest)"],
       "policy": "규제/공영. Energy Northwest X-energy SMR 함대 추진. 무탄소 정책.",
+      "regulatory": {
+        "iso_rto": "WECC (비ISO)", "retail_competition": "no",
+        "cost_recovery": "공영(Energy Northwest)·BPA 연계 재무. 州 EFSEC 입지심사 체계.",
+        "nuclear_law_status": "허용. 무탄소 정책으로 차세대 원전 추진.",
+        "state_licensing": "Washington EFSEC(Energy Facility Site Evaluation Council) 입지심사 + 연방 NRC. 공영 조달 특성.",
+        "incentives": "무탄소 정책, Amazon 투자 연계",
+        "confidence": "medium", "sources": ["WA EFSEC", "Energy Northwest", "X-energy"]
+      },
       "strategy_signals": {"smr": "★ Xe-100 최대 12모듈 개발", "new_build": "차세대 원전"},
       "epc_attractiveness": "medium",
-      "epc_rationale": "Xe-100 SMR 신규. 공영 조달 특성, SMR EPC·모듈 기회.",
+      "epc_rationale": "Xe-100 SMR 신규. 공영 조달·EFSEC 입지심사 특성, SMR EPC·모듈 기회.",
       "confidence": "medium", "sources": ["EIA", "NRC", "Energy Northwest", "X-energy"]
     },
     {
@@ -174,16 +310,32 @@
       "operating_reactors": 3, "nuclear_mwe": 3500,
       "plants": ["Salem(2기)", "Hope Creek(1기)(PSEG)"],
       "policy": "탈규제(PJM). 데이터센터 수요. PSEG 기존부지 SMR 관심.",
-      "strategy_signals": {"smr": "Salem/Hope Creek 부지 SMR 관심", "data_center": "증가"},
+      "regulatory": {
+        "iso_rto": "PJM", "retail_competition": "yes",
+        "cost_recovery": "탈규제라 CWIP 없음 → 시장·PPA·보조(ZEC) 의존.",
+        "nuclear_law_status": "★ 모라토리엄 해제(2026.4) — 신규 원전을 연방 고준위폐기물 처분 해결에 연계하던 조건 철폐.",
+        "state_licensing": "New Jersey BPU + 연방 NRC. 모라토리엄 해제로 법적 장애 제거.",
+        "incentives": "데이터센터 수요, 모라토리엄 해제",
+        "confidence": "high", "sources": ["New Jersey BPU", "NucNet", "Canary Media"]
+      },
+      "strategy_signals": {"smr": "Salem/Hope Creek 부지 SMR 관심", "data_center": "증가", "new_build": "모라토리엄 해제(2026)"},
       "epc_attractiveness": "medium",
-      "epc_rationale": "탈규제. 기존부지 SMR 중기 잠재.",
-      "confidence": "low", "sources": ["EIA", "NRC", "New Jersey BPU", "PSEG"]
+      "epc_rationale": "탈규제이나 모라토리엄 해제(2026)로 기존부지 SMR 중기 잠재.",
+      "confidence": "medium", "sources": ["EIA", "NRC", "New Jersey BPU", "PSEG"]
     },
     {
       "id": "MS", "name": "Mississippi", "market_structure": "regulated",
       "operating_reactors": 1, "nuclear_mwe": 1400,
       "plants": ["Grand Gulf(1기, Entergy)"],
       "policy": "규제시장(Entergy). Grand Gulf 부지 확장 여지.",
+      "regulatory": {
+        "iso_rto": "MISO / SERC", "retail_competition": "no",
+        "cost_recovery": "Mississippi PSC rate-base. (과거 Kemper IGCC 비용초과 경험으로 심사 신중)",
+        "nuclear_law_status": "허용(모라토리엄 없음)",
+        "state_licensing": "Mississippi PSC CPCN + 연방 NRC. Grand Gulf 대형 단일부지.",
+        "incentives": "부지 확장 여지",
+        "confidence": "low", "sources": ["Mississippi PSC", "Entergy", "NEI"]
+      },
       "strategy_signals": {"new_build": "부지 확장 여지", "smr": "평가"},
       "epc_attractiveness": "medium",
       "epc_rationale": "규제시장+대형 단일부지. 중기 잠재.",
@@ -194,6 +346,14 @@
       "operating_reactors": 2, "nuclear_mwe": 1800,
       "plants": ["Arkansas Nuclear One(2기, Entergy)"],
       "policy": "규제시장(Entergy).",
+      "regulatory": {
+        "iso_rto": "MISO / SPP", "retail_competition": "no",
+        "cost_recovery": "Arkansas PSC rate-base. CWIP 특례 제한적.",
+        "nuclear_law_status": "허용(모라토리엄 없음)",
+        "state_licensing": "Arkansas PSC CPCN + 연방 NRC.",
+        "incentives": "제한적",
+        "confidence": "low", "sources": ["Arkansas PSC", "Entergy"]
+      },
       "strategy_signals": {"smr": "평가", "new_build": "장기"},
       "epc_attractiveness": "low",
       "epc_rationale": "규제시장이나 수요·계획 가시성 낮음.",
@@ -203,10 +363,18 @@
       "id": "NY", "name": "New York", "market_structure": "restructured",
       "operating_reactors": 4, "nuclear_mwe": 3300,
       "plants": ["Nine Mile Point(2기)", "Ginna(1기)", "FitzPatrick(1기)(Constellation)"],
-      "policy": "탈규제(NYISO). 주정부 신규 대형원전 개발 지시(최대 1GW+) 발표로 재점화. Indian Point 폐쇄 이력.",
+      "policy": "탈규제(NYISO). 주정부 신규 대형원전(1GW+) 개발 지시로 재점화. Indian Point 폐쇄 이력.",
+      "regulatory": {
+        "iso_rto": "NYISO", "retail_competition": "yes",
+        "cost_recovery": "탈규제이나 州 주도 신규는 공적 재무(NYPA 등)·ZEC 결합 가능.",
+        "nuclear_law_status": "허용(모라토리엄 없음). 주지사 신규 원전 추진 지시.",
+        "state_licensing": "NYS PSC + Article 10/입지 + 연방 NRC. 州 주도 개발로 공적 경로.",
+        "incentives": "★ 주 주도 신규 원전(1GW+) 개발, NYPA 참여 가능",
+        "confidence": "medium", "sources": ["NYSERDA", "NYS PSC", "World Nuclear News"]
+      },
       "strategy_signals": {"new_build": "★ 주지사 신규 원전(1GW+) 개발 추진 지시", "smr": "검토"},
       "epc_attractiveness": "medium",
-      "epc_rationale": "탈규제이나 주 주도 신규 대형 추진 — 공적 재무지원 설계 시 기회. 모니터링.",
+      "epc_rationale": "탈규제이나 州 주도 신규 대형 추진 — 공적 재무지원 설계 시 기회. 모니터링.",
       "confidence": "medium", "sources": ["EIA", "NRC", "NYSERDA", "New York State"]
     },
     {
@@ -214,26 +382,50 @@
       "operating_reactors": 0, "nuclear_mwe": 0,
       "plants": ["Duane Arnold(재가동 추진)"],
       "policy": "규제시장. NextEra Duane Arnold 재가동. 데이터센터 수요.",
+      "regulatory": {
+        "iso_rto": "MISO", "retail_competition": "no",
+        "cost_recovery": "Iowa Utilities Commission rate-base. 재가동엔 연방 DOE 대출 결합.",
+        "nuclear_law_status": "허용(모라토리엄 없음)",
+        "state_licensing": "Iowa Utilities Commission + 연방 NRC. 재가동은 NRC 재인가 중심.",
+        "incentives": "데이터센터 수요, 연방 대출",
+        "confidence": "medium", "sources": ["Iowa Utilities Commission", "NextEra", "US DOE"]
+      },
       "strategy_signals": {"restart": "★ Duane Arnold 재가동(2029 목표)", "data_center": "증가"},
       "epc_attractiveness": "low",
       "epc_rationale": "재가동 개조 중심. 기자재·개조 틈새.",
-      "confidence": "medium", "sources": ["EIA", "NRC", "Iowa Utilities Board", "NextEra"]
+      "confidence": "medium", "sources": ["EIA", "NRC", "Iowa Utilities Commission", "NextEra"]
     },
     {
       "id": "MN", "name": "Minnesota", "market_structure": "regulated",
       "operating_reactors": 3, "nuclear_mwe": 1700,
       "plants": ["Prairie Island(2기)", "Monticello(1기)(Xcel)"],
-      "policy": "규제시장. 과거 신규 원전 모라토리엄 완화 논의. 무탄소 목표.",
-      "strategy_signals": {"smr": "장기 옵션", "license_renewal": "가동연장"},
+      "policy": "규제시장. 무탄소 목표이나 신규 원전 모라토리엄 존속.",
+      "regulatory": {
+        "iso_rto": "MISO", "retail_competition": "no",
+        "cost_recovery": "Minnesota PUC rate-base. 단 신규 모라토리엄이 선결 장애.",
+        "nuclear_law_status": "★ 신규건설 모라토리엄 존속(2026 기준) — 해제 논의는 있으나 미해제. 신규 사실상 불가.",
+        "state_licensing": "Minnesota PUC CPCN(모라토리엄 선행) + 연방 NRC.",
+        "incentives": "무탄소 목표(단 모라토리엄이 상쇄)",
+        "confidence": "high", "sources": ["Minnesota PUC", "NEI", "ANS"]
+      },
+      "strategy_signals": {"smr": "모라토리엄 해제 시 장기 옵션", "license_renewal": "가동연장"},
       "epc_attractiveness": "low",
-      "epc_rationale": "규제시장이나 신규 가시성 낮음.",
-      "confidence": "low", "sources": ["EIA", "NRC", "Minnesota PUC", "Xcel"]
+      "epc_rationale": "규제시장이나 신규 모라토리엄 존속 — 해제 전 신규 불가. 해제 입법 모니터링.",
+      "confidence": "medium", "sources": ["EIA", "NRC", "Minnesota PUC", "Xcel"]
     },
     {
       "id": "WI", "name": "Wisconsin", "market_structure": "regulated",
       "operating_reactors": 2, "nuclear_mwe": 1200,
       "plants": ["Point Beach(2기, NextEra)"],
       "policy": "규제시장. 신규 원전 모라토리엄 폐지(2016). SMR 관심.",
+      "regulatory": {
+        "iso_rto": "MISO", "retail_competition": "no",
+        "cost_recovery": "Wisconsin PSC rate-base. CWIP 특례 제한적.",
+        "nuclear_law_status": "허용 — 모라토리엄 폐지(2016).",
+        "state_licensing": "Wisconsin PSC CPCN + 연방 NRC.",
+        "incentives": "모라토리엄 폐지, SMR 관심",
+        "confidence": "medium", "sources": ["Wisconsin PSC", "NEI", "Canary Media"]
+      },
       "strategy_signals": {"smr": "검토", "new_build": "장기"},
       "epc_attractiveness": "low",
       "epc_rationale": "규제시장+모라토리엄 폐지. 장기 잠재.",
@@ -244,10 +436,54 @@
       "operating_reactors": 1, "nuclear_mwe": 1200,
       "plants": ["Wolf Creek(1기, Evergy)"],
       "policy": "규제시장. Evergy SMR 타당성.",
+      "regulatory": {
+        "iso_rto": "SPP", "retail_competition": "no",
+        "cost_recovery": "Kansas Corporation Commission rate-base.",
+        "nuclear_law_status": "허용(모라토리엄 없음)",
+        "state_licensing": "Kansas Corporation Commission(선출직) + 연방 NRC.",
+        "incentives": "SMR 타당성 검토",
+        "confidence": "low", "sources": ["Kansas Corporation Commission", "Evergy"]
+      },
       "strategy_signals": {"smr": "타당성 검토"},
       "epc_attractiveness": "low",
       "epc_rationale": "규제시장+SMR 관심. 장기 잠재.",
       "confidence": "low", "sources": ["EIA", "NRC", "Kansas Corporation Commission", "Evergy"]
+    },
+    {
+      "id": "CA", "name": "California", "market_structure": "restructured",
+      "operating_reactors": 2, "nuclear_mwe": 2200,
+      "plants": ["Diablo Canyon(2기, PG&E) — 가동연장 ~2030"],
+      "policy": "탈규제 소매+CAISO. 신규 원전 조건부 모라토리엄(고준위폐기물 처분시설 연계). Diablo Canyon 가동연장.",
+      "regulatory": {
+        "iso_rto": "CAISO", "retail_competition": "partial(CCA 확대)",
+        "cost_recovery": "CPUC 규제(송배전)·CAISO 도매. 신규 원전은 모라토리엄으로 사실상 불가.",
+        "nuclear_law_status": "★ 조건부 모라토리엄 — 연방 고준위폐기물 영구처분시설 가동 전 신규 불가(1976법). 사실상 신규 금지.",
+        "state_licensing": "CPUC + California Energy Commission + 연방 NRC. 모라토리엄이 선행 장애.",
+        "incentives": "무탄소 정책이나 모라토리엄이 상쇄, Diablo 가동연장 지원",
+        "confidence": "high", "sources": ["CPUC", "California Energy Commission", "NEI"]
+      },
+      "strategy_signals": {"license_renewal": "Diablo Canyon 가동연장(~2030)", "new_build": "모라토리엄으로 사실상 불가"},
+      "epc_attractiveness": "low",
+      "epc_rationale": "신규 사실상 불가(조건부 모라토리엄). 가동연장 개조 틈새만.",
+      "confidence": "high", "sources": ["EIA", "NRC", "CPUC", "PG&E"]
+    },
+    {
+      "id": "WY", "name": "Wyoming", "market_structure": "regulated",
+      "operating_reactors": 0, "nuclear_mwe": 0,
+      "plants": ["Natrium Kemmerer(건설중, 폐석탄 부지)"],
+      "policy": "규제시장. TerraPower Natrium FOAK 부지. 석탄 전환·연방 ARDP 연계. 원전 우호.",
+      "regulatory": {
+        "iso_rto": "WECC (비ISO)", "retail_competition": "no",
+        "cost_recovery": "Wyoming PSC rate-base(PacifiCorp/Rocky Mountain Power) + 연방 DOE ARDP·Meta offtake 결합.",
+        "nuclear_law_status": "허용. 주정부 적극(석탄→원전 전환 법제·세제).",
+        "state_licensing": "Wyoming PSC + Industrial Siting Council(입지) + 연방 NRC. Natrium 건설허가 취득.",
+        "incentives": "★ 폐석탄 부지 전환 정책·세제, DOE ARDP, Meta 함대 offtake",
+        "confidence": "medium", "sources": ["Wyoming PSC", "TerraPower", "US DOE"]
+      },
+      "strategy_signals": {"smr": "★ Natrium Kemmerer 건설중(Gen-IV FOAK), Meta 최대 8기 함대", "new_build": "석탄 전환형 신규"},
+      "epc_attractiveness": "medium",
+      "epc_rationale": "Natrium FOAK 부지. EPC는 Bechtel 중심이라 하도·기자재. 폐석탄 전환 모델 레퍼런스.",
+      "confidence": "medium", "sources": ["EIA", "NRC", "Wyoming PSC", "TerraPower"]
     }
   ]
 }
