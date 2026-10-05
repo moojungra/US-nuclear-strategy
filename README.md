@@ -19,8 +19,9 @@ us-nuclear-strategy-agent/
 ├─ data/
 │  ├─ strategy_rubric.json    # 전략 평가 루브릭 (6차원 · EPC 우선 가중)
 │  ├─ utilities.json          # 유틸리티(사업자) DB — 선단·시장·전략신호·EPC우선순위
-│  ├─ states.json             # 주 DB — 전력시장 구조·원전용량·정책·EPC매력도
-│  └─ opportunities.json      # 사업기회 DB — 6차원 점수 + sales_note(삼성물산 관점)
+│  ├─ states.json             # 주 DB — 전력시장·법률·인허가(regulatory 블록)·EPC매력도
+│  ├─ opportunities.json      # 사업기회 DB — 6차원 점수 + sales_note(삼성물산 관점)
+│  └─ tariffs.json            # 발전원별 LCOE 비교 + 주별 소매 전기요금(¢/kWh)
 ├─ src/
 │  ├─ scoring.py              # 전략 점수 엔진 (level 1~5 → 가중 0~100, EPC 우선)
 │  ├─ collect.py              # 공개 신호 수집 오케스트레이터 (덮어쓰지 않음·검토 플래그)
@@ -57,6 +58,8 @@ us-nuclear-strategy-agent/
 | **사업기회(Opportunity)** | `opportunities.json` | 무엇을 수주하는가? 신규대형·재가동·SMR 건별 6차원 점수 + 시사점 |
 
 세 축은 `utility_id`·주 코드·`reactor_nohyeong_id`로 상호 연결된다.
+
+각 주(`states.json`)에는 `regulatory` 블록으로 **전력시장(ISO/RTO·소매경쟁)·원가회수(CWIP)·원전 법적지위(모라토리엄)·州 인허가 요건(CPCN)·인센티브**가 들어가며, 상위 `federal_framework`가 연방-주 권한 분담(Atomic Energy Act / NRC 선점)을 정의한다. `tariffs.json`은 **발전원별 LCOE 비교**(Lazard 2025 vs EIA AEO2025)와 **주별 소매 전기요금**을 제공(대시보드 ④ 탭).
 
 ---
 

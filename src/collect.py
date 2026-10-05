@@ -133,19 +133,24 @@ def main(delay: float = 0.8) -> None:
         report.append("")
         print(f"  · UTL {u['id']:<16} 뉴스 {len(items)}건")
 
-    # --- EIA 주별 원자력 발전량 교차검증(키 있을 때만) ---
+    # --- EIA 주별 원자력 발전량 + 소매 전기요금 교차검증/갱신(키 있을 때만) ---
     eia_cross = {}
+    eia_prices = {}
     if eia.available():
-        gen = eia.nuclear_generation_by_state()
         state_ids = {s["id"] for s in states["states"]}
+        gen = eia.nuclear_generation_by_state()
         eia_cross = {k: v for k, v in gen.items() if k in state_ids}
         print(f"  EIA 주별 원자력 발전량 {len(eia_cross)}개 주 교차검증 수신")
+        prices = eia.retail_price_by_state()
+        eia_prices = {k: v for k, v in prices.items() if k in state_ids}
+        print(f"  EIA 주별 소매 전기요금 {len(eia_prices)}개 주 수신")
 
     out = {
         "collected_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "opportunities": collected_opps,
         "utilities": collected_utils,
         "eia_nuclear_generation_by_state": eia_cross,
+        "eia_retail_price_by_state": eia_prices,
         "review_flags": flags,
     }
     (DATA / "collected.json").write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")

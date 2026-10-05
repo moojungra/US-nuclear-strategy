@@ -21,6 +21,8 @@ except Exception:  # pragma: no cover
 
 # 전력 운영 데이터(발전량) — 연료=원자력(NUC), 전 부문(99)
 OPERATIONAL = "https://api.eia.gov/v2/electricity/electric-power-operational-data/data/"
+# 소매 판매·요금(주별·부문별) — price 단위 cents/kWh
+RETAIL = "https://api.eia.gov/v2/electricity/retail-sales/data/"
 
 
 class EiaConnector(SourceConnector):
@@ -75,6 +77,47 @@ class EiaConnector(SourceConnector):
             if loc not in out:
                 out[loc] = {"year": period, "nuclear_generation_thousand_mwh": val,
                             "units": row.get("generation-units", "thousand MWh")}
+        return out
+
+    def retail_price_by_state(self, sectors: tuple[str, ...] = ("RES", "IND"),
+                              timeout: int = 30) -> dict[str, dict[str, Any]]:
+        """주별·부문별 최신 소매 전기요금(¢/kWh)을 {주코드: {residential, industrial, year}} 로 반환.
+
+        sectors: RES(주택)·COM(상업)·IND(산업). 실패 시 빈 dict(베이스라인 유지).
+        """
+        if not self.available():
+            return {}
+        label = {"RES": "residential", "COM": "commercial", "IND": "industrial"}
+        params = {
+            "api_key": self.api_key,
+            "frequency": "annual",
+            "data[0]": "price",
+            "sort[0][column]": "period",
+            "sort[0][direction]": "desc",
+            "length": 5000,
+        }
+        for i, s in enumerate(sectors):
+            params[f"facets[sectorid][{i}]"] = s
+        try:
+            r = requests.get(RETAIL, params=params, timeout=timeout)
+            if r.status_code != 200:
+                return {}
+            rows = r.json().get("response", {}).get("data", [])
+        except Exception:
+            return {}
+
+        out: dict[str, dict[str, Any]] = {}
+        for row in rows:
+            loc = row.get("stateid") or row.get("location")
+            sector = row.get("sectorid")
+            price = row.get("price")
+            period = row.get("period")
+            if not loc or loc in ("US",) or price is None or sector not in label:
+                continue
+            rec = out.setdefault(loc, {"year": period})
+            key = label[sector]
+            if key not in rec:  # 최신 연도 우선
+                rec[key] = round(float(price), 2)
         return out
 
 

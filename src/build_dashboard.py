@@ -25,6 +25,10 @@ def build() -> dict:
     data["states"] = states_doc.get("states", [])
     data["federal_framework"] = states_doc.get("federal_framework")
 
+    tariffs_path = DATA / "tariffs.json"
+    if tariffs_path.exists():
+        data["tariffs"] = json.loads(tariffs_path.read_text(encoding="utf-8"))
+
     # 라이브 수집 신호(collect.py 산출물)를 병합
     collected_path = DATA / "collected.json"
     if collected_path.exists():
@@ -43,6 +47,16 @@ def build() -> dict:
         for s in data["states"]:
             if s["id"] in eia:
                 s["eia"] = eia[s["id"]]
+        # 라이브 소매 전기요금을 tariffs 베이스라인 위에 병합(갱신)
+        live_prices = col.get("eia_retail_price_by_state", {})
+        if live_prices and data.get("tariffs"):
+            srp = data["tariffs"].setdefault("state_retail_prices", {})
+            for st, p in live_prices.items():
+                base = srp.get(st, {})
+                base.update({k: v for k, v in p.items() if v is not None})
+                base["live"] = True
+                srp[st] = base
+            data["tariffs"]["prices_updated_live"] = col.get("collected_at")
     return data
 
 
