@@ -1,8 +1,9 @@
 {
-  "version": "0.1.0",
+  "version": "0.3.0",
   "updated": "2026-10-05",
-  "disclaimer": "미국 원전 사업기회를 공개자료(각사 보도자료, NRC, US DOE, World Nuclear News/NucNet, 주 전원계획)로 2026년 기준 정규화. dimensions는 strategy_rubric.json(v0.1) 기준 성숙도/매력도 1~5 + confidence. 종합점수는 src/scoring.py가 계산. 수치·시점은 변동 가능, sales_note는 삼성물산 EPC수주(1순위)·지분투자(2순위) 관점 해석이며 1차 자료 검증 필요.",
+  "disclaimer": "미국 원전 사업기회를 공개자료(각사 보도자료, NRC, US DOE, World Nuclear News/NucNet, 주 전원계획)로 2026년 기준 정규화. dimensions는 strategy_rubric.json(v0.1) 기준 성숙도/매력도 1~5 + confidence. economics(예상 LCOE·목표 PPA)는 공개 PPA 벤치마크·LCOE 추정 기반 근사이며 다수 PPA가 비공개라 추정 범위다(단위 $/MWh). 종합점수는 src/scoring.py가 계산. sales_note는 삼성물산 EPC수주(1순위)·지분투자(2순위) 관점 해석이며 1차 자료 검증 필요.",
   "dimension_keys": ["epc_accessibility", "deal_certainty", "korea_leverage", "scale", "financing_policy", "execution_risk"],
+  "economics_note": "expected_lcoe=설계원가 추정(참고), target_ppa=사업 성립에 필요한 장기계약가(또는 실제 체결가). 현실 벤치마크: 하이퍼스케일러 원전 PPA $80–130, Microsoft–Crane 실측 $110–115, 도매 $35–55/MWh. 규제주는 PPA 대신 PUC 요금회수(rate-base)가 1차 경로.",
   "type_legend": {
     "new_build_large": "신규 대형원전 건설", "restart": "폐쇄/정지로 재가동", "uprate": "출력증강",
     "smr_new": "신규 SMR 건설", "smr_fleet": "SMR 함대 프로그램", "newbuild_completion": "중단 건설 완공"
@@ -25,6 +26,11 @@
         "scale": {"level": 5, "confidence": "high", "rationale": "AP1000 6기 — 최대 볼륨."},
         "financing_policy": {"level": 5, "confidence": "high", "rationale": "DOE $17.5B 장기자재 대출 약정+규제주 rate-base 유력."},
         "execution_risk": {"level": 4, "confidence": "medium", "rationale": "AP1000 Vogtle 검증 노형이나 공급망 재건·FOAK화 변수."}
+      },
+      "economics": {
+        "expected_lcoe_usd_mwh": {"low": 90, "high": 140, "confidence": "low", "note": "규제주 반복건설(NOAK) 가정 시 하단, FOAK는 상단. EIA 표준화 ~$82 하회가 장기 목표."},
+        "target_ppa_usd_mwh": {"low": 90, "high": 120, "confidence": "low", "note": "규제주 rate-base 회수가 1차 경로(목표 PPA는 보조). 데이터센터 offtake 활용 시 하이퍼스케일러 $80–130 구간."},
+        "benchmark_note": "규제주 산업용 tariff $65–90/MWh. 사업성은 '목표 PPA'보다 PUC 요금회수(CWIP/rate-base) 승인에 달림."
       },
       "samsung_angle": {
         "epc": "★★ 최우선. Phase1 2기 EPC 계약이 진입 관문. 팀코리아(KHNP·현대건설 등) 컨소시엄 내 토목/기전 패키지·모듈제작 포지션 조기 확보가 관건.",
@@ -51,6 +57,11 @@
         "financing_policy": {"level": 4, "confidence": "medium", "rationale": "투자패키지 연계, 미국 내 APR1400 금융구조 설계 필요."},
         "execution_risk": {"level": 5, "confidence": "high", "rationale": "APR1400 바라카 완공·한국 공급망 성숙 — 수행리스크 낮음(단 미국 설계인증 신규)."}
       },
+      "economics": {
+        "expected_lcoe_usd_mwh": {"low": 85, "high": 130, "confidence": "low", "note": "바라카 실적·한국 공급망 성숙으로 대형 중 하단 가능. 미국 현지화·설계인증 비용이 변수."},
+        "target_ppa_usd_mwh": {"low": 85, "high": 115, "confidence": "low", "note": "규제주 요금회수 또는 장기 PPA. 한국 금융(수은·무보) 결합 시 자본비 부담 완화."},
+        "benchmark_note": "하이퍼스케일러 PPA $80–130과 겹침. 한국 EPC·금융 패키지로 target 하단 달성이 경쟁력 포인트."
+      },
       "samsung_angle": {
         "epc": "★★ 한국기업 최우선 참여 대상. 삼성물산 EPC 역량+팀코리아 노형 — 참여 정당성 최상.",
         "investment": "한국 노형 사업이라 지분·EPC 패키지 동반 진입 용이."
@@ -75,6 +86,11 @@
         "scale": {"level": 4, "confidence": "high", "rationale": "AP1000 2기."},
         "financing_policy": {"level": 2, "confidence": "medium", "rationale": "SC CWIP(Base Load Review Act) 2018 폐지로 완공 전 원가회수 장치 부재 — 재원구조 재설계가 선결. 과거 비용초과 트라우마."},
         "execution_risk": {"level": 3, "confidence": "medium", "rationale": "기성 구조물 상태·설계 재검증 리스크."}
+      },
+      "economics": {
+        "expected_lcoe_usd_mwh": {"low": 90, "high": 145, "confidence": "low", "note": "기성 구조물 활용 시 자본비 일부 절감 가능하나 상태 불확실 — 완공형 특유 변동성."},
+        "target_ppa_usd_mwh": {"low": 95, "high": 120, "confidence": "low", "note": "CWIP 폐지로 요금 사전회수 불가 → 장기 PPA/데이터센터 offtake 의존도↑."},
+        "benchmark_note": "SC 산업용 tariff $68/MWh(저가) → 요금저항 큼. offtake(데이터센터) 확보가 사업 성립 전제."
       },
       "samsung_angle": {
         "epc": "중단부지 완공형 EPC — 삼성물산 공기/비용관리 역량 차별화 어필처.",
@@ -101,6 +117,11 @@
         "financing_policy": {"level": 4, "confidence": "high", "rationale": "규제시장 rate-base + NC CWIP 확대 입법(2025)으로 완공 전 금융비용 회수 가능 — 재무회수 유리."},
         "execution_risk": {"level": 4, "confidence": "medium", "rationale": "노형 미확정."}
       },
+      "economics": {
+        "expected_lcoe_usd_mwh": {"low": 90, "high": 135, "confidence": "low", "note": "AP1000 반복건설 가정. NC CWIP 확대로 자본비 회수 유리 → 실효원가 하단 가능."},
+        "target_ppa_usd_mwh": {"low": 90, "high": 115, "confidence": "low", "note": "규제 요금회수가 1차. CWIP 확대로 '목표 PPA' 부담 완화."},
+        "benchmark_note": "NC 산업용 tariff $72/MWh. 데이터센터·첨단제조 수요로 추가부하 흡수 여력 큼."
+      },
       "samsung_angle": {
         "epc": "규제시장+수요폭증. AP1000 채택 시 프레임워크 공급망과 연동한 EPC 진입.",
         "investment": "규제 유틸리티라 지분보다 EPC·공급망 패키지 중심."
@@ -123,8 +144,13 @@
         "deal_certainty": {"level": 2, "confidence": "medium", "rationale": "정책 지시 단계."},
         "korea_leverage": {"level": 3, "confidence": "low", "rationale": "노형·공급망 미정, 프레임워크 연계 여지."},
         "scale": {"level": 4, "confidence": "medium", "rationale": "1GW+."},
-        "financing_policy": {"level": 3, "confidence": "medium", "rationale": "탈규제이나 주 공적지원 설계 가능."},
+        "financing_policy": {"level": 3, "confidence": "medium", "rationale": "탈규제이나 주 공적지원(NYPA) 설계 가능."},
         "execution_risk": {"level": 3, "confidence": "low", "rationale": "노형·부지 미정."}
+      },
+      "economics": {
+        "expected_lcoe_usd_mwh": {"low": 100, "high": 150, "confidence": "low", "note": "노형 미정·고비용 지역. 공적 재무(NYPA) 결합 시 실효부담 완화."},
+        "target_ppa_usd_mwh": {"low": 100, "high": 130, "confidence": "low", "note": "탈규제라 PPA/공적계약 필수. 고요금주라 수용 여력은 상대적 양호."},
+        "benchmark_note": "NY 산업용 tariff $88/MWh(전국평균 상회) → 신규 무탄소 상대 경쟁력 양호. 공적 재무지원이 관건."
       },
       "samsung_angle": {
         "epc": "공적 주도 신규 — 초기 노형/EPC 구조 설계 참여 기회.",
@@ -151,6 +177,11 @@
         "financing_policy": {"level": 5, "confidence": "high", "rationale": "DOE $400M+TVA 자체재원."},
         "execution_risk": {"level": 3, "confidence": "medium", "rationale": "BWRX-300 FOAK SMR."}
       },
+      "economics": {
+        "expected_lcoe_usd_mwh": {"low": 100, "high": 160, "confidence": "low", "note": "FOAK SMR 프리미엄. 후속호기(최대 4기) 반복으로 하락 기대."},
+        "target_ppa_usd_mwh": {"low": 100, "high": 140, "confidence": "low", "note": "TVA 연방기관 자체재원·요금 기반이라 민간 PPA보단 TVA 전력원가. 하이퍼스케일러 offtake 결합 가능."},
+        "benchmark_note": "TN 산업용 tariff $65/MWh(저가) → FOAK 원가와 격차 크나, DOE지원·FOAK 레퍼런스 가치로 상쇄."
+      },
       "samsung_angle": {
         "epc": "★★ SMR EPC 최우선 실체 타깃. FOAK 건설의 토목·건설 패키지, 모듈제작 참여 조기 접촉.",
         "investment": "연방기관이라 지분 불가 — EPC·건설 하도급·기자재가 유일 경로."
@@ -175,6 +206,11 @@
         "scale": {"level": 5, "confidence": "high", "rationale": "6GW — 최대 볼륨."},
         "financing_policy": {"level": 3, "confidence": "low", "rationale": "재무구조 미확정, NuScale FOAK 비용 이력."},
         "execution_risk": {"level": 2, "confidence": "medium", "rationale": "NuScale 과거 CFPP 취소·비용초과 전례."}
+      },
+      "economics": {
+        "expected_lcoe_usd_mwh": {"low": 100, "high": 165, "confidence": "low", "note": "NuScale 과거 추정 상향(CFPP ~$89→취소) 이력 — FOAK 비용 리스크 큼. 함대 반복이 전제."},
+        "target_ppa_usd_mwh": {"low": 100, "high": 140, "confidence": "low", "note": "구속계약 전환 시 하이퍼스케일러 PPA 구간 겨냥. 현재 비구속."},
+        "benchmark_note": "TN 산업용 $65. 6GW 볼륨 매력 크나 비용·확실성이 관건 — target 달성 입증 전 장기 추적."
       },
       "samsung_angle": {
         "epc": "볼륨 최대이나 초기·비구속. 다수호기 건설 EPC 기회 장기 추적.",
@@ -201,6 +237,11 @@
         "financing_policy": {"level": 4, "confidence": "medium", "rationale": "DOE ARDP+Dow 자체."},
         "execution_risk": {"level": 2, "confidence": "medium", "rationale": "HALEU TRISO 연료 공급 제약·FOAK HTGR."}
       },
+      "economics": {
+        "expected_lcoe_usd_mwh": {"low": 110, "high": 170, "confidence": "low", "note": "HTGR FOAK+공정열 복합. 전력 단독 LCOE는 상단이나 공정열(증기) 가치가 경제성 보완."},
+        "target_ppa_usd_mwh": {"low": 100, "high": 140, "confidence": "low", "note": "Dow 자체 산업 offtake(전기+증기)가 PPA 역할. 외부 전력판매는 보조."},
+        "benchmark_note": "TX 산업용 tariff $65. 공정열 대체(가스보일러) 가치를 포함해야 공정 — 전력 LCOE 단독 비교는 과소평가."
+      },
       "samsung_angle": {
         "epc": "산업용 SMR 건설·모듈제작 틈새. 공정열 모델의 레퍼런스 가치.",
         "investment": "X-energy 공급망·프로젝트 참여 협상 여지."
@@ -225,6 +266,11 @@
         "scale": {"level": 4, "confidence": "medium", "rationale": "최대 12모듈."},
         "financing_policy": {"level": 3, "confidence": "medium", "rationale": "Amazon 투자·DOE 연계."},
         "execution_risk": {"level": 2, "confidence": "medium", "rationale": "HALEU·FOAK HTGR."}
+      },
+      "economics": {
+        "expected_lcoe_usd_mwh": {"low": 100, "high": 160, "confidence": "low", "note": "Xe-100 함대 반복으로 Seadrift 대비 하락 기대. HALEU 공급이 변수."},
+        "target_ppa_usd_mwh": {"low": 90, "high": 130, "confidence": "low", "note": "Amazon 등 하이퍼스케일러 offtake 결합 시 PPA 구간 달성 목표."},
+        "benchmark_note": "WA 산업용 tariff $55/MWh(전국 최저, 수력) → 가격저항 매우 큼. 하이퍼스케일러 무탄소 프리미엄 offtake가 사실상 전제."
       },
       "samsung_angle": {
         "epc": "함대형 건설 — 모듈·건설 하도급 장기 기회.",
@@ -251,6 +297,11 @@
         "financing_policy": {"level": 4, "confidence": "medium", "rationale": "DOE ARDP+Meta offtake."},
         "execution_risk": {"level": 2, "confidence": "medium", "rationale": "HALEU 공급 차질·FOAK SFR."}
       },
+      "economics": {
+        "expected_lcoe_usd_mwh": {"low": 90, "high": 140, "confidence": "low", "note": "축열(500MWe 피크) 결합으로 피크가치 가산 가능. FOAK SFR·HALEU가 상단 요인."},
+        "target_ppa_usd_mwh": {"low": 90, "high": 130, "confidence": "low", "note": "Meta 함대 offtake가 사실상 PPA. 하이퍼스케일러 구간."},
+        "benchmark_note": "WY 산업용 tariff $75. 폐석탄 부지(송전·부지 재활용)로 자본비 절감 — Meta offtake가 사업 성립 기반."
+      },
       "samsung_angle": {
         "epc": "Bechtel 기지정 EPC — 대형 하도급 패키지·기자재 중심 접근.",
         "investment": "Meta 함대 확장 구조에 투자·공급 연계 탐색."
@@ -276,6 +327,11 @@
         "financing_policy": {"level": 4, "confidence": "medium", "rationale": "DOE $400M+재가동 연계."},
         "execution_risk": {"level": 3, "confidence": "medium", "rationale": "SMR-300 FOAK이나 표준 PWR 기반."}
       },
+      "economics": {
+        "expected_lcoe_usd_mwh": {"low": 95, "high": 150, "confidence": "low", "note": "표준 PWR 기반이라 비LWR SMR보다 리스크 낮으나 FOAK 프리미엄. 재가동 부지 인프라 활용."},
+        "target_ppa_usd_mwh": {"low": 95, "high": 130, "confidence": "low", "note": "MI 규제·데이터센터 PPA 결합. 하이퍼스케일러 구간 겨냥."},
+        "benchmark_note": "MI 산업용 tariff $85/MWh(전국평균 근접) → 신규 수용 여력 상대적 양호. DOE지원으로 자본비 완화."
+      },
       "samsung_angle": {
         "epc": "Holtec-한국 EPC 협력 틀 존재(현대건설). 삼성물산 참여 공간·역할 분담 탐색 필요.",
         "investment": "민간 프로젝트 — 지분·공급망 협상 여지."
@@ -298,8 +354,13 @@
         "deal_certainty": {"level": 2, "confidence": "medium", "rationale": "타당성·부지 단계."},
         "korea_leverage": {"level": 3, "confidence": "low", "rationale": "노형 미정 — 한국 노형/공급망 제안 여지."},
         "scale": {"level": 3, "confidence": "low", "rationale": "초기 1기급."},
-        "financing_policy": {"level": 4, "confidence": "medium", "rationale": "규제+데이터센터 수요 뒷받침."},
+        "financing_policy": {"level": 4, "confidence": "medium", "rationale": "규제+데이터센터 수요 뒷받침+VA SMR 개발비 회수 법제."},
         "execution_risk": {"level": 3, "confidence": "low", "rationale": "노형 미정."}
+      },
+      "economics": {
+        "expected_lcoe_usd_mwh": {"low": 100, "high": 155, "confidence": "low", "note": "노형 미정 — SMR 일반 범위. VA SMR 개발비 사전회수 법제로 초기비용 부담 완화."},
+        "target_ppa_usd_mwh": {"low": 95, "high": 130, "confidence": "low", "note": "데이터센터 밀집지라 하이퍼스케일러 offtake 확보 용이 — target 달성 현실성 상대적 높음."},
+        "benchmark_note": "VA 산업용 tariff $80. 데이터센터('Alley') 무탄소 24/7 수요가 사업성의 핵심 동력."
       },
       "samsung_angle": {
         "epc": "데이터센터 수요 1위 지역 SMR. 노형 선정 전 조기 접촉으로 EPC·노형 동반 제안.",
@@ -326,6 +387,11 @@
         "financing_policy": {"level": 5, "confidence": "high", "rationale": "DOE 대출보증+미시간주 지원."},
         "execution_risk": {"level": 4, "confidence": "medium", "rationale": "기존 검증로 복구."}
       },
+      "economics": {
+        "expected_lcoe_usd_mwh": {"low": 40, "high": 75, "confidence": "medium", "note": "재가동(기존로)이라 신규 대비 저원가. 복구 capex 상각 수준."},
+        "target_ppa_usd_mwh": {"low": 60, "high": 90, "confidence": "low", "note": "유틸리티/그리드 판매 기준. Crane 사례($110+)처럼 데이터센터 offtake 전환 시 상향 여지."},
+        "benchmark_note": "저원가 재가동 — 도매가($35–55) 이상 안정 수익. 삼성물산 직접 수주는 작으나 SMR-300 연계가 실익."
+      },
       "samsung_angle": {
         "epc": "신규 EPC 아님. 기자재·개조·향후 SMR-300 연계가 실익.",
         "investment": "Holtec SMR-300과 묶은 패키지 접근."
@@ -351,12 +417,17 @@
         "financing_policy": {"level": 5, "confidence": "high", "rationale": "Microsoft PPA+DOE 대출."},
         "execution_risk": {"level": 5, "confidence": "high", "rationale": "검증로 재가동."}
       },
+      "economics": {
+        "expected_lcoe_usd_mwh": {"low": 40, "high": 75, "confidence": "medium", "note": "재가동 going-forward 원가. 복구 capex ~$1.6B 상각 포함해도 저원가."},
+        "target_ppa_usd_mwh": {"low": 110, "high": 115, "confidence": "high", "note": "★ 실제 체결 — Microsoft 20년 $110–115/MWh. 기존로 재가동이 $110+ 받는 '24/7 무탄소 프리미엄'의 실측 레퍼런스."},
+        "benchmark_note": "원가(~$40–75) 대비 계약가($110–115) 격차 = 하이퍼스케일러 프리미엄. 모든 신규 사업의 목표 PPA 설정 근거."
+      },
       "samsung_angle": {
         "epc": "삼성물산 EPC 여지 거의 없음.",
         "investment": "해당 없음."
       },
-      "sales_note": "데이터센터-원전 PPA 모델의 대표 레퍼런스(시장 시그널). 직접 수주기회는 낮으나 수요 트렌드 지표로 활용.",
-      "sources": ["Constellation", "Microsoft", "US DOE", "FERC", "ANS"]
+      "sales_note": "데이터센터-원전 PPA 모델의 대표 레퍼런스(시장 시그널). 직접 수주기회는 낮으나 목표 PPA 산정의 벤치마크로 활용.",
+      "sources": ["Constellation", "Microsoft", "US DOE", "FERC", "ANS", "Jefferies"]
     },
     {
       "id": "duane-arnold-restart",
@@ -375,6 +446,11 @@
         "scale": {"level": 2, "confidence": "high", "rationale": "단일 615MW."},
         "financing_policy": {"level": 5, "confidence": "high", "rationale": "DOE $1.9B 대출."},
         "execution_risk": {"level": 4, "confidence": "medium", "rationale": "검증로 복구."}
+      },
+      "economics": {
+        "expected_lcoe_usd_mwh": {"low": 45, "high": 80, "confidence": "low", "note": "재가동 원가. DOE $1.9B 대출로 자본비 완화."},
+        "target_ppa_usd_mwh": {"low": 70, "high": 100, "confidence": "low", "note": "데이터센터·산업 offtake 추진 시 Crane형 프리미엄 가능(추정)."},
+        "benchmark_note": "IA 산업용 tariff $70. 재가동 저원가 — offtake 확보 시 수익성 양호. 직접 수주기회는 낮음."
       },
       "samsung_angle": {
         "epc": "개조 중심, 기자재 틈새만.",

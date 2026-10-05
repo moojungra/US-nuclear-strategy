@@ -256,6 +256,12 @@ function renderOpps(){
         <div class="dn"><span>${RUBRIC_L[k]}</span><span>${e.level}/5 <span class="conf ${e.confidence}">${({high:'高',medium:'中',low:'低'})[e.confidence]||''}</span></span></div>
         <div class="bar"><i style="width:${L2S[e.level]}%"></i></div></div>`;}).join('');
     const sa=o.samsung_angle||{};
+    const ec=o.economics;
+    const ppaConf=ec&&ec.target_ppa_usd_mwh.confidence==='high';
+    const eco=ec?`<div style="display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 2px">
+      <span class="chip" style="background:#10263d;color:#79c0ff;border-color:#1f4a73">예상 LCOE $${ec.expected_lcoe_usd_mwh.low}–${ec.expected_lcoe_usd_mwh.high}/MWh</span>
+      <span class="chip" style="background:#0c1a10;color:#56d364;border-color:#1f5130">목표 PPA $${ec.target_ppa_usd_mwh.low}–${ec.target_ppa_usd_mwh.high}/MWh${ppaConf?' · 실제체결':''}</span>
+      </div>${ec.benchmark_note?`<div class="small" style="color:#9da7b3;margin-bottom:2px">${ec.benchmark_note}</div>`:''}`:'';
     const live=o.live&&o.live.news&&o.live.news.length?`<details class="live"><summary>라이브 신호 ${o.live.status_hint?'· '+o.live.status_hint.label:''}</summary>`+
       o.live.news.map(n=>`<div class="news">${n.date||''} · <a href="${n.url}" target="_blank">${n.title}</a></div>`).join('')+`</details>`:'';
     return `<div class="card">
@@ -270,6 +276,7 @@ function renderOpps(){
       </div><div class="score"><div class="big">${ev.overall_score}</div><div class="lab">전략점수</div>
         <div class="lab" style="margin-top:3px">신뢰 ${({high:'高',medium:'中',low:'低'})[ev.data_confidence]}</div></div></div>
       <div class="dims">${dims}</div>
+      ${eco}
       ${o.sales_note?`<div class="note"><span class="lab">영업 시사점</span>${o.sales_note}</div>`:''}
       ${sa.epc?`<div class="angle"><b>EPC:</b> ${sa.epc}</div>`:''}
       ${sa.investment?`<div class="angle"><b>투자:</b> ${sa.investment}</div>`:''}
@@ -351,59 +358,80 @@ function renderStates(){
 }
 ['sf-mkt','sf-att','sf-q'].forEach(id=>document.getElementById(id).addEventListener('input',renderStates));
 
-// ---- ④ tariff / LCOE ----
+// ---- ④ tariff / PPA / LCOE ----
+function rangeBars(items,max,colorFn){
+  const esc=s=>(s||'').replace(/"/g,'&quot;');
+  return items.map(s=>{
+    const left=s.low/max*100, w=Math.max((s.high-s.low)/max*100,1.2);
+    const lblLeft=Math.min(left+w,78);
+    const hl=s.highlight||s.type==='확정';
+    return `<div class="lrow" title="${esc(s.note||s.basis)}">
+      <div class="lname"${hl?' style="color:#f0b429;font-weight:700"':''}>${s.label}${hl?' ★':''}</div>
+      <div class="ltrack"><span class="lbar" style="left:${left}%;width:${w}%;background:${colorFn(s)}"></span>
+        ${s.eia_noak!=null?`<i class="noak" style="left:${s.eia_noak/max*100}%" title="EIA 표준화 ≈ $${s.eia_noak}"></i>`:''}
+        <span class="lval" style="left:${lblLeft}%">$${s.low}–${s.high}</span></div></div>`;
+  }).join('');
+}
 function renderTariff(){
   const el=document.getElementById('view-tariff');
   if(!TARIFFS){el.innerHTML='<p class="small">단가 데이터(tariffs.json)가 아직 없습니다 — Actions 빌드 후 표시됩니다.</p>';return;}
-  const lc=(TARIFFS.lcoe_by_source||[]).slice().sort((a,b)=>a.low-b.low);
-  const MAX=240;
-  const catColor={'원자력':'#f0b429','화석':'#f0a0a0','재생':'#56d364','저장':'#9da7b3'};
-  const esc=s=>(s||'').replace(/"/g,'&quot;');
-  const bars=lc.map(s=>{
-    const left=s.low/MAX*100, w=Math.max((s.high-s.low)/MAX*100,1.2);
-    const col=catColor[s.category]||'var(--accent)';
-    const noak=(s.eia_noak!=null)?`<i class="noak" style="left:${s.eia_noak/MAX*100}%" title="EIA nth-of-a-kind ≈ $${s.eia_noak}"></i>`:'';
-    const lblLeft=Math.min(left+w,80);
-    return `<div class="lrow" title="${esc(s.basis)}&#10;${esc(s.note)}">
-      <div class="lname"${s.highlight?' style="color:#f0b429;font-weight:700"':''}>${s.label}${s.highlight?' ★':''}</div>
-      <div class="ltrack"><span class="lbar" style="left:${left}%;width:${w}%;background:${col}"></span>${noak}
-        <span class="lval" style="left:${lblLeft}%">$${s.low}–${s.high}</span></div></div>`;
-  }).join('');
-  const ticks=[0,60,120,180,240].map(t=>`<span style="left:${t/MAX*100}%">$${t}</span>`).join('');
-  const legend=Object.entries(catColor).map(([c,col])=>`<span><i style="background:${col}"></i>${c}</span>`).join('')
-    +'<span><i style="background:#fff"></i>EIA nth-of-a-kind(표준화)</span>';
-  const read=TARIFFS.lcoe_strategic_read||{};
-  const readHtml=read.points?`<div class="note" style="margin-top:0"><span class="lab">${read.title||'전략 해설'}</span>
-    <ul style="margin:6px 0 0;padding-left:18px">${read.points.map(p=>`<li style="margin:3px 0">${p}</li>`).join('')}</ul></div>`:'';
-
-  // 주별 소매 전기요금 랭킹(산업용 오름차순)
-  const srp=TARIFFS.state_retail_prices||{}; const nat=srp._national||{};
   const name=id=>{const s=STATES.find(x=>x.id===id);return s?s.name:id;};
+
+  // A. 시장 가격 벤치마크 (PPA) — 현실 기준
+  const ppa=(TARIFFS.ppa_benchmarks||[]).slice().sort((a,b)=>a.low-b.low);
+  const PMAX=160;
+  const ppaColor=s=>s.type==='확정'?'#f0b429':(/하이퍼스케일러|데이터센터/.test(s.label)?'#56d364':'#4aa8ff');
+  const ppaBars=rangeBars(ppa,PMAX,ppaColor);
+  const pticks=[0,40,80,120,160].map(t=>`<span style="left:${t/PMAX*100}%">$${t}</span>`).join('');
+
+  // B. 주별 소매 전기요금(tariff) — ¢/kWh & $/MWh
+  const srp=TARIFFS.state_retail_prices||{}; const nat=srp._national||{};
   const rows=Object.entries(srp).filter(([k])=>k!=='_national')
     .map(([k,v])=>({k,ind:v.industrial,res:v.residential,live:v.live}))
     .sort((a,b)=>(a.ind??99)-(b.ind??99));
   const maxInd=Math.max(...rows.map(r=>r.ind||0),1);
   const priceRows=rows.map(r=>`<tr>
     <td><b>${name(r.k)}</b> <span class="small">${r.k}</span></td>
-    <td>${r.ind!=null?`<span class="pbar" style="width:${(r.ind/maxInd*120)}px"></span>${r.ind.toFixed(1)}`:'-'}</td>
-    <td class="small">${r.res!=null?r.res.toFixed(1):'-'}</td>
-    <td class="small">${r.ind!=null?(r.ind<nat.industrial?'<span style="color:#56d364">전국평균 이하(경쟁 기저수요 유리)</span>':'<span style="color:#e3b341">전국평균 이상(신규 무탄소 상대우위)</span>'):''}${r.live?' · <span style="color:#79c0ff">live</span>':''}</td></tr>`).join('');
+    <td>${r.ind!=null?`<span class="pbar" style="width:${(r.ind/maxInd*110)}px"></span>${r.ind.toFixed(1)}¢ <span class="small">($${Math.round(r.ind*10)})</span>`:'-'}</td>
+    <td class="small">${r.res!=null?r.res.toFixed(1)+'¢':'-'}</td>
+    <td class="small">${r.ind!=null?(r.ind<nat.industrial?'<span style="color:#56d364">평균 이하 — 산업유치 유리/요금저항↑</span>':'<span style="color:#e3b341">평균 이상 — 신규 무탄소 상대우위</span>'):''}${r.live?' · <span style="color:#79c0ff">live</span>':''}</td></tr>`).join('');
+
+  // C. 전략 해설
+  const read=TARIFFS.strategic_read||{};
+  const readHtml=read.points?`<div class="note" style="margin-top:0"><span class="lab">${read.title||'전략 해설'}</span>
+    <ul style="margin:6px 0 0;padding-left:18px">${read.points.map(p=>`<li style="margin:3px 0">${p}</li>`).join('')}</ul></div>`:'';
+
+  // D. 발전원별 LCOE (참고, 접이식)
+  const lc=(TARIFFS.lcoe_by_source||[]).slice().sort((a,b)=>a.low-b.low);
+  const LMAX=240;
+  const catColor={'원자력':'#f0b429','화석':'#f0a0a0','재생':'#56d364','저장':'#9da7b3'};
+  const lcoeBars=rangeBars(lc,LMAX,s=>catColor[s.category]||'#4aa8ff');
+  const lticks=[0,60,120,180,240].map(t=>`<span style="left:${t/LMAX*100}%">$${t}</span>`).join('');
+  const lleg=Object.entries(catColor).map(([c,col])=>`<span><i style="background:${col}"></i>${c}</span>`).join('')
+    +'<span><i style="background:#fff"></i>EIA 표준화</span>';
 
   el.innerHTML=`
     <div class="disc">${TARIFFS.disclaimer||''}</div>
     <div class="lcoe">
-      <div style="font-weight:700;margin-bottom:4px">발전원별 균등화발전원가(LCOE) 비교 — ${TARIFFS.lcoe_unit||'USD/MWh'}</div>
-      <div class="small" style="margin-bottom:10px">막대=저~고 범위(보조금 미반영). ★=원자력. 흰 선=EIA 표준화(nth-of-a-kind) 추정. 행에 마우스를 올리면 근거.</div>
-      ${bars}
-      <div class="axis">${ticks}</div>
-      <div class="catleg">${legend}</div>
+      <div style="font-weight:700;margin-bottom:4px">① 시장 가격 벤치마크 — 실제 PPA·거래가 ($/MWh) <span class="small" style="font-weight:400">※ 현실 기준</span></div>
+      <div class="small" style="margin-bottom:10px">신규 원전·SMR이 겨냥할 '목표 PPA'의 기준. ★=하이퍼스케일러 24/7 무탄소 또는 실제 체결. 행에 마우스를 올리면 설명.</div>
+      ${ppaBars}
+      <div class="axis">${pticks}</div>
+      <div class="catleg"><span><i style="background:#f0b429"></i>실제 체결</span><span><i style="background:#56d364"></i>데이터센터·하이퍼스케일러</span><span><i style="background:#4aa8ff"></i>도매·일반</span></div>
+    </div>
+    <div class="card">
+      <div style="font-weight:700;margin-bottom:2px">② 주별 소매 전기요금 (tariff) — 규제시장 회수·대체 기준</div>
+      <div class="small" style="margin-bottom:8px">산업용 오름차순 (¢/kWh, 괄호=$/MWh). 전국평균 산업 ${nat.industrial??'-'}¢ / 주택 ${nat.residential??'-'}¢. 규제주는 이 tariff 기반으로 PUC가 신규 원전 원가를 회수.${TARIFFS.prices_updated_live?` · 라이브 ${String(TARIFFS.prices_updated_live).slice(0,10)}`:''}</div>
+      <table><thead><tr><th>주</th><th>산업용</th><th>주택용</th><th>시사점</th></tr></thead><tbody>${priceRows}</tbody></table>
     </div>
     ${readHtml}
-    <div class="card">
-      <div style="font-weight:700;margin-bottom:2px">주별 소매 전기요금 (¢/kWh, EIA 2025 근사)</div>
-      <div class="small" style="margin-bottom:8px">산업용 오름차순. 전국평균 산업 ${nat.industrial??'-'} / 주택 ${nat.residential??'-'}. 산업용 요금이 낮을수록 기저 산업·데이터센터 유치 경쟁력↑, 높을수록 신규 무탄소 기저전원의 상대 경쟁력↑.${TARIFFS.prices_updated_live?` · 라이브 갱신 ${String(TARIFFS.prices_updated_live).slice(0,10)}`:''}</div>
-      <table><thead><tr><th>주</th><th>산업용(¢/kWh)</th><th>주택용</th><th>시사점</th></tr></thead><tbody>${priceRows}</tbody></table>
-    </div>`;
+    <details class="lcoe" style="margin-top:4px">
+      <summary style="cursor:pointer;font-weight:700;color:#9da7b3">③ 발전원별 LCOE (설계원가 참고 — 펼치기) <span class="small" style="font-weight:400">※ 시장 거래가 아님</span></summary>
+      <div class="small" style="margin:8px 0 10px;color:#d7b663">${TARIFFS.lcoe_reference_note||''}</div>
+      ${lcoeBars}
+      <div class="axis">${lticks}</div>
+      <div class="catleg">${lleg}</div>
+    </details>`;
 }
 
 // ---- method ----
