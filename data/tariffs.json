@@ -1,6 +1,6 @@
 {
-  "version": "0.2.0",
-  "updated": "2026-10-05",
+  "version": "0.2.1",
+  "updated": "2026-10-17",
   "disclaimer": "미국 원전 사업성 판단의 '현실 벤치마크'는 LCOE(설계원가 추정)가 아니라 ①주별 소매 전기요금(tariff) ②실제 체결 PPA 단가다. 이 파일은 tariff·PPA를 1차 기준으로 제시하고, 발전원별 LCOE(Lazard/EIA)는 '설계원가 참고'로 병기한다. 단위 $/MWh(=¢/kWh×10). 수치는 공개 보도·기관 추정 근사이며 PPA는 상당수 비공개라 추정 범위다. 판단은 사람이 한다.",
   "unit_note": "1 ¢/kWh = $10/MWh. 예: 산업용 7¢/kWh = $70/MWh.",
   "benchmark_legend": {
@@ -13,7 +13,7 @@
      "note": "구 TMI-1 재가동 전량 20년, 에너지+용량+속성 일괄. 재가동(기존로)인데도 $110+ — 24/7 무탄소 프리미엄의 실측치.",
      "confidence": "high", "source_ref": ["Jefferies 추정", "DataCenterDynamics", "Utility Dive"]},
     {"id": "hyperscaler-nuclear", "label": "하이퍼스케일러 원전 PPA (24/7 무탄소)", "low": 80, "high": 130, "type": "시장",
-     "note": "데이터센터용 원전 장기 PPA 거래범위. 신규 원전·SMR이 겨냥하는 핵심 수요·가격대.",
+     "note": "데이터센터용 원전 장기 PPA 거래범위. 신규 원전·SMR이 겨냥하는 핵심 수요·가격대. 데이터센터-SMR 조건부 계약은 25GW(2024말)→45GW(2026)로 급증.",
      "confidence": "high", "source_ref": ["McKinsey", "업계 보도 종합"]},
     {"id": "datacenter-firm", "label": "데이터센터 무탄소 firm PPA (전원 무관)", "low": 80, "high": 120, "type": "시장",
      "note": "24/7 무탄소 firm 전력 프리미엄. 일반 기업 PPA 대비 2배.",

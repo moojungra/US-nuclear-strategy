@@ -1,7 +1,7 @@
 {
-  "version": "0.3.0",
-  "updated": "2026-10-05",
-  "disclaimer": "미국 원전 사업기회를 공개자료(각사 보도자료, NRC, US DOE, World Nuclear News/NucNet, 주 전원계획)로 2026년 기준 정규화. dimensions는 strategy_rubric.json(v0.1) 기준 성숙도/매력도 1~5 + confidence. economics(예상 LCOE·목표 PPA)는 공개 PPA 벤치마크·LCOE 추정 기반 근사이며 다수 PPA가 비공개라 추정 범위다(단위 $/MWh). 종합점수는 src/scoring.py가 계산. sales_note는 삼성물산 EPC수주(1순위)·지분투자(2순위) 관점 해석이며 1차 자료 검증 필요.",
+  "version": "0.3.1",
+  "updated": "2026-10-17",
+  "disclaimer": "미국 원전 사업기회를 공개자료(각사 보도자료, NRC, US DOE, World Nuclear News/NucNet, 주 전원계획)로 2026년 10월 기준 정규화. dimensions는 strategy_rubric.json(v0.1) 기준 성숙도/매력도 1~5 + confidence. economics(예상 LCOE·목표 PPA)는 공개 PPA 벤치마크·LCOE 추정 기반 근사이며 다수 PPA가 비공개라 추정 범위다(단위 $/MWh). 종합점수는 src/scoring.py가 계산. sales_note는 삼성물산 EPC수주(1순위)·지분투자(2순위) 관점 해석이며 1차 자료 검증 필요.",
   "dimension_keys": ["epc_accessibility", "deal_certainty", "korea_leverage", "scale", "financing_policy", "execution_risk"],
   "economics_note": "expected_lcoe=설계원가 추정(참고), target_ppa=사업 성립에 필요한 장기계약가(또는 실제 체결가). 현실 벤치마크: 하이퍼스케일러 원전 PPA $80–130, Microsoft–Crane 실측 $110–115, 도매 $35–55/MWh. 규제주는 PPA 대신 PUC 요금회수(rate-base)가 1차 경로.",
   "type_legend": {
@@ -13,11 +13,11 @@
       "id": "framework-ap1000-6",
       "title": "미-한 프레임워크 AP1000 6기 (국가 프로그램)",
       "type": "new_build_large",
-      "utility_id": null, "state": "TBD(4개주 거론)", "site": "미정(규제주 유력)",
+      "utility_id": null, "state": "TBD(연방부지·TX Fermi America 등 거론)", "site": "미정 — 연방부지 유력, Fermi America(TX, 현대건설 기본설계 완료) 후보",
       "technology": "AP1000", "vendor": "Westinghouse", "reactor_nohyeong_id": null,
       "capacity_mwe": 6600,
-      "status": "프레임워크 확정(2026.9.30)·부지/사업자 선정 전",
-      "timeline": "Phase1: AP1000 2기 EPC 계약 → Phase2: AP1000 2기+APR1400 2기 → Phase3: AP1000 2기. 트럼프 '2030년까지 대형 10기 착공' 목표 연계",
+      "status": "프레임워크 확정(2026.10.1, $120B=건설 $100B+예비 $20B)·개별 프로젝트(부지/발주처/EPC) 미발표. 부지는 연방부지 유력(Brookfield: 3개 연방부지 쌍둥이 언급). 현대건설이 Fermi America(TX) AP1000 4기 기본설계 완료(기본설계≠EPC 주계약).",
+      "timeline": "Phase1: AP1000 2기 EPC 계약 → Phase2: AP1000 2기+APR1400 2기 → Phase3: AP1000 2기. 개별 프로젝트는 ~2028 구체화, 트럼프 '2030년까지 대형 10기 착공' 목표 연계",
       "cod_target": "2030년대",
       "dimensions": {
         "epc_accessibility": {"level": 5, "confidence": "high", "rationale": "Phase1이 '2기 AP1000 EPC 계약'으로 명시, 한국기업 EPC 우선참여 원칙 합의."},
@@ -36,7 +36,7 @@
         "epc": "★★ 최우선. Phase1 2기 EPC 계약이 진입 관문. 팀코리아(KHNP·현대건설 등) 컨소시엄 내 토목/기전 패키지·모듈제작 포지션 조기 확보가 관건.",
         "investment": "DOE 대출·투자패키지 구조에 지분참여로 EPC 사업권 연동 설계 가능. 대미투자 명분과 직결."
       },
-      "sales_note": "삼성물산 미국 원전전략의 중심축. 부지·발주처 선정(규제주 4곳) 추적하며 Westinghouse·팀코리아 양방향으로 EPC 컨소시엄 포지셔닝. 지분투자는 EPC 사업권 확보 레버리지로 설계.",
+      "sales_note": "삼성물산 미국 원전전략의 중심축. ★주의: 현대건설이 Fermi America(TX) AP1000 4기 기본설계를 선점 — 경쟁사 선행. 삼성물산은 미지정 연방부지·후속호기(Phase2·3)나 모듈제작·기전 패키지로 차별적 진입로 설계 필요. Westinghouse·팀코리아 양방향 포지셔닝, 지분투자는 EPC 사업권 레버리지로.",
       "sources": ["World Nuclear News", "NucNet", "US DOC", "MOTIE", "Seoul Economic Daily"]
     },
     {
@@ -46,12 +46,12 @@
       "utility_id": null, "state": "TBD", "site": "미정",
       "technology": "APR1400", "vendor": "KHNP (팀코리아)", "reactor_nohyeong_id": null,
       "capacity_mwe": 2800,
-      "status": "프레임워크 Phase2 포함, 부지/사업자 선정 전",
-      "timeline": "Phase2(AP1000 2기와 동시)",
+      "status": "프레임워크 Phase2 포함, 부지/사업자 선정 전. ★제약: APR1400은 WH와의 2025.1 IP 합의 일회성 waiver 필요, WH가 V.C. Summer AP1000 실증 입증 전엔 APR1400 신규 확약 지연 가능. 수출 2028 가시화·기당 ~$2B 추정.",
+      "timeline": "Phase2(AP1000 2기와 동시), 2028 전후 구체화",
       "cod_target": "2030년대 중후반",
       "dimensions": {
         "epc_accessibility": {"level": 5, "confidence": "high", "rationale": "APR1400은 한국 설계 — 팀코리아 EPC 주도, 삼성물산 참여 명분 최강."},
-        "deal_certainty": {"level": 3, "confidence": "medium", "rationale": "Phase2라 시점 후순위, APR1400 미국 최초 진입 인허가 과제."},
+        "deal_certainty": {"level": 3, "confidence": "medium", "rationale": "Phase2라 시점 후순위. APR1400 미국 설계인증 신규+WH IP waiver·V.C. Summer 실증 선결 조건이 변수."},
         "korea_leverage": {"level": 5, "confidence": "high", "rationale": "한국 자체 노형 — 레버리지 최대."},
         "scale": {"level": 4, "confidence": "high", "rationale": "APR1400 2기."},
         "financing_policy": {"level": 4, "confidence": "medium", "rationale": "투자패키지 연계, 미국 내 APR1400 금융구조 설계 필요."},
@@ -316,8 +316,8 @@
       "utility_id": "holtec", "state": "MI", "site": "Palisades",
       "technology": "SMR-300 (PWR)", "vendor": "Holtec", "reactor_nohyeong_id": "holtec-smr-300",
       "capacity_mwe": 600,
-      "status": "건설허가(CPA)·PSAR 제출, DOE First Mover $400M",
-      "timeline": "인허가 단계",
+      "status": "Pioneer 1·2호기 단계적 건설허가 신청(제한작업인가 LWA 포함, Fed Register 2026.10.15) — 조기 부지공사 착수 단계. DOE First Mover $400M.",
+      "timeline": "단계적 건설허가 심사(LWA)",
       "cod_target": "2030년대 초",
       "dimensions": {
         "epc_accessibility": {"level": 3, "confidence": "medium", "rationale": "Holtec 주도이나 EPC 파트너십 설계 여지."},
@@ -376,9 +376,9 @@
       "utility_id": "holtec", "state": "MI", "site": "Palisades",
       "technology": "PWR(기존)", "vendor": "Holtec", "reactor_nohyeong_id": null,
       "capacity_mwe": 805,
-      "status": "재가동 작업 진행(미국 최초 폐쇄로 재가동), DOE 대출보증·주 지원",
-      "timeline": "2025~26 재가동",
-      "cod_target": "2025~26",
+      "status": "재가동 진행 중이나 미가동(2026.10). 연료장전 중 연료집합체 기울어짐으로 중단, NRC 손상연료 이송 license amendment 승인(2026.10.13). DOE 대출보증·주 지원. Microsoft 아닌 Wolverine·Hoosier 협동조합 공급계약(2027.3 공급 의무).",
+      "timeline": "재가동 2027년 3월로 지연 가능(ENR)",
+      "cod_target": "2027 상반기(지연)",
       "dimensions": {
         "epc_accessibility": {"level": 3, "confidence": "medium", "rationale": "개조·복구 중심, Holtec 주도."},
         "deal_certainty": {"level": 5, "confidence": "high", "rationale": "재가동 작업 진행 — 확실."},

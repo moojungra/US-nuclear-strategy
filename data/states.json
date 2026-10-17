@@ -1,7 +1,7 @@
 {
-  "version": "0.2.0",
-  "updated": "2026-10-05",
-  "disclaimer": "미국 원전 운영 주 및 전략적 핵심 주를 공개자료(EIA, NRC, NCSL, NEI, INL GAIN, CRS, 각 주 PUC·전원계획)로 2026년 기준 정규화. 전력시장 구조·법률·인허가는 변동 가능하므로 confidence·sources 확인. 신규 대형원전 재무회수는 규제시장(rate-base) + CWIP 허용 주에서 유리하다는 점이 전략 핵심.",
+  "version": "0.2.1",
+  "updated": "2026-10-17",
+  "disclaimer": "미국 원전 운영 주 및 전략적 핵심 주를 공개자료(EIA, NRC, NCSL, NEI, INL GAIN, CRS, 각 주 PUC·전원계획)로 2026년 10월 기준 정규화. 전력시장 구조·법률·인허가는 변동 가능하므로 confidence·sources 확인. 신규 대형원전 재무회수는 규제시장(rate-base) + CWIP 허용 주에서 유리하다는 점이 전략 핵심.",
   "federal_framework": {
     "title": "연방-주 권한 분담 (Atomic Energy Act / NRC 선점)",
     "nrc_exclusive": "방사선 안전, 설계인증(DC), 건설허가(CP)·통합허가(COL), 운영허가, 해체 — 연방 NRC 독점(州 선점). 州는 방사선 안전을 근거로 규제 불가.",
@@ -228,7 +228,7 @@
         "incentives": "★ 주 Palisades 재가동 지원, 무탄소 목표",
         "confidence": "medium", "sources": ["Michigan PSC", "State of Michigan", "Holtec"]
       },
-      "strategy_signals": {"restart": "★ Palisades 재가동(미국 최초)", "smr": "★ Palisades 부지 Holtec SMR-300 쌍둥이 추진", "new_build": "검토"},
+      "strategy_signals": {"restart": "★ Palisades 재가동(미국 최초) — 2026.10 연료장전 중단·2027.3 지연 가능", "smr": "★ Palisades 부지 Holtec SMR-300 Pioneer 1·2호기 건설허가(LWA) 추진", "new_build": "검토"},
       "epc_attractiveness": "medium",
       "epc_rationale": "재가동+SMR-300 신규부지. SMR 건설 본격화 시 EPC·모듈 기회.",
       "confidence": "medium", "sources": ["EIA", "NRC", "Michigan PSC", "Holtec", "DTE"]
