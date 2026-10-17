@@ -1,5 +1,5 @@
 {
-  "version": "0.3.1",
+  "version": "0.4.0",
   "updated": "2026-10-17",
   "disclaimer": "미국 원전 사업기회를 공개자료(각사 보도자료, NRC, US DOE, World Nuclear News/NucNet, 주 전원계획)로 2026년 10월 기준 정규화. dimensions는 strategy_rubric.json(v0.1) 기준 성숙도/매력도 1~5 + confidence. economics(예상 LCOE·목표 PPA)는 공개 PPA 벤치마크·LCOE 추정 기반 근사이며 다수 PPA가 비공개라 추정 범위다(단위 $/MWh). 종합점수는 src/scoring.py가 계산. sales_note는 삼성물산 EPC수주(1순위)·지분투자(2순위) 관점 해석이며 1차 자료 검증 필요.",
   "dimension_keys": ["epc_accessibility", "deal_certainty", "korea_leverage", "scale", "financing_policy", "execution_risk"],
@@ -368,6 +368,66 @@
       },
       "sales_note": "수요 최상위 지역(VA)의 SMR. 노형 미확정 단계가 오히려 기회 — 조기 접촉으로 포지셔닝.",
       "sources": ["Dominion Energy", "Virginia SCC", "World Nuclear News"]
+    },
+    {
+      "id": "fermi-america-ap1000",
+      "title": "Fermi America HyperGrid AP1000 4기 (TX, AI 데이터센터 복합)",
+      "type": "new_build_large",
+      "utility_id": null, "state": "TX", "site": "Amarillo(Carson County) — 'Project Matador'/HyperGrid",
+      "technology": "AP1000 (4기)", "vendor": "Westinghouse / Fermi America", "reactor_nohyeong_id": null,
+      "capacity_mwe": 4400,
+      "status": "NRC COLA Parts 1·2 심사 수용(2026.9). 11GW+ AI 데이터센터 복합단지(가스·태양광·원전), 가스 1GW 2026말 선행(Energy Transfer 공급). 현대건설이 AP1000 4기 기본설계 완료. Macquarie 투자, TensorWave 테넌트 계약. 첫 원전 2032 목표.",
+      "timeline": "원전 COLA 심사·FID 전(가스 선행), 첫 호기 2032 목표",
+      "cod_target": "2032~",
+      "dimensions": {
+        "epc_accessibility": {"level": 3, "confidence": "medium", "rationale": "Westinghouse AP1000·현대건설 기본설계 선점 — EPC 주계약 미정이나 한국 경쟁사 내재, 패키지 하도 여지."},
+        "deal_certainty": {"level": 3, "confidence": "medium", "rationale": "COLA 심사·테넌트 확보 진행이나 원전 FID 미정·일정 장기(2032)·테넌트/CEO 변동 이력."},
+        "korea_leverage": {"level": 4, "confidence": "medium", "rationale": "현대건설 기본설계 참여로 한국기업 접근 실증. AP1000·프레임워크 공급망 연계 가능."},
+        "scale": {"level": 5, "confidence": "high", "rationale": "AP1000 4기(~4.4GW) 대형."},
+        "financing_policy": {"level": 3, "confidence": "medium", "rationale": "민간(Macquarie)+데이터센터 captive offtake, 탈규제 TX라 rate-base 없음."},
+        "execution_risk": {"level": 3, "confidence": "medium", "rationale": "AP1000 검증이나 4기 동시·복합단지 공정·재무 변동성."}
+      },
+      "economics": {
+        "expected_lcoe_usd_mwh": {"low": 90, "high": 140, "confidence": "low", "note": "AP1000 4기 반복·복합단지 공용 인프라로 하단 여지."},
+        "target_ppa_usd_mwh": {"low": 90, "high": 130, "confidence": "low", "note": "데이터센터 captive offtake(behind-the-meter)가 사실상 PPA. TX merchant."},
+        "benchmark_note": "TX 산업용 tariff $65/MWh이나 AI 데이터센터 captive 수요로 24/7 프리미엄 지불 여력 큼."
+      },
+      "samsung_angle": {
+        "epc": "현대건설이 AP1000 4기 기본설계 선점 — 경쟁사 내재. 삼성물산은 모듈제작·기전 패키지·복합단지 추가전원/후속호기로 차별 진입 탐색.",
+        "investment": "Macquarie 등 민간 투자구조 — 지분·EPC 연계 협상 여지."
+      },
+      "sales_note": "미국 최대 민간 원전+AI 데이터센터 복합. 현대건설 선점으로 삼성물산 직접 EPC는 경쟁열위 — 모듈/기전 하도나 복합단지 추가전원·후속호기로 접근. COLA·FID·테넌트 동향 추적.",
+      "sources": ["NRC", "PowerMag", "DataCenterDynamics", "Fermi America", "The Register"]
+    },
+    {
+      "id": "elementl-ohio-bwrx300",
+      "title": "Elementl Power 오하이오 BWRX-300 SMR (OH) — ★삼성 LOI 대상",
+      "type": "smr_new",
+      "utility_id": null, "state": "OH", "site": "Meigs County(Letart Township), Ohio River변 ~700에이커(AMP 부지 매입)",
+      "technology": "BWRX-300 (최대 5기)", "vendor": "GE Vernova Hitachi / Elementl Power", "reactor_nohyeong_id": "bwrx-300",
+      "capacity_mwe": 1500,
+      "status": "발표(2026.6). GEH와 Early Works Agreement, PJM 계통연계 신청(1차 600MW, 2026말 회신 예상), NRC 건설허가 신청 2026 내 예정, Ohio Power Siting Board 승인 필요. 자체 재원(요금 전가 아님). 착공 2030·완공 2034 목표.",
+      "timeline": "CP 신청 2026 → FID → 착공 2030 → 완공 2034",
+      "cod_target": "2034",
+      "dimensions": {
+        "epc_accessibility": {"level": 4, "confidence": "medium", "rationale": "개발사 주도·EPC 주계약 미정. GEH는 노형(Early Works), 건설 EPC 참여공간 열림 — 삼성 LOI로 능동 진입."},
+        "deal_certainty": {"level": 3, "confidence": "medium", "rationale": "부지·노형·PJM IX·CP 신청 진행이나 FID(2030)·자체재원 확보 전."},
+        "korea_leverage": {"level": 4, "confidence": "medium", "rationale": "GEH 노형(비한국)이나 삼성물산 직접 LOI 추진 — 한국기업 실 진입(내부 정보)."},
+        "scale": {"level": 4, "confidence": "medium", "rationale": "최대 5기 BWRX-300(~1.5GW)."},
+        "financing_policy": {"level": 3, "confidence": "low", "rationale": "자체 재원(요금 전가 배제)+데이터센터/offtake 추정. OH 탈규제(PJM)."},
+        "execution_risk": {"level": 3, "confidence": "medium", "rationale": "BWRX-300 FOAK(TVA Clinch River 선행 레퍼런스)·개발사 첫 프로젝트."}
+      },
+      "economics": {
+        "expected_lcoe_usd_mwh": {"low": 100, "high": 160, "confidence": "low", "note": "BWRX-300 FOAK 범위. TVA Clinch River 선행으로 nth-of-a-kind 학습효과 기대."},
+        "target_ppa_usd_mwh": {"low": 100, "high": 140, "confidence": "low", "note": "PJM+데이터센터 offtake. 자체재원이라 장기 PPA 확보가 FID 전제."},
+        "benchmark_note": "OH 산업용 tariff $80/MWh. PJM 데이터센터·반도체(인텔) 수요 연계 offtake가 사업 성립 관건."
+      },
+      "samsung_angle": {
+        "epc": "★ 삼성물산 LOI 제출 추진 사업 — 직접 진입 타깃. Elementl·GEH와 건설 EPC/기자재/지분 참여 협상.",
+        "investment": "자체재원 개발사 — 지분참여로 EPC 사업권 연동 설계 유효. LOI가 그 출발점."
+      },
+      "sales_note": "★ 삼성물산이 LOI 제출을 추진 중인 직접 진입 사업(내부 정보). BWRX-300은 TVA Clinch River 선행으로 노형 확실성↑. PJM 계통연계·CP 신청·FID 일정을 삼성 참여조건과 함께 추적. 진입 우선순위 상위.",
+      "sources": ["Elementl Power", "World Nuclear News", "ANS", "Enerdata", "삼성물산(내부, LOI 의향)"]
     },
     {
       "id": "palisades-restart",
