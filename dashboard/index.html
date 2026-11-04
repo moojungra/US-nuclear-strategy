@@ -125,7 +125,7 @@
       <label>정렬<select id="f-sort">
         <option value="overall_score">종합점수</option>
         <option value="epc">EPC 접근성</option>
-        <option value="korea">한국 레버리지</option>
+        <option value="equity">지분→사업권</option>
         <option value="deal">발주 확실성</option></select></label>
       <input id="f-q" placeholder="검색(제목·기술·주)" style="flex:1;min-width:140px">
     </div>
@@ -177,8 +177,8 @@
 <script>
 // ===== 내장 베이스라인(데이터) — data.js(window.USNS_DATA)가 있으면 그것을 우선 사용 =====
 window.USNS_BASELINE = {
-  rubric: {weights:{epc_accessibility:0.28,deal_certainty:0.22,korea_leverage:0.20,scale:0.12,financing_policy:0.10,execution_risk:0.08},
-    labels:{epc_accessibility:"EPC 접근성",deal_certainty:"발주 확실성",korea_leverage:"한국 레버리지",scale:"규모",financing_policy:"재무·정책",execution_risk:"수행리스크(역)"}},
+  rubric: {weights:{equity_to_rights:0.30,epc_accessibility:0.24,deal_certainty:0.18,financing_policy:0.12,scale:0.08,execution_risk:0.08},
+    labels:{equity_to_rights:"지분→사업권",epc_accessibility:"삼성 EPC 접근성",deal_certainty:"발주 확실성",financing_policy:"재무·정책",scale:"규모",execution_risk:"수행리스크(역)"}},
   note:"내장 베이스라인입니다. Actions가 build_dashboard.py로 data.js를 생성하면 라이브 신호가 병합된 최신본으로 대체됩니다."
 };
 </script>
@@ -238,7 +238,7 @@ function buildTypeFilter(){
 }
 function priOf(o){ // 사업기회 우선순위: EPC접근성+한국레버리지 평균으로 추정
   const e=o.dimensions; if(!e)return 'low';
-  const v=((e.epc_accessibility?.level||0)+(e.korea_leverage?.level||0))/2;
+  const v=((e.epc_accessibility?.level||0)+(e.equity_to_rights?.level||0))/2;
   return v>=4?'high':v>=3?'medium':'low';
 }
 function renderOpps(){
@@ -248,7 +248,7 @@ function renderOpps(){
   list=list.filter(({o})=>(!type||o.type===type)&&(!pri||priOf(o)===pri)&&
     (!q||(o.title+o.technology+o.state).toLowerCase().includes(q)));
   const sk={overall_score:({ev})=>ev.overall_score,epc:({o})=>o.dimensions.epc_accessibility?.level||0,
-    korea:({o})=>o.dimensions.korea_leverage?.level||0,deal:({o})=>o.dimensions.deal_certainty?.level||0}[sort];
+    equity:({o})=>o.dimensions.equity_to_rights?.level||0,deal:({o})=>o.dimensions.deal_certainty?.level||0}[sort];
   list.sort((a,b)=>sk(b)-sk(a));
   document.getElementById('opps').innerHTML=list.map(({o,ev},i)=>{
     const dims=KEYS.map(k=>{const e=o.dimensions[k];if(!e)return'';
