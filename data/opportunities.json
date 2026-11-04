@@ -1,6 +1,6 @@
 {
-  "version": "0.4.0",
-  "updated": "2026-10-17",
+  "version": "0.5.0",
+  "updated": "2026-11-04",
   "disclaimer": "미국 원전 사업기회를 공개자료(각사 보도자료, NRC, US DOE, World Nuclear News/NucNet, 주 전원계획)로 2026년 10월 기준 정규화. dimensions는 strategy_rubric.json(v0.1) 기준 성숙도/매력도 1~5 + confidence. economics(예상 LCOE·목표 PPA)는 공개 PPA 벤치마크·LCOE 추정 기반 근사이며 다수 PPA가 비공개라 추정 범위다(단위 $/MWh). 종합점수는 src/scoring.py가 계산. sales_note는 삼성물산 EPC수주(1순위)·지분투자(2순위) 관점 해석이며 1차 자료 검증 필요.",
   "dimension_keys": ["epc_accessibility", "deal_certainty", "korea_leverage", "scale", "financing_policy", "execution_risk"],
   "economics_note": "expected_lcoe=설계원가 추정(참고), target_ppa=사업 성립에 필요한 장기계약가(또는 실제 체결가). 현실 벤치마크: 하이퍼스케일러 원전 PPA $80–130, Microsoft–Crane 실측 $110–115, 도매 $35–55/MWh. 규제주는 PPA 대신 PUC 요금회수(rate-base)가 1차 경로.",
@@ -428,6 +428,66 @@
       },
       "sales_note": "★ 삼성물산이 LOI 제출을 추진 중인 직접 진입 사업(내부 정보). BWRX-300은 TVA Clinch River 선행으로 노형 확실성↑. PJM 계통연계·CP 신청·FID 일정을 삼성 참여조건과 함께 추적. 진입 우선순위 상위.",
       "sources": ["Elementl Power", "World Nuclear News", "ANS", "Enerdata", "삼성물산(내부, LOI 의향)"]
+    },
+    {
+      "id": "kairos-hermes2",
+      "title": "Kairos Power Hermes 2 실증로 (TN) — ★삼성물산 EPC팀 참여·지분",
+      "type": "smr_new",
+      "utility_id": null, "state": "TN", "site": "Oak Ridge, Tennessee",
+      "technology": "KP-FHR (불소염냉각 고온로)", "vendor": "Kairos Power", "reactor_nohyeong_id": "kairos-kp-fhr",
+      "capacity_mwe": 50,
+      "status": "건설 중(2026.4 착공). 50MWe→TVA 그리드(Google 데이터센터 TN/AL), $643M 조달(민관), 2030 가동 목표. ★삼성물산이 EPC팀(Kairos·삼성물산·Barnard 3자) 참여 — 발전계통·BOP 담당. 삼성 구속 term sheet(2026.9.21): 최대 $100M(엔지니어링+지분 ~$70M), 규제승인 조건.",
+      "timeline": "건설 중 → 2030 가동. 삼성 지분·EPC 규제승인 진행",
+      "cod_target": "2030",
+      "dimensions": {
+        "epc_accessibility": {"level": 5, "confidence": "high", "rationale": "삼성물산이 이미 핵심 EPC팀(발전계통·BOP) 확보 — 접근을 넘어 계약 참여 실체."},
+        "deal_certainty": {"level": 5, "confidence": "high", "rationale": "착공·$643M 조달·TVA PPA·NRC 건설허가 — 최고 확실성."},
+        "korea_leverage": {"level": 5, "confidence": "high", "rationale": "삼성물산 직접 지분(~$70M)+EPC — 한국기업 레버리지 최대."},
+        "scale": {"level": 2, "confidence": "high", "rationale": "50MWe 단일 실증로 — 소규모."},
+        "financing_policy": {"level": 5, "confidence": "high", "rationale": "$643M 민관 조달+Google/TVA offtake+DOE."},
+        "execution_risk": {"level": 3, "confidence": "medium", "rationale": "KP-FHR FOAK 실증·HALEU TRISO·FLiBe 공급 구축 중."}
+      },
+      "economics": {
+        "expected_lcoe_usd_mwh": {"low": 120, "high": 200, "confidence": "low", "note": "50MWe 실증로 — 상용 단가 아님(FOAK 데모). 상용은 kairos-kp-x-commercial 참조."},
+        "target_ppa_usd_mwh": {"low": 90, "high": 130, "confidence": "low", "note": "TVA 그리드 공급(Google 매칭) — 실증 단계라 상용 PPA 미공개. 하이퍼스케일러 구간 참고."},
+        "benchmark_note": "TN 산업용 tariff $65. 실증로라 경제성보다 '삼성 EPC 교두보·레퍼런스 확보'가 핵심 가치."
+      },
+      "samsung_angle": {
+        "epc": "★★ 삼성물산의 미국 원전 EPC 실제 진입 1호. 발전계통·BOP 수행으로 FHR 건설 경험·레퍼런스 확보. 상용 EPC 우선권의 발판.",
+        "investment": "지분 ~$70M + 엔지니어링 in-kind(총 ~$100M)로 EPC 사업권과 지분을 동시 확보 — 2순위(지분)가 1순위(EPC)를 여는 모범 구조."
+      },
+      "sales_note": "★★ 삼성물산 미국 원전 EPC 진입의 교두보(확정·공개). Kairos·Barnard와 3자 EPC팀. 규제승인·건설 공정을 내부 관리 1순위로. 상용 KP-FHR 우선권(하단 opportunity)으로 연결되는 전략 핵심.",
+      "sources": ["Kairos Power", "World Nuclear News", "ANS", "Nuclear Engineering International", "Neutron Bytes", "TechCrunch", "삼성물산"]
+    },
+    {
+      "id": "kairos-kp-x-commercial",
+      "title": "Kairos 상용 KP-FHR (미국) — ★삼성물산 EPC 우선권",
+      "type": "smr_fleet",
+      "utility_id": null, "state": "미정(미국)", "site": "미정",
+      "technology": "KP-FHR 상용(KP-X, ~140MWe급)", "vendor": "Kairos Power", "reactor_nohyeong_id": "kairos-kp-fhr",
+      "capacity_mwe": 500,
+      "status": "Hermes 실증 후 상용 배치 계획. Google 2024 협약(50MW→~500MW 다부지 2030). ★삼성물산이 미국 상용 KP-FHR EPC 우선권 보유(2026.9 협약).",
+      "timeline": "Hermes 실증(2030) 성공 → 상용 FID·배치",
+      "cod_target": "2030년대",
+      "dimensions": {
+        "epc_accessibility": {"level": 5, "confidence": "high", "rationale": "삼성물산이 미국 상용 KP-FHR EPC 우선권 보유 — 최상위 접근권."},
+        "deal_certainty": {"level": 2, "confidence": "medium", "rationale": "상용 배치 계획·Google offtake 틀 있으나 부지·FID·실증 성공 선결."},
+        "korea_leverage": {"level": 5, "confidence": "high", "rationale": "삼성물산 EPC 우선권 — 한국기업 레버리지 최대."},
+        "scale": {"level": 4, "confidence": "medium", "rationale": "Google ~500MW 다부지 등 함대 잠재."},
+        "financing_policy": {"level": 3, "confidence": "medium", "rationale": "Google offtake 틀, 상용 금융구조 미확정."},
+        "execution_risk": {"level": 2, "confidence": "medium", "rationale": "KP-FHR 상용 미검증(Hermes 실증 선행)·HALEU TRISO·FLiBe."}
+      },
+      "economics": {
+        "expected_lcoe_usd_mwh": {"low": 100, "high": 180, "confidence": "low", "note": "상용 KP-FHR FOAK→함대 반복으로 하락 목표. 실증 성과에 민감."},
+        "target_ppa_usd_mwh": {"low": 90, "high": 130, "confidence": "low", "note": "Google·데이터센터 offtake 구간. 하이퍼스케일러 $80–130."},
+        "benchmark_note": "하이퍼스케일러 PPA $80–130이 목표대. 삼성 EPC 우선권으로 함대 수주 볼륨 확보가 핵심."
+      },
+      "samsung_angle": {
+        "epc": "★★ 삼성물산 미국 상용 KP-FHR EPC 우선권 — 함대 확장 시 최대 수혜. SMR EPC 볼륨 전략의 핵심 자산.",
+        "investment": "Hermes 지분·협력이 상용 우선권으로 연결 — 투자→EPC 전환의 장기 파이프라인."
+      },
+      "sales_note": "★ Hermes 실증 성공 시 상용 KP-FHR EPC 우선권 행사 — 삼성물산 미국 SMR EPC 볼륨의 핵심. Google 500MW(2030)·다부지 offtake 확정 추적. 실증 성과가 트리거.",
+      "sources": ["Kairos Power", "World Nuclear News", "TechCrunch", "삼성물산"]
     },
     {
       "id": "palisades-restart",

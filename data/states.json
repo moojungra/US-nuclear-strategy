@@ -1,6 +1,6 @@
 {
-  "version": "0.2.1",
-  "updated": "2026-10-17",
+  "version": "0.2.2",
+  "updated": "2026-11-04",
   "disclaimer": "미국 원전 운영 주 및 전략적 핵심 주를 공개자료(EIA, NRC, NCSL, NEI, INL GAIN, CRS, 각 주 PUC·전원계획)로 2026년 10월 기준 정규화. 전력시장 구조·법률·인허가는 변동 가능하므로 confidence·sources 확인. 신규 대형원전 재무회수는 규제시장(rate-base) + CWIP 허용 주에서 유리하다는 점이 전략 핵심.",
   "federal_framework": {
     "title": "연방-주 권한 분담 (Atomic Energy Act / NRC 선점)",
@@ -84,7 +84,7 @@
         "incentives": "★ 테네시 SMR 허브 기금·Oak Ridge 생태계·DOE 연계",
         "confidence": "high", "sources": ["TVA", "State of Tennessee", "US DOE"]
       },
-      "strategy_signals": {"smr": "★★ Clinch River BWRX-300 건설허가(2026.9)·최대 4기. TVA-NuScale 6GW MOU", "new_build": "대형 검토", "data_center": "AI·연방시설 수요"},
+      "strategy_signals": {"smr": "★★ Clinch River BWRX-300 건설허가(2026.9)·최대 4기. TVA-NuScale 6GW MOU. Kairos Hermes 2(Oak Ridge, 삼성물산 EPC팀) 건설 중", "new_build": "대형 검토", "data_center": "AI·연방시설·Google 수요"},
       "epc_attractiveness": "high",
       "epc_rationale": "★★ 미국 SMR FOAK 중심지. 연방기관이라 州 규제게이트 없음·NRC 중심. SMR EPC·모듈 수주 최우선 타깃(단 연방 조달절차).",
       "confidence": "high", "sources": ["EIA", "NRC", "TVA", "State of Tennessee", "US DOE"]
